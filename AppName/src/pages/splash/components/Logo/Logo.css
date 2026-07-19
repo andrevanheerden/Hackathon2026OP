@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'Dune Rise';
+  src: url('../../assets/fonts/Dune_Rise.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 40px 0;
+}
+
+.logo-text {
+  text-align: center;
+  font-family: 'Dune Rise', sans-serif;
+  font-size: 160px;
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: 12px;
+}
+
+.logo-top {
+  color: #FF6600;
+  text-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
+  font-weight: 900;
+  -webkit-text-fill-color: #FF6600;
+  -webkit-text-stroke: 3px #FF6600;
+  paint-order: stroke fill;
+}
+
+.logo-bottom {
+  color: #FFFFFF;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  font-weight: 900;
+  -webkit-text-fill-color: #FFFFFF;
+  -webkit-text-stroke: 2px #FFFFFF;
+  paint-order: stroke fill;
+}

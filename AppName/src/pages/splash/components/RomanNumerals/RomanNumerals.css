@@ -1,0 +1,21 @@
+.roman-numerals {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 0;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: #6666aa;
+  font-weight: 300;
+}
+
+.numeral {
+  color: #7777bb;
+}
+
+.dot {
+  color: #5555aa;
+  font-size: 14px;
+}

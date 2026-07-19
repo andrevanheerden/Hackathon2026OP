@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #FF6600;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin: 10px 0;
+}
+
+.footer-text {
+  color: #FF6600;
+}
+
+.footer-separator {
+  color: #FF6600;
+}

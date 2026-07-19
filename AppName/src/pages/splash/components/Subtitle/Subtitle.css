@@ -1,0 +1,14 @@
+.subtitle {
+  text-align: center;
+  margin: 15px 0;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.subtitle-text {
+  font-size: 16px;
+  color: #888899;
+  letter-spacing: 2px;
+  line-height: 1.6;
+  margin: 8px 0;
+  font-weight: 300;
+}
