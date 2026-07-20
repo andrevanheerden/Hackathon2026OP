@@ -11,5 +11,6 @@ export const tiles = [
   { id: 20, number: 20, type: 'Encounter', title: 'The Maw', highlighted: false },
 ];
 
-export const tilesPageOne = tiles.slice(0, 5);
-export const tilesPageTwo = tiles.slice(5);
+// Show up to 10 tiles per page (5 columns × 2 rows)
+export const tilesPageOne = tiles.slice(0, 10);
+export const tilesPageTwo = tiles.slice(10, 20);

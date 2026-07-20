@@ -48,11 +48,7 @@ function Dashboard({ players = [] }) {
               selectedTile={tiles.find((tile) => tile.id === selectedTileId)}
             />
           </div>
-          <div className="dashboard-content__right">
-            <div className="dashboard-panel">
-              {/* Reserved panel - RightSidebar now contains the status hub */}
-            </div>
-          </div>
+
         </div>
       </div>
       <RightSidebar players={sessionPlayers} />
