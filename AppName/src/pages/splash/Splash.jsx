@@ -9,7 +9,7 @@ import Button from './components/Button/Button';
 import Footer from './components/Footer/Footer';
 import CharacterSetupModal from './components/CharacterSetupModal/CharacterSetupModal';
 
-function Splash() {
+function Splash({ onStartJourney }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -24,7 +24,11 @@ function Splash() {
         <Footer />
         <DecorativeLine />
       </div>
-      <CharacterSetupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <CharacterSetupModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onStartJourney={onStartJourney}
+      />
     </div>
   );
 }

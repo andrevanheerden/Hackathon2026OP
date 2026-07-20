@@ -1,0 +1,91 @@
+.sidebar {
+  width: 122px;
+  min-width: 122px;
+  padding: 33px 0 32px;
+  border-right: 1px solid rgba(139, 110, 240, 0.13);
+  background: linear-gradient(180deg, rgba(31, 26, 40, 1) 0%, rgba(26, 21, 25, 1) 100%);
+  box-shadow: 4.94px 0 14.82px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 33px;
+  color: #fff;
+}
+
+.sidebar__badge {
+  width: 65.9px;
+  height: 65.9px;
+  border-radius: 18.1px 4.94px 4.94px 18.1px;
+  border: 1.3px solid rgba(247, 90, 0, 0.38);
+  box-shadow: 0 0 19.76px rgba(247, 90, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Dune Rise', 'Montserrat Alternates', sans-serif;
+  font-size: 28px;
+  color: #f75a00;
+  background: linear-gradient(135deg, rgba(247, 90, 0, 0.18) 0%, rgba(139, 110, 240, 0.08) 100%);
+}
+
+.sidebar__divider {
+  width: 59.3px;
+  height: 1.65px;
+  background: rgba(139, 110, 240, 0.18);
+}
+
+.sidebar__nav {
+  width: 79px;
+  height: 79px;
+  border-radius: 16.47px;
+  border: 1.3px solid transparent;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6.6px;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.99px;
+  text-transform: uppercase;
+}
+
+.sidebar__nav--active {
+  border-color: rgba(139, 110, 240, 0.38);
+  box-shadow: 0 0 23.05px rgba(139, 110, 240, 0.28);
+  background: rgba(139, 110, 240, 0.14);
+  color: #8b6ef0;
+}
+
+.sidebar__icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.sidebar__spacer {
+  flex: 1;
+}
+
+.sidebar__game-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: rgba(247, 90, 0, 0.18);
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 11.53px;
+  letter-spacing: 4.61px;
+  text-transform: uppercase;
+  text-align: center;
+}

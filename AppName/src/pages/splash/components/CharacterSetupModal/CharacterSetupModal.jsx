@@ -10,7 +10,7 @@ const createPlayer = (id, name, maxHp, ac, color, isActive = false) => ({
   isActive,
 });
 
-function CharacterSetupModal({ isOpen, onClose }) {
+function CharacterSetupModal({ isOpen, onClose, onStartJourney }) {
   const [players, setPlayers] = useState([
     createPlayer(1, 'Player One', 25, 5, '#ff7a1a', true),
     createPlayer(2, 'Player Two', 25, 5, '#9b59ff', false),
@@ -145,7 +145,14 @@ function CharacterSetupModal({ isOpen, onClose }) {
           <button type="button" className="character-modal__secondary" onClick={onClose}>
             Cancel
           </button>
-          <button type="button" className="character-modal__primary" onClick={onClose}>
+          <button
+            type="button"
+            className="character-modal__primary"
+            onClick={() => {
+              onStartJourney?.(players);
+              onClose();
+            }}
+          >
             Begin the Journey
           </button>
         </div>
