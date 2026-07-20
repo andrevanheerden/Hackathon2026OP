@@ -1,12 +1,8 @@
 import './Button.css';
 
-function Button() {
-  const handleClick = () => {
-    console.log('Enter the wastes clicked');
-  };
-
+function Button({ onClick }) {
   return (
-    <button className="enter-button" onClick={handleClick}>
+    <button className="enter-button" onClick={onClick}>
       ENTER THE WASTES
     </button>
   );
