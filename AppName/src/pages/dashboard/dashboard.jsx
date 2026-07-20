@@ -3,7 +3,7 @@ import './dashboard.css';
 import Sidebar from './components/Sidebar/Sidebar';
 import TopBar from './components/TopBar/TopBar';
 import BoardTiles from './components/BoardTiles/BoardTiles';
-import StatusHub from './components/StatusHub/StatusHub';
+import RightSidebar from './components/RightSidebar/RightSidebar';
 import { tilesPageOne, tilesPageTwo } from './data/tiles';
 
 function Dashboard({ players = [] }) {
@@ -50,11 +50,12 @@ function Dashboard({ players = [] }) {
           </div>
           <div className="dashboard-content__right">
             <div className="dashboard-panel">
-              <StatusHub players={sessionPlayers} />
+              {/* Reserved panel - RightSidebar now contains the status hub */}
             </div>
           </div>
         </div>
       </div>
+      <RightSidebar players={sessionPlayers} />
     </div>
   );
 }
