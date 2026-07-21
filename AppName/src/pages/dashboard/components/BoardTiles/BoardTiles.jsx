@@ -2,6 +2,9 @@ import TileCard from '../TileCard/TileCard';
 import './BoardTiles.css';
 
 function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile }) {
+  const categorySlug = selectedTile ? String((selectedTile.category || selectedTile.type || '')).toLowerCase().replace(/[^a-z0-9]+/g, '-') : '';
+  const detailClassName = `board-tiles__detail ${categorySlug ? `board-tiles__detail--cat-${categorySlug}` : ''}`;
+
   return (
     <section className="board-tiles">
       <div className="board-tiles__heading">
@@ -19,14 +22,14 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile }) {
         ))}
       </div>
 
-      <div className="board-tiles__detail">
+      <div className={detailClassName}>
         <div className="board-tiles__detail-top">
             {selectedTile ? (
-              <div className="tile-hero">
+              <div className={`tile-hero ${selectedTile.number === 1 ? 'tile-hero--one' : ''}`}>
                 <div className="tile-hero__meta">
                   <span className="tile-hero__label">TILE {selectedTile.number} · {selectedTile.category || selectedTile.type}</span>
-                  <span className="tile-hero__pill">{(selectedTile.type || 'Unknown').toUpperCase()}</span>
                 </div>
+                <span className="tile-hero__pill">{selectedTile.category || selectedTile.type}</span>
                 <h2 className="tile-hero__title">{selectedTile.title}</h2>
                
               </div>
@@ -40,12 +43,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile }) {
         {selectedTile ? (
           selectedTile.details ? (
             <div className="board-tiles__detail-body board-tiles__detail-rich">
-              <div className="tile-detail__header">
-                <div className="tile-detail__pills">
-                  <span className="tile-detail__pill">Tile {selectedTile.number}</span>
-                  <span className="tile-detail__pill">{selectedTile.category || selectedTile.type}</span>
-                </div>
-              </div>
+              <div className="tile-detail__header"></div>
               <div className="tile-detail__section">
                 <p className="tile-detail__section-title">Event Description</p>
                 <div className="tile-detail__text-row">
