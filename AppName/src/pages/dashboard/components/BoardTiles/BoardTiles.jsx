@@ -56,30 +56,38 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile }) {
                   <span>{selectedTile.details.environment}</span>
                 </div>
               </div>
-              <div className="tile-detail__section tile-detail__npc-block">
-                <div className="tile-detail__npc-image">
-                  <div className="tile-detail__portrait-flair">{selectedTile.details.npcLabel || 'NPC'}</div>
-                  <span>{selectedTile.details.npcImage ? 'Image placeholder' : 'NPC'}</span>
-                </div>
-                <div className="tile-detail__npc-copy">
-                  <div className="tile-detail__text-row">
-                    <strong>NPC Appearance</strong>
-                    <span>{selectedTile.details.npcAppearance}</span>
+              {(selectedTile.details.npcAppearance || selectedTile.details.npcImage || selectedTile.details.voiceStyle || selectedTile.details.npcLabel) && (
+                <div className="tile-detail__section tile-detail__npc-block">
+                  <div className="tile-detail__npc-image">
+                    <div className="tile-detail__portrait-flair">{selectedTile.details.npcLabel || 'NPC'}</div>
+                    <span>{selectedTile.details.npcImage ? 'Image placeholder' : 'NPC'}</span>
                   </div>
-                  <div className="tile-detail__text-row">
-                    <strong>Voice Style</strong>
-                    <span>{selectedTile.details.voiceStyle}</span>
+                  <div className="tile-detail__npc-copy">
+                    {selectedTile.details.npcAppearance && (
+                      <div className="tile-detail__text-row">
+                        <strong>NPC Appearance</strong>
+                        <span>{selectedTile.details.npcAppearance}</span>
+                      </div>
+                    )}
+                    {selectedTile.details.voiceStyle && (
+                      <div className="tile-detail__text-row">
+                        <strong>Voice Style</strong>
+                        <span>{selectedTile.details.voiceStyle}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
-              </div>
+              )}
               <div className="tile-detail__section">
                 <p className="tile-detail__section-title">Event Story</p>
                 <span>{selectedTile.details.eventStory}</span>
               </div>
-              <div className="tile-detail__section">
-                <p className="tile-detail__section-title">Dialogue</p>
-                <span>{selectedTile.details.dialogue}</span>
-              </div>
+              {selectedTile.details.dialogue && (
+                <div className="tile-detail__section">
+                  <p className="tile-detail__section-title">Dialogue</p>
+                  <span>{selectedTile.details.dialogue}</span>
+                </div>
+              )}
               <div className="tile-detail__section tile-detail__section--reward">
                 <p className="tile-detail__section-title">Reward</p>
                 <div className="tile-detail__reward-panel">

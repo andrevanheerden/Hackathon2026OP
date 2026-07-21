@@ -134,15 +134,6 @@
   letter-spacing: 0.02em;
 }
 
-/* Area inherits category color when present */
-.board-tiles__detail--cat-start .tile-hero__area {
-  color: rgba(95,179,255,0.95);
-}
-
-.board-tiles__detail--cat-encounter .tile-hero__area {
-  color: rgba(255,110,110,0.95);
-}
-
 
 .tile-hero__title {
   margin: 8px 0 0 0;

@@ -24,6 +24,32 @@ export const tiles = [
       npcLabel: 'NPC',
     },
   },
+  {
+    id: 21,
+    number: 2,
+    type: 'Encounter',
+    title: 'Sands of the Risen',
+    category: 'Encounter',
+    highlighted: false,
+    details: {
+      environment:
+        'A narrow gorge littered with sun-bleached animal bones and rusted iron swords half-buried in sand drifts.',
+      eventStory:
+        'As you take a step forward, the ground vibrates. A withered hand erupts from the sand beneath your feet, followed by a decayed warrior crawling into the daylight.',
+      encounter: {
+        name: 'Desert Husk (Zombie)',
+        appearance:
+          'A mummified corpse wrapped in rotting linen, holding a chipped bronze scimitar with eerie green light glowing in its empty eye sockets.',
+        hp: 18,
+        ac: 4,
+        energy: 3,
+        resistances: 'Slash (takes 1/2× damage)',
+        vulnerabilities: 'Fire (takes 2× damage)',
+        actionCards: [],
+      },
+      reward: 'Victory Drop: Draw 1 Trait Card.',
+    },
+  },
   { id: 12, number: 12, type: 'Discovery', title: 'Compass', category: 'Encounter', highlighted: false },
   { id: 13, number: 13, type: 'Encounter', title: 'Spire', category: 'Encounter', highlighted: true },
   { id: 14, number: 14, type: 'Puzzle', title: 'Canyon', category: 'Encounter', highlighted: false },
