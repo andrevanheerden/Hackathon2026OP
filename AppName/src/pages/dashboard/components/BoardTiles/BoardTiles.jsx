@@ -94,6 +94,27 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     }
   }, [encounterState, selectedTile]);
 
+  // Listen for encounter energy reset events from the sidebar
+  useEffect(() => {
+    const handleResetEncounterEnergy = () => {
+      if (!selectedTile || !selectedTile.details?.encounter) {
+        return;
+      }
+      setEncounterState((state) => {
+        if (!state) return state;
+        return {
+          ...state,
+          currentEnergy: state.maxEnergy,
+        };
+      });
+    };
+
+    window.addEventListener('resetEncounterEnergy', handleResetEncounterEnergy);
+    return () => {
+      window.removeEventListener('resetEncounterEnergy', handleResetEncounterEnergy);
+    };
+  }, [selectedTile]);
+
   const applyHeal = () => {
     if (!encounterState) return;
     const parsed = Number.parseInt(healAmount, 10);
@@ -396,12 +417,13 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                               onChange={(e) => setAcAmount(e.target.value.replace(/[^0-9]/g, ''))}
                             />
                             <div style={{ display: 'flex', gap: 8 }}>
+                              <button type="button" className="encounter-action-btn encounter-action-btn--ac" onClick={removeAc}>
+                                REMOVE
+                              </button>
                               <button type="button" className="encounter-action-btn encounter-action-btn--ac" onClick={addAc}>
                                 ADD
                               </button>
-                              <button type="button" className="encounter-action-btn encounter-action-btn--ac" onClick={removeAc}>
-                                REM
-                              </button>
+                              
                             </div>
                           </label>
                         </div>

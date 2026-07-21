@@ -49,6 +49,7 @@ function Dashboard({ players = [] }) {
   };
 
   const tiles = useMemo(() => (activePage === 'I-X' ? tilesPageOne : tilesPageTwo), [activePage]);
+  const selectedTile = tiles.find((tile) => tile.id === selectedTileId);
 
   return (
     <div className="dashboard-shell">
@@ -61,13 +62,13 @@ function Dashboard({ players = [] }) {
               tiles={tiles}
               selectedTileId={selectedTileId}
               onSelectTile={setSelectedTileId}
-              selectedTile={tiles.find((tile) => tile.id === selectedTileId)}
+              selectedTile={selectedTile}
               players={sessionPlayers}
             />
           </div>
         </div>
       </div>
-      <RightSidebar players={sessionPlayers} onUpdatePlayer={updatePlayer} />
+      <RightSidebar selectedTile={selectedTile} players={sessionPlayers} onUpdatePlayer={updatePlayer} />
     </div>
   );
 }

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './RightSidebar.css';
 
-function RightSidebar({ players = [], onUpdatePlayer = () => {} }) {
+function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () => {} }) {
   const [selectedPlayerId, setSelectedPlayerId] = useState(null);
   const [healAmount, setHealAmount] = useState('');
   const [damageAmount, setDamageAmount] = useState('');
@@ -9,6 +9,8 @@ function RightSidebar({ players = [], onUpdatePlayer = () => {} }) {
   const [editingPlayerId, setEditingPlayerId] = useState(null);
   const [editForm, setEditForm] = useState({ maxHp: '', ac: '', maxEnergy: '' });
   const [energyAmount, setEnergyAmount] = useState('');
+  const [encounterStarted, setEncounterStarted] = useState(false);
+  const [roundNumber, setRoundNumber] = useState(0);
 
   const activePlayers = players.filter((p) => p.isActive);
   const displayPlayers = activePlayers.length > 0 ? activePlayers : players.slice(0, 1);
@@ -23,6 +25,42 @@ function RightSidebar({ players = [], onUpdatePlayer = () => {} }) {
       maxEnergy: String(typeof player.maxEnergy !== 'undefined' ? player.maxEnergy : 3),
     });
     setIsEditModalOpen(true);
+  };
+
+  useEffect(() => {
+    if (!selectedTile || !['Encounter', 'Boss'].includes(selectedTile.category)) {
+      setEncounterStarted(false);
+      setRoundNumber(0);
+    }
+  }, [selectedTile]);
+
+  const resetAllEnergy = () => {
+    players.forEach((player) => {
+      const maxEnergy = typeof player.maxEnergy !== 'undefined' ? player.maxEnergy : 3;
+      onUpdatePlayer(player.id, { energy: maxEnergy });
+    });
+  };
+
+  const dispatchResetEncounterEnergy = () => {
+    window.dispatchEvent(new CustomEvent('resetEncounterEnergy'));
+  };
+
+  const handleStartEncounter = () => {
+    setEncounterStarted(true);
+    setRoundNumber(1);
+  };
+
+  const handleNextRound = () => {
+    setRoundNumber((prev) => prev + 1);
+    resetAllEnergy();
+    dispatchResetEncounterEnergy();
+  };
+
+  const handleEndEncounter = () => {
+    resetAllEnergy();
+    dispatchResetEncounterEnergy();
+    setEncounterStarted(false);
+    setRoundNumber(0);
   };
 
   const closeEditModal = () => {
@@ -105,11 +143,35 @@ function RightSidebar({ players = [], onUpdatePlayer = () => {} }) {
     closeEditModal();
   };
 
+  const showEncounterControls = selectedTile && ['Encounter', 'Boss'].includes(selectedTile.category);
+
   return (
     <aside className="right-sidebar">
       <div className="right-sidebar__header">
         <p>STATUS HUB</p>
       </div>
+
+      {showEncounterControls && (
+        <div className={`encounter-control-panel ${encounterStarted ? 'encounter-active' : ''}`}>
+          {!encounterStarted ? (
+            <button type="button" className="encounter-start-button" onClick={handleStartEncounter}>
+              Start Encounter
+            </button>
+          ) : (
+            <>
+              <div className="encounter-round-label">ROUND {roundNumber}</div>
+              <div className="encounter-round-actions">
+                <button type="button" className="encounter-round-button encounter-round-button--next" onClick={handleNextRound}>
+                  Next Round
+                </button>
+                <button type="button" className="encounter-round-button encounter-round-button--end" onClick={handleEndEncounter}>
+                  End Encounter
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      )}
 
       <div className="right-sidebar__tile">
         <div className="right-sidebar__tile-body">
