@@ -32,6 +32,22 @@ function Dashboard({ players = [] }) {
     }
   }, [sessionPlayers]);
 
+  const updatePlayer = (playerId, changes) => {
+    setSessionPlayers((currentPlayers) =>
+      currentPlayers.map((player) => {
+        if (player.id !== playerId) {
+          return player;
+        }
+
+        if (typeof changes === 'function') {
+          return { ...player, ...changes(player) };
+        }
+
+        return { ...player, ...changes };
+      })
+    );
+  };
+
   const tiles = useMemo(() => (activePage === 'I-X' ? tilesPageOne : tilesPageTwo), [activePage]);
 
   return (
@@ -48,10 +64,9 @@ function Dashboard({ players = [] }) {
               selectedTile={tiles.find((tile) => tile.id === selectedTileId)}
             />
           </div>
-
         </div>
       </div>
-      <RightSidebar players={sessionPlayers} />
+      <RightSidebar players={sessionPlayers} onUpdatePlayer={updatePlayer} />
     </div>
   );
 }
