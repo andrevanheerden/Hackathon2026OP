@@ -5,6 +5,7 @@ export const tiles = [
     type: 'Story',
     title: 'Canyon Awakening',
     category: 'Start',
+    area: 'Abandoned Village',
     highlighted: false,
     details: {
       environment:

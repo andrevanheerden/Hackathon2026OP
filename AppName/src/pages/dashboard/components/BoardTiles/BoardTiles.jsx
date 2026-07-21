@@ -27,7 +27,12 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile }) {
             {selectedTile ? (
               <div className={`tile-hero ${selectedTile.number === 1 ? 'tile-hero--one' : ''}`}>
                 <div className="tile-hero__meta">
-                  <span className="tile-hero__label">TILE {selectedTile.number} · {selectedTile.category || selectedTile.type}</span>
+                  {(() => {
+                    const area = selectedTile.area || (selectedTile.details && selectedTile.details.area);
+                    return (
+                      <span className="tile-hero__label">TILE {selectedTile.number} · {selectedTile.category || selectedTile.type}{area ? <> · {area}</> : null}</span>
+                    );
+                  })()}
                 </div>
                 <span className="tile-hero__pill">{selectedTile.category || selectedTile.type}</span>
                 <h2 className="tile-hero__title">{selectedTile.title}</h2>
