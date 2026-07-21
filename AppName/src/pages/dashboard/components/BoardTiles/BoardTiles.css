@@ -226,6 +226,36 @@
   border-color: rgba(0, 183, 105, 0.17);
 }
 
+.tile-detail__section--reward .tile-detail__section-title {
+  color: rgba(0, 183, 105, 0.95) !important;
+}
+
+/* Action Cards Section */
+.tile-detail__action-cards-section {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.action-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.action-card-wrapper {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.1s ease-out;
+}
+
+.action-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
 /* --- NEW MOCKUP MATCHING CSS --- */
 .mock-encounter-panel {
   background: rgba(255, 255, 255, 0.03);
@@ -610,7 +640,7 @@
 
 /* Right Side Portrait */
 .mock-encounter-right {
-  width: 240px;
+  width: 340px;
   position: relative;
   flex-shrink: 0;
 }
@@ -621,7 +651,7 @@
   display: block;
   border-radius: 12px;
   border: 2px solid rgba(243, 112, 33, 0.2);
-  box-shadow: 0 0 20px rgba(243, 112, 33, 0.4);
+  box-shadow: 0 0 20px rgba(243, 33, 61, 0.4);
 }
 
 .mock-hex-badge {

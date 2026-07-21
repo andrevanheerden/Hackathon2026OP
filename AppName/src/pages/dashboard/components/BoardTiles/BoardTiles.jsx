@@ -3,6 +3,9 @@ import { useEffect, useMemo, useState } from 'react';
 import './BoardTiles.css';
 
 import zombie from '../../data/encounerImg/zombie.png';
+import QuickSlashImg from '../../data/actionCards/QuickSlashCommon.png';
+import PummelImg from '../../data/actionCards/PummelCommon.png';
+import HeavySlamImg from '../../data/actionCards/HeavySlamRare.png';
 
 function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players = [] }) {
   const [encounterState, setEncounterState] = useState(null);
@@ -15,6 +18,17 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
   const playersCount = players ? players.length : 0;
   const categorySlug = selectedTile ? String((selectedTile.category || selectedTile.type || '')).toLowerCase().replace(/[^a-z0-9]+/g, '-') : '';
   const detailClassName = `board-tiles__detail ${categorySlug ? `board-tiles__detail--cat-${categorySlug}` : ''}`;
+
+  // Map card names to imported images
+  const cardImageMap = {
+    'Quick Slash': QuickSlashImg,
+    'Pummel': PummelImg,
+    'Heavy Slam': HeavySlamImg,
+  };
+
+  const getCardImage = (cardName) => {
+    return cardImageMap[cardName] || null;
+  };
 
   // Load encounter state from session storage or initialize fresh
   useEffect(() => {
@@ -408,6 +422,42 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                         onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/assets/desrt-zomby.svg'; }} 
                       />
                     </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Action Cards Section */}
+              {selectedTile.details.encounter && selectedTile.details.encounter.actionCards && selectedTile.details.encounter.actionCards.length > 0 && (
+                <div className="tile-detail__section tile-detail__action-cards-section">
+                  <p className="tile-detail__section-title">Actions</p>
+                  <div className="action-cards-grid">
+                    {selectedTile.details.encounter.actionCards.map((card, idx) => {
+                      const cardImage = getCardImage(card.name);
+                      return cardImage ? (
+                        <div
+                          key={idx}
+                          className="action-card-wrapper"
+                          onMouseMove={(e) => {
+                            const rect = e.currentTarget.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
+                            const rotateY = (x - rect.width / 2) / rect.width * 8;
+                            const rotateX = (rect.height / 2 - y) / rect.height * 8;
+                            e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                          }}
+                        >
+                          <img 
+                            src={cardImage} 
+                            alt={card.name}
+                            className="action-card-img"
+                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                          />
+                        </div>
+                      ) : null;
+                    })}
                   </div>
                 </div>
               )}
