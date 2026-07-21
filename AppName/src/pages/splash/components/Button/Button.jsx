@@ -1,8 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import './Button.css';
 
 function Button() {
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    console.log('Enter the wastes clicked');
+    navigate('/rules');
   };
 
   return (

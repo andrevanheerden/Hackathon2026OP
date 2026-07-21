@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;700;900&display=swap');
+
+@font-face {
+  font-family: 'Dune Rise';
+  src: url('../../assets/fonts/Dune_Rise.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Page Container */
+.rules-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #151020 0%, #0D0914 100%);
+  display: flex;
+  overflow: hidden;
+}
+
+/* Main Content Area (offset by sidebar width) */
+.rules-content {
+  flex: 1;
+  margin-left: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 40px 80px;
+}
+
+/* Header Section */
+.rules-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  width: 100%;
+  max-width: 700px;
+}
+
+.rules-decorative-line {
+  width: 100%;
+  max-width: 400px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #FF6600 20%,
+    #FF6600 80%,
+    transparent 100%
+  );
+  margin-bottom: 30px;
+  box-shadow: 0 0 15px rgba(255, 102, 0, 0.3);
+}
+
+.rules-title {
+  font-family: 'Dune Rise', sans-serif;
+  font-size: 56px;
+  font-weight: 900;
+  color: #FF6600;
+  text-align: center;
+  letter-spacing: 8px;
+  text-shadow: 0 0 30px rgba(255, 102, 0, 0.4);
+  -webkit-text-fill-color: #FF6600;
+  -webkit-text-stroke: 2px #FF6600;
+  paint-order: stroke fill;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Rules Cards Container */
+.rules-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Individual Rule Card */
+.rule-card {
+  width: 100%;
+  background: rgba(25, 18, 35, 0.85);
+  border: 1px solid rgba(109, 91, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px 30px;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.rule-card:hover {
+  border-color: rgba(109, 91, 255, 0.25);
+  box-shadow: 0 4px 30px rgba(109, 91, 255, 0.08),
+    0 0 20px rgba(109, 91, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Card Header */
+.rule-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.rule-bullet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 102, 0, 0.12);
+  border: 1px solid rgba(255, 102, 0, 0.3);
+  border-radius: 6px;
+  flex-shrink: 0;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #FF6600;
+  text-shadow: 0 0 8px rgba(255, 102, 0, 0.4);
+}
+
+.rule-heading {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #6D5BFF;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(109, 91, 255, 0.2);
+}
+
+/* Card Body Text */
+.rule-text {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #B8B8C8;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rules-content {
+    margin-left: 0;
+    padding: 40px 20px 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .rules-title {
+    font-size: 36px;
+    letter-spacing: 4px;
+    -webkit-text-stroke: 1px #FF6600;
+  }
+
+  .rules-cards {
+    gap: 16px;
+  }
+
+  .rule-card {
+    padding: 18px 20px;
+  }
+
+  .rule-heading {
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .rule-text {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rules-title {
+    font-size: 28px;
+  }
+
+  .rules-decorative-line {
+    max-width: 250px;
+  }
+}
+
