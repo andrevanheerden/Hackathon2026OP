@@ -9,6 +9,8 @@ import bandit from '../../data/encounerImg/bandit.png';
 import TVheadImg from '../../data/encounerImg/TVhead.png';
 import MerchantImg from '../../data/encounerImg/Merchant.png';
 import GamblerImg from '../../data/encounerImg/gambler.png';
+import DualKightImg from '../../data/encounerImg/DualKight.png';
+import babySandCrallerImg from '../../data/encounerImg/babySandCraller.png';
 import QuickSlashImg from '../../data/actionCards/QuickSlashCommon.png';
 import PummelImg from '../../data/actionCards/PummelCommon.png';
 import HeavySlamImg from '../../data/actionCards/HeavySlamRare.png';
@@ -45,6 +47,16 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     'TVhead.png': TVheadImg,
     'Merchant.png': MerchantImg,
     'gambler.png': GamblerImg,
+  };
+
+  const encounterImageMap = {
+    'sandDog.png': sandDog,
+    'bandit.png': bandit,
+    'zombieArmor.png': zombieArmor,
+    'DualKight.png': DualKightImg,
+    // accept both spellings (data file may reference either)
+    'babySandCraller.png': babySandCrallerImg,
+    'babySandCrawler.png': babySandCrallerImg,
   };
 
   const renderDialogueLines = (text) => {
@@ -502,16 +514,11 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                         <span className="mock-hex-val">{encounterState ? encounterState.ac : selectedTile.details.encounter.ac}</span>
                         <span className="mock-hex-lbl">AC</span>
                       </div>
-                      <img 
-                        src={
-                          selectedTile.details.encounter.image === 'sandDog.png' ? sandDog :
-                          selectedTile.details.encounter.image === 'bandit.png' ? bandit :
-                          selectedTile.details.encounter.image === 'zombieArmor.png' ? zombieArmor :
-                          zombie
-                        } 
-                        alt={selectedTile.details.encounter.name} 
-                        className="mock-portrait-img" 
-                        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/assets/desrt-zomby.svg'; }} 
+                      <img
+                        src={encounterImageMap[selectedTile.details.encounter.image] || zombie}
+                        alt={selectedTile.details.encounter.name}
+                        className="mock-portrait-img"
+                        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/assets/desrt-zomby.svg'; }}
                       />
                     </div>
                   </div>
