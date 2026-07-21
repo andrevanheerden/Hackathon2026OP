@@ -193,6 +193,11 @@
   color: rgba(128, 199, 255, 0.98) !important;
 }
 
+.tile-detail__section-pill--trap {
+  background: rgba(82, 89, 255, 0.18);
+  color: rgba(166, 181, 255, 0.98) !important;
+}
+
 .tile-detail__npc-section {
   display: flex;
   flex-direction: column;
@@ -543,39 +548,63 @@
 .mock-bar-header {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
+  align-items: baseline;
+  font-size: 14px;
   font-family: monospace;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
-.mock-hp-label, .mock-hp-val { color: rgba(255,255,255,0.78); }
-.mock-energy-label, .mock-energy-val { color: rgba(255,255,255,0.78); }
+.mock-hp-label, .mock-energy-label {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mock-hp-label {
+  color: rgba(124, 255, 148, 0.95);
+  font-size: 16px;
+}
+
+.mock-hp-val {
+  color: rgba(189, 255, 205, 0.96);
+  font-weight: 700;
+}
+
+.mock-energy-label {
+  color: rgba(142, 205, 255, 0.95);
+  font-size: 16px;
+}
+
+.mock-energy-val {
+  color: rgba(181, 230, 255, 0.96);
+  font-weight: 700;
+}
 
 .mock-hp-bar {
   width: 100%;
-  height: 12px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 8px;
+  height: 16px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
   overflow: hidden;
 }
 
 .mock-hp-fill {
   height: 100%;
   background: linear-gradient(90deg, rgba(0,200,120,0.95), rgba(0,150,100,0.95));
-  box-shadow: 0 2px 8px rgba(0,150,100,0.18);
+  box-shadow: 0 2px 8px rgba(0,150,100,0.22);
   transition: width 0.3s ease;
 }
 
 .mock-energy-segments {
   display: inline-flex;
-  gap: 6px;
-  height: 10px;
+  gap: 10px;
+  height: 14px;
 }
 
 .mock-energy-segment {
-  width: 18px;
-  height: 10px;
-  border-radius: 4px;
+  width: 24px;
+  height: 14px;
+  border-radius: 5px;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.04);
   transition: all 0.2s ease;
@@ -719,6 +748,51 @@
   background: rgba(0, 183, 105, 0.18);
   color: #8bffb0;
   font-size: 12px;
+}
+
+.tile-detail__merchant-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tile-detail__merchant-rules-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: none;
+}
+
+.tile-detail__rules-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.tile-detail__rules-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.tile-detail__rules-list li::before {
+  content: '•';
+  color: rgba(247, 128, 0, 0.96);
+  margin-top: 2px;
 }
 
 .tile-detail__section-title {

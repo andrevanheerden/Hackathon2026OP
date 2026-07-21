@@ -78,6 +78,72 @@
   background: rgba(255,110,110,0.08);
 }
 
+.board-tiles__detail--cat-merchant {
+  border-color: rgba(247, 130, 0, 0.45);
+  box-shadow: 0 8px 36px rgba(247, 130, 0, 0.06), inset 0 0 18px rgba(247, 130, 0, 0.03);
+}
+
+.board-tiles__detail--cat-merchant .tile-hero__pill,
+.board-tiles__detail--cat-merchant .tile-hero__title,
+.board-tiles__detail--cat-merchant .tile-hero__label {
+  color: rgba(247, 130, 0, 0.95);
+}
+.board-tiles__detail--cat-merchant .tile-hero__pill {
+  background: rgba(247, 130, 0, 0.08);
+}
+
+.board-tiles__detail--cat-merchant .tile-detail__section-title,
+.board-tiles__detail--cat-merchant .tile-detail__text-row strong {
+  color: rgba(247, 130, 0, 0.95);
+}
+
+.board-tiles__detail--cat-trap {
+  border-color: rgba(168, 66, 255, 0.45);
+  box-shadow: 0 8px 36px rgba(168, 66, 255, 0.06), inset 0 0 18px rgba(168, 66, 255, 0.03);
+}
+
+.board-tiles__detail--cat-trap .tile-hero__pill,
+.board-tiles__detail--cat-trap .tile-hero__title,
+.board-tiles__detail--cat-trap .tile-hero__label {
+  color: rgba(168, 66, 255, 0.95);
+}
+.board-tiles__detail--cat-trap .tile-hero__pill {
+  background: rgba(168, 66, 255, 0.08);
+}
+
+.board-tiles__detail--cat-trap .tile-detail__section-title,
+.board-tiles__detail--cat-trap .tile-detail__text-row strong {
+  color: rgba(168, 66, 255, 0.95);
+}
+
+.tile-card--selected.tile-card--cat-trap {
+  border-color: rgba(168, 66, 255, 0.7);
+  box-shadow: 0 8px 28px rgba(168, 66, 255, 0.08), inset 0 0 12px rgba(168, 66, 255, 0.04);
+}
+
+.tile-card--selected.tile-card--cat-trap {
+  background: linear-gradient(180deg, rgba(34, 6, 54, 1), rgba(42, 6, 74, 1));
+}
+
+.tile-card--selected.tile-card--cat-trap .tile-card__type,
+.tile-card--selected.tile-card--cat-trap h3 {
+  color: rgba(168, 66, 255, 0.95);
+}
+
+.tile-card--selected.tile-card--cat-merchant {
+  border-color: rgba(247, 130, 0, 0.7);
+  box-shadow: 0 8px 28px rgba(247, 130, 0, 0.08), inset 0 0 12px rgba(247, 130, 0, 0.04);
+}
+
+.tile-card--selected.tile-card--cat-merchant {
+  background: linear-gradient(180deg, rgba(44, 18, 0, 1), rgba(68, 23, 0, 1));
+}
+
+.tile-card--selected.tile-card--cat-merchant .tile-card__type,
+.tile-card--selected.tile-card--cat-merchant h3 {
+  color: rgba(247, 130, 0, 0.95);
+}
+
 .tile-card--selected.tile-card--cat-start {
   border-color: rgba(95, 179, 255, 0.7);
   box-shadow: 0 8px 28px rgba(95,179,255,0.08), inset 0 0 12px rgba(95,179,255,0.04);

@@ -3,10 +3,16 @@ import { useEffect, useMemo, useState } from 'react';
 import './BoardTiles.css';
 
 import zombie from '../../data/encounerImg/zombie.png';
+import sandDog from '../../data/encounerImg/sandDog.png';
+import bandit from '../../data/encounerImg/bandit.png';
 import TVheadImg from '../../data/encounerImg/TVhead.png';
+import MerchantImg from '../../data/encounerImg/Merchant.png';
+import GamblerImg from '../../data/encounerImg/gambler.png';
 import QuickSlashImg from '../../data/actionCards/QuickSlashCommon.png';
 import PummelImg from '../../data/actionCards/PummelCommon.png';
 import HeavySlamImg from '../../data/actionCards/HeavySlamRare.png';
+import BladeDanceImg from '../../data/actionCards/BladeDanceRare.png';
+import FireboltImg from '../../data/actionCards/FireboltCommon.png';
 
 function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players = [] }) {
   const [encounterState, setEncounterState] = useState(null);
@@ -16,7 +22,8 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
   const [acAmount, setAcAmount] = useState('');
   const [damageType, setDamageType] = useState('slash');
   const damageTypes = ['slash', 'fire', 'blunt', 'force', 'water'];
-  const playersCount = players ? players.length : 0;
+  const activePlayers = Array.isArray(players) ? players.filter((player) => player.isActive) : [];
+  const playersCount = activePlayers.length > 0 ? activePlayers.length : 1;
   const categorySlug = selectedTile ? String((selectedTile.category || selectedTile.type || '')).toLowerCase().replace(/[^a-z0-9]+/g, '-') : '';
   const detailClassName = `board-tiles__detail ${categorySlug ? `board-tiles__detail--cat-${categorySlug}` : ''}`;
 
@@ -25,10 +32,18 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     'Quick Slash': QuickSlashImg,
     'Pummel': PummelImg,
     'Heavy Slam': HeavySlamImg,
+    'Blade Dance': BladeDanceImg,
+    'Firebolt': FireboltImg,
   };
 
   const getCardImage = (cardName) => {
     return cardImageMap[cardName] || null;
+  };
+
+  const npcImageMap = {
+    'TVhead.png': TVheadImg,
+    'Merchant.png': MerchantImg,
+    'gambler.png': GamblerImg,
   };
 
   const renderDialogueLines = (text) => {
@@ -141,14 +156,21 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     if (!Number.isFinite(parsed) || parsed <= 0) return;
     
     const enc = selectedTile.details.encounter;
+    const normalizedType = String(damageType).trim().toLowerCase();
+    const vulnerabilityMatch = Array.isArray(enc.vulnerabilities)
+      ? enc.vulnerabilities.some((value) => String(value).trim().toLowerCase() === normalizedType)
+      : false;
+    const resistanceMatch = Array.isArray(enc.resistances)
+      ? enc.resistances.some((value) => String(value).trim().toLowerCase() === normalizedType)
+      : false;
     let finalDamage = parsed;
     
     // Check if vulnerability matches damage type - apply 2x
-    if (enc.vulnerabilities && enc.vulnerabilities.includes(damageType)) {
+    if (vulnerabilityMatch) {
       finalDamage = parsed * 2;
     }
-    // Check if resistant matches damage type - apply 0.5x
-    else if (enc.resistances && enc.resistances.includes(damageType)) {
+    // Check if resistance matches damage type - apply 0.5x
+    else if (resistanceMatch) {
       finalDamage = Math.ceil(parsed * 0.5);
     }
     
@@ -255,7 +277,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                     <div className="tile-detail__npc-image">
                       {selectedTile.details.npcImage ? (
                         <img
-                          src={selectedTile.details.npcImage === 'TVhead.png' ? TVheadImg : selectedTile.details.npcImage}
+                          src={npcImageMap[selectedTile.details.npcImage] || selectedTile.details.npcImage}
                           alt={selectedTile.details.npcLabel || 'NPC'}
                           className="tile-detail__npc-image-img"
                           onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.style.display = 'none'; }}
@@ -289,7 +311,17 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                 </div>
                 <span>{selectedTile.details.eventStory}</span>
               </div>
-              
+
+              {selectedTile.details.trapEffect && (
+                <div className="tile-detail__section">
+                  <div className="tile-detail__section-header">
+                    <p className="tile-detail__section-title">Trap Effect</p>
+                    <span className="tile-detail__section-pill tile-detail__section-pill--trap">Trap Info</span>
+                  </div>
+                  <span>{selectedTile.details.trapEffect}</span>
+                </div>
+              )}
+
               {/* NEW ENCOUNTER SECTION DESIGN */}
               {selectedTile.details.encounter && (
                 <div className="mock-encounter-panel">
@@ -342,9 +374,9 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                       <div className="mock-encounter-bars">
                         {/* HP Bar */}
                         <div className="mock-bar-header">
-                          <span className="mock-hp-label">HP</span>
+                          <span className="mock-hp-label">Health Points</span>
                           <span className="mock-hp-val">
-                            {encounterState ? Math.round((encounterState.currentHp / encounterState.maxHp) * 100) : 100}%
+                            {encounterState ? Math.round((encounterState.currentHp / encounterState.maxHp) * 100) : 100}% — {encounterState ? `${encounterState.currentHp}/${encounterState.maxHp}` : `${selectedTile.details.encounter.hp}/${selectedTile.details.encounter.hp}`}
                           </span>
                         </div>
                         <div className="mock-hp-bar">
@@ -358,7 +390,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                         <div className="mock-bar-header">
                           <span className="mock-energy-label">Energy</span>
                           <span className="mock-energy-val">
-                            {encounterState ? encounterState.currentEnergy : selectedTile.details.encounter.energy}/{encounterState ? encounterState.maxEnergy : selectedTile.details.encounter.energy}
+                            {encounterState ? `${encounterState.currentEnergy}/${encounterState.maxEnergy}` : `${selectedTile.details.encounter.energy}/${selectedTile.details.encounter.energy}`}
                           </span>
                         </div>
                         <div className="mock-energy-segments">
@@ -470,7 +502,11 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                         <span className="mock-hex-lbl">AC</span>
                       </div>
                       <img 
-                        src={zombie} 
+                        src={
+                          selectedTile.details.encounter.image === 'sandDog.png' ? sandDog :
+                          selectedTile.details.encounter.image === 'bandit.png' ? bandit :
+                          zombie
+                        } 
                         alt={selectedTile.details.encounter.name} 
                         className="mock-portrait-img" 
                         onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/assets/desrt-zomby.svg'; }} 
@@ -527,14 +563,44 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                   </div>
                 </div>
               )}
-              
-              <div className="tile-detail__section tile-detail__section--reward">
-                <p className="tile-detail__section-title">Reward</p>
-                <div className="tile-detail__reward-panel">
-                  <span className="tile-detail__reward-icon">◈</span>
-                  <span>{selectedTile.details.reward}</span>
+
+              {(selectedTile.details.merchantRules && selectedTile.details.merchantRules.length > 0) || (selectedTile.details.merchantExchangeRates && selectedTile.details.merchantExchangeRates.length > 0) ? (
+                <div className="tile-detail__section">
+                  <div className="tile-detail__section-header">
+                    <p className="tile-detail__section-title">Merchant Trading Rules</p>
+                    <span className="tile-detail__section-pill tile-detail__section-pill--npc">Merchant Info</span>
+                  </div>
+                  <div className="tile-detail__merchant-rules">
+                    {selectedTile.details.merchantRules && selectedTile.details.merchantRules.length > 0 && (
+                      <ol className="tile-detail__rules-list">
+                        {selectedTile.details.merchantRules.map((rule, idx) => (
+                          <li key={`rule-${idx}`}>{rule}</li>
+                        ))}
+                      </ol>
+                    )}
+                    {selectedTile.details.merchantExchangeRates && selectedTile.details.merchantExchangeRates.length > 0 && (
+                      <>
+                        <p className="tile-detail__merchant-rules-title">Exchange Rates</p>
+                        <ol className="tile-detail__rules-list">
+                          {selectedTile.details.merchantExchangeRates.map((rate, idx) => (
+                            <li key={`rate-${idx}`}>{rate}</li>
+                          ))}
+                        </ol>
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
+              ) : null}
+
+              {selectedTile.details.reward && selectedTile.details.reward.trim() && (
+                <div className="tile-detail__section tile-detail__section--reward">
+                  <p className="tile-detail__section-title">Reward</p>
+                  <div className="tile-detail__reward-panel">
+                    <span className="tile-detail__reward-icon">◈</span>
+                    <span>{selectedTile.details.reward}</span>
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
             <div className="board-tiles__detail-body">

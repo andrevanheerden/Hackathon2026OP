@@ -15,22 +15,6 @@ function Dashboard({ players = [] }) {
     setSessionPlayers(players);
   }, [players]);
 
-  useEffect(() => {
-    const storedPlayers = window.localStorage.getItem('session-players');
-    if (storedPlayers) {
-      try {
-        setSessionPlayers(JSON.parse(storedPlayers));
-      } catch (error) {
-        console.error('Failed to parse stored players', error);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    if (sessionPlayers.length > 0) {
-      window.localStorage.setItem('session-players', JSON.stringify(sessionPlayers));
-    }
-  }, [sessionPlayers]);
 
   const updatePlayer = (playerId, changes) => {
     setSessionPlayers((currentPlayers) =>

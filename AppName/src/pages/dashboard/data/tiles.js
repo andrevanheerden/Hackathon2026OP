@@ -72,15 +72,183 @@ export const tiles = [
       reward: 'Chest Loot: each player draws 1 Action Card.',
     },
   },
-  { id: 12, number: 12, type: 'Discovery', title: 'Compass', category: 'Encounter', highlighted: false },
-  { id: 13, number: 13, type: 'Encounter', title: 'Spire', category: 'Encounter', highlighted: true },
-  { id: 14, number: 14, type: 'Puzzle', title: 'Canyon', category: 'Encounter', highlighted: false },
-  { id: 15, number: 15, type: 'Rest', title: 'Oasis', category: 'Encounter', highlighted: false },
-  { id: 16, number: 16, type: 'Discovery', title: 'The Hollow', category: 'Encounter', highlighted: false },
-  { id: 17, number: 17, type: 'Encounter', title: 'Ash Gate', category: 'Encounter', highlighted: false },
-  { id: 18, number: 18, type: 'Puzzle', title: 'Mirror Maze', category: 'Encounter', highlighted: false },
-  { id: 19, number: 19, type: 'Rest', title: 'Sunken Well', category: 'Encounter', highlighted: false },
-  { id: 20, number: 20, type: 'Encounter', title: 'The Maw', category: 'Encounter', highlighted: false },
+  {
+    id: 6,
+    number: 6,
+    type: 'Trap',
+    title: 'The Tremor Plate',
+    category: 'Trap',
+    area: 'Abandoned Village',
+    highlighted: true,
+    details: {
+      environment:
+        'An ancient stone slab embedded in the sand, carved with worn geometric gears.',
+      eventStory:
+        'As your foot presses down, a loud CLICK echoes under the sand. Massive stone gears grind below ground, causing a localized earthquake! In the distance, the buildings of the Abandoned Village physically shift and rotate on their foundations, altering the landscape layout!',
+      trapEffect:
+        'World Shift: The GM physically rotates the Abandoned Village Node on the game board by 90 degrees, shifting path connections!',
+    },
+  },
+  {
+    id: 5,
+    number: 5,
+    type: 'Encounter',
+    title: 'Dune Snarlers',
+    category: 'Encounter',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'A wind-swept clearing surrounded by sharp obsidian rock pillars jutting out of the dunes.',
+      eventStory:
+        'Low growls echo from behind the rocks. A pack of hairless, scaly desert hounds bounds out, snapping their jaws at your group.',
+      encounter: {
+        name: 'Sand Hound Alpha',
+        appearance:
+          'A lean, scaly canine beast with obsidian-hard hide and glowing yellow eyes.',
+        image: 'sandDog.png',
+        hp: 22,
+        ac: 6,
+        energy: 4,
+        resistances: ['Blunt'],
+        vulnerabilities: ['Acid'],
+        actionCards: [
+          { name: 'Quick Slash', rarity: 'Common', image: 'QuickSlashCommon.png' },
+          { name: 'Pummel', rarity: 'Common', image: 'PummelCommon.png' },
+          { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlamRare.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player, draw 1 Trait Card.',
+    },
+  },
+  {
+    id: 4,
+    number: 4,
+    type: 'Merchant',
+    title: "Nomad's Exchange",
+    category: 'Merchant',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'A striped silk tent anchored by heavy brass stakes. Inside, aromatic incense burns in a copper brazier, shielding visitors from the desert heat.',
+      npcAppearance:
+        'Sskesh, a hunched merchant wrapped in heavy desert robes with brass goggles covering his eyes and thick leather gloves.',
+      voiceStyle:
+        'Raspy, whispery, and clicking softly between sentences.',
+      npcImage: 'Merchant.png',
+      dialogue:
+        '"Ahhh... new travelers... fresh cards in your hands. Sskesh deals in power, yes! Give me your duplicate treasures, and I shall give you true strength..."',
+      merchantRules: [
+        'The GM draws 5 Action/Trait Cards from the deck and lays them face-up.',
+        'Players may trade their own cards using these fixed ratios:',
+      ],
+      merchantExchangeRates: [
+        'Legendary = 3 Commons',
+        'Legendary = 2 Rares',
+        'Rare = 2 Commons',
+        'Common = Commons',
+      ],
+      eventStory:
+        'A striped silk tent anchored by heavy brass stakes. Inside, aromatic incense burns in a copper brazier, shielding visitors from the desert heat.',
+      npcLabel: 'NPC',
+    },
+  },
+  {
+    id: 7,
+    number: 7,
+    type: 'Encounter',
+    title: 'Ambush at the Ridge',
+    category: 'Encounter',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'A steep canyon bottleneck surrounded by high stone ledges.',
+      eventStory:
+        'A lone desert bandit drops down from the high ledge, drawing a pair of serrated daggers with a cruel grin.',
+      encounter: {
+        name: 'Canyon Marauder',
+        appearance:
+          'A wire-thin bandit clad in boiled leather, wearing a cloth mask and dark goggles.',
+        image: 'bandit.png',
+        hp: 20,
+        ac: 5,
+        energy: 4,
+        resistances: ['Water'],
+        vulnerabilities: ['Slash'],
+        actionCards: [
+          { name: 'Quick Slash', rarity: 'Common', image: 'QuickSlashCommon.png' },
+          { name: 'Blade Dance', rarity: 'Rare', image: 'BladeDanceRare.png' },
+          { name: 'Firebolt', rarity: 'Common', image: 'FireboltCommon.png' },
+        ],
+      },
+      reward: 'Victory Drop: 1 Action Card.',
+    },
+  },
+  {
+    id: 8,
+    number: 8,
+    type: 'Discovery',
+    title: 'Ruined Homestead',
+    category: 'Discovery',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'The roofless shell of an ancient mud-brick home, buried halfway under shifting sand.',
+      eventStory:
+        'Brushing aside fallen roof timbers and clay pots, you uncover a hidden storage compartment carved directly into the floor.',
+      reward:
+        'Choice Reward: Each player draws 1 Action Card or 1 Trait Card.',
+    },
+  },
+  {
+    id: 9,
+    number: 9,
+    type: 'Merchant',
+    title: 'The Snake-Eyes Den',
+    category: 'Merchant',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'A small shade canopy covering a low wooden table with carved stone dice cups.',
+      npcAppearance:
+        'Zaros, a suave, slicked-back gambler wearing silver rings and a velvet vest.',
+      voiceStyle:
+        'Smooth, confident, with a casual chuckle between rolls.',
+      npcImage: 'gambler.png',
+      eventStory:
+        'The aroma of spiced nuts and burning paper hangs in the air as Zaros flicks a pair of ivory dice across the table. His grin widens when the cards begin to pile up in the center; every roll feels like a dare whispered in the desert wind.',
+      dialogue:
+        '"Care to test your fate, friend? Put a card on the table, and I\'ll match it. Highest D10 roll takes both. Simple, clean, honest... mostly."',
+      merchantRules: [
+        'A player wagers 1 Action or Trait Card from their hand.',
+        'The GM draws 1 matching type card (Action or Trait) from the deck to match the bet.',
+        'Both player and GM roll a D10: Player Roll higher GM Roll: Player wins and takes both cards! Player Roll lower than GM Roll: Player loses their wagered card to the GM.',
+        'This can be repeated as long as the player has cards to bet.',
+      ],
+      npcLabel: 'NPC',
+    },
+  },
+  {
+    id: 10,
+    number: 10,
+    type: 'Trap',
+    title: "Nomad's Exchange",
+    category: 'Trap',
+    area: 'Abandoned Village',
+    highlighted: true,
+    details: {
+      environment:
+        'A striped silk tent anchored by heavy brass stakes. Inside, aromatic incense burns in a copper brazier, shielding visitors from the desert heat.',
+      eventStory:
+        'As you step inside the merchant tent, the floor shudders and the tent fabric snaps tight. Hidden needles shoot from the walls as the room collapses into a spring-loaded pit!',
+      trapEffect:
+        'Hidden Pitfall: The player is forced to discard 1 card from hand and cannot move for 1 turn while they climb out.',
+    },
+  },
 ];
 
 // Show up to 10 tiles per page (5 columns × 2 rows)
