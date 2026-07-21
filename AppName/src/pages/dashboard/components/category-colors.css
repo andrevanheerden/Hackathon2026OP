@@ -1,0 +1,121 @@
+.board-tiles__detail--cat-start {
+  border-color: rgba(95,179,255,0.45);
+  box-shadow: 0 8px 36px rgba(95,179,255,0.06), inset 0 0 18px rgba(95,179,255,0.03);
+}
+
+.board-tiles__detail--cat-encounter {
+  border-color: rgba(255,110,110,0.45);
+  box-shadow: 0 8px 36px rgba(255,110,110,0.06), inset 0 0 18px rgba(255,110,110,0.03);
+}
+
+.board-tiles__detail--cat-discovery {
+  border-color: rgba(90, 205, 115, 0.45);
+  box-shadow: 0 8px 36px rgba(90, 205, 115, 0.06), inset 0 0 18px rgba(90, 205, 115, 0.03);
+}
+
+.board-tiles__detail--cat-start .tile-hero__pill,
+.board-tiles__detail--cat-start .tile-hero__title,
+.board-tiles__detail--cat-start .tile-hero__label {
+  color: rgba(95,179,255,0.95);
+}
+.board-tiles__detail--cat-start .tile-hero__pill {
+  background: rgba(95,179,255,0.08);
+}
+
+.board-tiles__detail--cat-start .tile-hero--one .tile-hero__label,
+.board-tiles__detail--cat-start .tile-hero--one .tile-hero__title {
+  color: rgba(95,179,255,0.95);
+}
+
+.board-tiles__detail--cat-discovery .tile-hero__pill,
+.board-tiles__detail--cat-discovery .tile-hero__title,
+.board-tiles__detail--cat-discovery .tile-hero__label {
+  color: rgba(90, 205, 115, 0.95);
+}
+.board-tiles__detail--cat-discovery .tile-hero__pill {
+  background: rgba(90, 205, 115, 0.08);
+}
+
+.board-tiles__detail--cat-discovery .tile-hero--one .tile-hero__label,
+.board-tiles__detail--cat-discovery .tile-hero--one .tile-hero__title {
+  color: rgba(90, 205, 115, 0.95);
+}
+
+.board-tiles__detail--cat-encounter .tile-hero__pill,
+.board-tiles__detail--cat-encounter .tile-hero__title,
+.board-tiles__detail--cat-encounter .tile-hero__label {
+  color: rgba(255,110,110,0.95);
+}
+.board-tiles__detail--cat-encounter .tile-hero__pill {
+  background: rgba(255,110,110,0.06);
+}
+
+.board-tiles__detail--cat-encounter .tile-hero--one .tile-hero__label,
+.board-tiles__detail--cat-encounter .tile-hero--one .tile-hero__title {
+  color: rgba(255,110,110,0.95);
+}
+
+.board-tiles__detail--cat-start .tile-detail__section-title,
+.board-tiles__detail--cat-start .tile-detail__text-row strong {
+  color: rgba(95,179,255,0.95);
+}
+
+.board-tiles__detail--cat-discovery .tile-detail__section-title,
+.board-tiles__detail--cat-discovery .tile-detail__text-row strong {
+  color: rgba(90, 205, 115, 0.95);
+}
+
+.board-tiles__detail--cat-encounter .tile-detail__section-title,
+.board-tiles__detail--cat-encounter .tile-detail__text-row strong,
+.board-tiles__detail--cat-encounter .mock-encounter-subtitle,
+.board-tiles__detail--cat-encounter .mock-encounter-maintitle,
+.board-tiles__detail--cat-encounter .mock-encounter-pill {
+  color: rgba(255,110,110,0.95);
+}
+
+.board-tiles__detail--cat-encounter .mock-encounter-pill {
+  border-color: rgba(255,110,110,0.25);
+  background: rgba(255,110,110,0.08);
+}
+
+.tile-card--selected.tile-card--cat-start {
+  border-color: rgba(95, 179, 255, 0.7);
+  box-shadow: 0 8px 28px rgba(95,179,255,0.08), inset 0 0 12px rgba(95,179,255,0.04);
+}
+
+.tile-card--selected.tile-card--cat-start {
+  background: linear-gradient(180deg, rgba(6,12,22,1), rgba(12,20,32,1));
+}
+
+.tile-card--selected.tile-card--cat-encounter {
+  border-color: rgba(255, 110, 110, 0.7);
+  box-shadow: 0 8px 28px rgba(255,110,110,0.08), inset 0 0 12px rgba(255,110,110,0.04);
+}
+
+.tile-card--selected.tile-card--cat-encounter {
+  background: linear-gradient(180deg, rgba(32,12,14,1), rgba(48,10,12,1));
+}
+
+.tile-card--selected.tile-card--cat-discovery {
+  border-color: rgba(90, 205, 115, 0.7);
+  box-shadow: 0 8px 28px rgba(90,205,115,0.08), inset 0 0 12px rgba(90,205,115,0.04);
+}
+
+.tile-card--selected.tile-card--cat-discovery {
+  background: linear-gradient(180deg, rgba(16,24,16,1), rgba(14,20,18,1));
+}
+
+.tile-card--selected.tile-card--cat-start .tile-card__type,
+.tile-card--selected.tile-card--cat-start h3 {
+  color: rgba(95,179,255,0.95);
+}
+
+.tile-card--selected.tile-card--cat-encounter .tile-card__type,
+.tile-card--selected.tile-card--cat-encounter h3 {
+  color: rgba(255,110,110,0.95);
+}
+
+.tile-card--selected.tile-card--cat-discovery .tile-card__type,
+.tile-card--selected.tile-card--cat-discovery h3 {
+  color: rgba(90, 205, 115, 0.95);
+}

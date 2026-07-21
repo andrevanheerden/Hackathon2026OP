@@ -30,6 +30,7 @@ export const tiles = [
     type: 'Encounter',
     title: 'Sands of the Risen',
     category: 'Encounter',
+    area: 'Abandoned Village',
     highlighted: false,
     details: {
       environment:
@@ -52,7 +53,23 @@ export const tiles = [
           { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlamRare.png' },
         ],
       },
-      reward: 'Victory Drop: On victory, draw 1 Trait Card.',
+      reward: 'Victory Drop: On victory each player, draw 1 Trait Card.',
+    },
+  },
+  {
+    id: 3,
+    number: 3,
+    type: 'Discovery',
+    title: 'Wreckage of the Caravan',
+    category: 'Discovery',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'An overturned, sun-bleached wooden merchant carriage lies collapsed against a boulder, its wheels broken and splintered.',
+      eventStory - read to players:
+        'You inspect the abandoned wreckage. Cloth sacks and shattered glass jars lie strewn about, but beneath a fallen wooden axle, a reinforced iron lockbox remains intact.',
+      reward: 'Chest Loot: each player draws 1 Action Card.',
     },
   },
   { id: 12, number: 12, type: 'Discovery', title: 'Compass', category: 'Encounter', highlighted: false },

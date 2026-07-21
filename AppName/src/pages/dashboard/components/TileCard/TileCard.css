@@ -1,3 +1,5 @@
+@import '../category-colors.css';
+
 .tile-card {
   position: relative;
   min-height: 250px;
@@ -21,25 +23,6 @@
   min-height: 250px;
 }
 
-/* Category-specific selected accents */
-.tile-card--selected.tile-card--cat-start {
-  border-color: rgba(95, 179, 255, 0.7);
-  box-shadow: 0 8px 28px rgba(95,179,255,0.08), inset 0 0 12px rgba(95,179,255,0.04);
-}
-
-.tile-card--selected.tile-card--cat-start {
-  background: linear-gradient(180deg, rgba(6,12,22,1), rgba(12,20,32,1));
-}
-
-.tile-card--selected.tile-card--cat-encounter {
-  border-color: rgba(255, 110, 110, 0.7);
-  box-shadow: 0 8px 28px rgba(255,110,110,0.08), inset 0 0 12px rgba(255,110,110,0.04);
-}
-
-.tile-card--selected.tile-card--cat-encounter {
-  background: linear-gradient(180deg, rgba(32,12,14,1), rgba(48,10,12,1));
-}
-
 .tile-card__number {
   font-family: 'Montserrat Alternates', sans-serif;
   font-size: 16.47px;
@@ -61,17 +44,6 @@
   letter-spacing: 2.07px;
   text-transform: uppercase;
   color: rgba(144, 246, 164, 0.4);
-}
-
-/* Color the type and title when selected and categorized */
-.tile-card--selected.tile-card--cat-start .tile-card__type,
-.tile-card--selected.tile-card--cat-start h3 {
-  color: rgba(95,179,255,0.95);
-}
-
-.tile-card--selected.tile-card--cat-encounter .tile-card__type,
-.tile-card--selected.tile-card--cat-encounter h3 {
-  color: rgba(255,110,110,0.95);
 }
 
 .tile-card h3 {

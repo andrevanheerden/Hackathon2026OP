@@ -1,4 +1,6 @@
 /* --- EXISTING CSS FROM ABOVE --- */
+@import '../category-colors.css';
+
 .board-tiles {
   display: flex;
   flex-direction: column;
@@ -32,44 +34,6 @@
 }
 
 /* Category accent outlines for selected/detail view */
-.board-tiles__detail--cat-start {
-  border-color: rgba(95,179,255,0.45);
-  box-shadow: 0 8px 36px rgba(95,179,255,0.06), inset 0 0 18px rgba(95,179,255,0.03);
-}
-
-.board-tiles__detail--cat-encounter {
-  border-color: rgba(255,110,110,0.45);
-  box-shadow: 0 8px 36px rgba(255,110,110,0.06), inset 0 0 18px rgba(255,110,110,0.03);
-}
-
-/* Color pill/title/label inside detail based on category */
-.board-tiles__detail--cat-start .tile-hero__pill,
-.board-tiles__detail--cat-start .tile-hero__title,
-.board-tiles__detail--cat-start .tile-hero__label {
-  color: rgba(95,179,255,0.95);
-}
-.board-tiles__detail--cat-start .tile-hero__pill {
-  background: rgba(95,179,255,0.08);
-}
-
-.board-tiles__detail--cat-start .tile-hero--one .tile-hero__label,
-.board-tiles__detail--cat-start .tile-hero--one .tile-hero__title {
-  color: rgba(95,179,255,0.95);
-}
-
-.board-tiles__detail--cat-encounter .tile-hero__pill,
-.board-tiles__detail--cat-encounter .tile-hero__title,
-.board-tiles__detail--cat-encounter .tile-hero__label {
-  color: rgba(255,110,110,0.95);
-}
-.board-tiles__detail--cat-encounter .tile-hero__pill {
-  background: rgba(255,110,110,0.06);
-}
-
-.board-tiles__detail--cat-encounter .tile-hero--one .tile-hero__label,
-.board-tiles__detail--cat-encounter .tile-hero--one .tile-hero__title {
-  color: rgba(255,110,110,0.95);
-}
 
 .board-tiles__detail-label {
   margin: 0;
@@ -340,10 +304,6 @@
   letter-spacing: 0;
   text-transform: none;
   margin: 0;
-}
-
-.board-tiles__detail--cat-encounter .mock-encounter-description strong {
-  color: rgba(255,110,110,0.95);
 }
 
 /* Encounter Controls Section */
@@ -715,23 +675,6 @@
   text-transform: uppercase;
 }
 
-.board-tiles__detail--cat-start .tile-detail__section-title,
-.board-tiles__detail--cat-start .tile-detail__text-row strong {
-  color: rgba(95,179,255,0.95);
-}
-
-.board-tiles__detail--cat-encounter .tile-detail__section-title,
-.board-tiles__detail--cat-encounter .tile-detail__text-row strong,
-.board-tiles__detail--cat-encounter .mock-encounter-subtitle,
-.board-tiles__detail--cat-encounter .mock-encounter-maintitle,
-.board-tiles__detail--cat-encounter .mock-encounter-pill {
-  color: rgba(255,110,110,0.95);
-}
-
-.board-tiles__detail--cat-encounter .mock-encounter-pill {
-  border-color: rgba(255,110,110,0.25);
-  background: rgba(255,110,110,0.08);
-}
 
 .tile-detail__text-row {
   display: grid;
