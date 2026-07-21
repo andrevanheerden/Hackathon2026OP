@@ -13,6 +13,12 @@
   min-width: 0;
 }
 
+/* Account for fixed sidebars: leave space for left and right */
+.dashboard-main {
+  margin-left: 122px; /* width of left sidebar */
+  margin-right: 360px; /* width of right sidebar */
+}
+
 .dashboard-content {
   display: flex;
   gap: 24px;
@@ -55,5 +61,9 @@
     position: static;
     width: 100%;
     min-width: 0;
+  }
+  /* When right sidebar is hidden on smaller screens, remove right margin */
+  .dashboard-main {
+    margin-right: 0;
   }
 }

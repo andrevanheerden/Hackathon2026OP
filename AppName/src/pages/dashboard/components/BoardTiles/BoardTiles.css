@@ -51,19 +51,176 @@
   gap: 6px;
 }
 
-.board-tiles__detail-body p {
+.board-tiles__detail-body p,
+.board-tiles__detail-body span {
   margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+}
+
+.board-tiles__detail-body p {
   color: #f75a00;
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
 }
 
-.board-tiles__detail-body span {
-  color: rgba(255, 255, 255, 0.56);
+.board-tiles__detail-rich {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tile-detail__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.tile-detail__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tile-detail__pill {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tile-detail__portrait {
+  display: grid;
+  place-items: center;
+  min-width: 96px;
+  min-height: 96px;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.72);
+  text-align: center;
+  font-size: 12px;
+}
+
+.tile-detail__portrait-flair,
+.tile-detail__npc-image .tile-detail__portrait-flair {
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(247, 90, 0, 0.12);
+  color: #f75a00;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+/* General section styling */
+.tile-detail__section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Placed after .tile-detail__section to properly override layout */
+.tile-detail__npc-block {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.tile-detail__npc-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 160px;
+  min-height: 140px;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.72);
+  text-align: center;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.tile-detail__npc-copy {
+  display: grid;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.tile-detail__section--reward {
+  background: rgba(22, 49, 26, 0.18);
+  border-color: rgba(0, 183, 105, 0.17);
+}
+
+.tile-detail__reward-panel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 999px;
+  background: rgba(17, 68, 40, 0.9);
+  border: 1px solid rgba(0, 183, 105, 0.3);
+  color: #b8f5d5;
+  font-size: 14px;
+}
+
+.tile-detail__reward-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(0, 183, 105, 0.18);
+  color: #8bffb0;
+  font-size: 12px;
+}
+
+.tile-detail__section-title {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.tile-detail__text-row {
+  display: grid;
+  gap: 8px;
+}
+
+.tile-detail__text-row strong {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tile-detail__text-row span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
   line-height: 1.6;
 }
 
+/* Responsive Queries */
 @media (max-width: 1200px) {
   .board-tiles__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -73,5 +230,23 @@
 @media (max-width: 900px) {
   .board-tiles__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tile-detail__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tile-detail__portrait {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .tile-detail__npc-block {
+    flex-direction: column;
+  }
+
+  .tile-detail__npc-image {
+    width: 100%;
   }
 }

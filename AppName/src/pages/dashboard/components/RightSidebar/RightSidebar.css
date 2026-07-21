@@ -10,6 +10,12 @@
   gap: 12px;
   height: 100vh;
   box-sizing: border-box;
+  /* Make the right sidebar fixed and full viewport height */
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow: auto;
+  z-index: 12;
 }
 
 .right-sidebar__tile {
@@ -131,6 +137,31 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.energy-meter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.energy-segments {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.energy-segment {
+  width: 18px;
+  height: 10px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.energy-segment--filled {
+  background: linear-gradient(90deg, #5fb3ff, #2b8cff);
+  box-shadow: 0 2px 6px rgba(43,140,204,0.24);
+  border-color: rgba(43,140,204,0.4);
 }
 
 .hp-bar {

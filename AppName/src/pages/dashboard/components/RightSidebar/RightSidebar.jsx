@@ -7,22 +7,28 @@ function RightSidebar({ players = [], onUpdatePlayer = () => {} }) {
   const [damageAmount, setDamageAmount] = useState('');
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingPlayerId, setEditingPlayerId] = useState(null);
-  const [editForm, setEditForm] = useState({ maxHp: '', ac: '' });
+  const [editForm, setEditForm] = useState({ maxHp: '', ac: '', maxEnergy: '' });
+  const [energyAmount, setEnergyAmount] = useState('');
 
   const activePlayers = players.filter((p) => p.isActive);
   const displayPlayers = activePlayers.length > 0 ? activePlayers : players.slice(0, 1);
   const selectedPlayer = displayPlayers.find((player) => player.id === selectedPlayerId) ?? displayPlayers[0] ?? null;
+  const editingPlayer = players.find((p) => p.id === editingPlayerId) ?? null;
 
   const openEditModal = (player) => {
     setEditingPlayerId(player.id);
-    setEditForm({ maxHp: player.maxHp ?? '', ac: player.ac ?? '' });
+    setEditForm({
+      maxHp: player.maxHp ?? '',
+      ac: player.ac ?? '',
+      maxEnergy: String(typeof player.maxEnergy !== 'undefined' ? player.maxEnergy : 3),
+    });
     setIsEditModalOpen(true);
   };
 
   const closeEditModal = () => {
     setIsEditModalOpen(false);
     setEditingPlayerId(null);
-    setEditForm({ maxHp: '', ac: '' });
+    setEditForm({ maxHp: '', ac: '', maxEnergy: '' });
   };
 
   const applyHeal = () => {
@@ -66,6 +72,7 @@ function RightSidebar({ players = [], onUpdatePlayer = () => {} }) {
 
     const parsedMaxHp = Number.parseInt(editForm.maxHp, 10);
     const parsedAc = Number.parseInt(editForm.ac, 10);
+    const parsedMaxEnergy = Number.parseInt(editForm.maxEnergy, 10);
     const editingPlayer = players.find((player) => player.id === editingPlayerId);
 
     if (!editingPlayer) {
@@ -78,13 +85,21 @@ function RightSidebar({ players = [], onUpdatePlayer = () => {} }) {
     const hpDelta = nextMaxHp - currentMaxHp;
     const nextCurrentHp = Math.min(nextMaxHp, Math.max(0, currentHp + hpDelta));
 
+
     const nextAc = Number.isFinite(parsedAc) ? Math.min(10, Math.max(1, parsedAc)) : editingPlayer.ac;
+
+    const currentEnergy = typeof editingPlayer.energy !== 'undefined' ? editingPlayer.energy : editingPlayer.maxEnergy ?? 3;
+    const currentMaxEnergy = typeof editingPlayer.maxEnergy !== 'undefined' ? editingPlayer.maxEnergy : 3;
+    const nextMaxEnergy = Number.isFinite(parsedMaxEnergy) ? Math.min(10, Math.max(3, parsedMaxEnergy)) : currentMaxEnergy;
+    const nextEnergy = Math.min(nextMaxEnergy, Math.max(0, currentEnergy));
 
     onUpdatePlayer(editingPlayerId, (player) => ({
       ...player,
       maxHp: nextMaxHp,
       hp: nextCurrentHp,
       ac: nextAc,
+      maxEnergy: nextMaxEnergy,
+      energy: nextEnergy,
     }));
 
     closeEditModal();
@@ -106,6 +121,8 @@ function RightSidebar({ players = [], onUpdatePlayer = () => {} }) {
                 const currentHp = typeof player.hp !== 'undefined' ? player.hp : player.maxHp || 0;
                 const maxHp = player.maxHp || 0;
                 const hpPercent = maxHp > 0 ? Math.max(0, Math.min(100, Math.round((currentHp / maxHp) * 100))) : 0;
+                const maxEnergy = typeof player.maxEnergy !== 'undefined' ? player.maxEnergy : 3;
+                const energy = typeof player.energy !== 'undefined' ? player.energy : maxEnergy;
                 const isSelected = selectedPlayer?.id === player.id;
 
                 return (
@@ -147,10 +164,26 @@ function RightSidebar({ players = [], onUpdatePlayer = () => {} }) {
                       <span className="hp-meter__label">{hpPercent}%</span>
                     </div>
 
+                    <div className="energy-meter" aria-hidden>
+                      <div className="energy-segments">
+                        {Array.from({ length: maxEnergy }).map((_, i) => (
+                          <span
+                            key={i}
+                            className={`energy-segment ${i < energy ? 'energy-segment--filled' : ''}`}
+                          />
+                        ))}
+                      </div>
+                      <span className="hp-meter__label">{energy}/{maxEnergy}</span>
+                    </div>
+
                     <div className="player__meta">
                       <div className="player__meta-item">
                         <span className="meta-label">HP</span>
                         <strong>{currentHp}/{maxHp}</strong>
+                      </div>
+                      <div className="player__meta-item">
+                        <span className="meta-label">Energy</span>
+                        <strong>{energy}/{maxEnergy}</strong>
                       </div>
                       <div className="player__meta-item">
                         <span className="meta-label">AC</span>
@@ -196,6 +229,48 @@ function RightSidebar({ players = [], onUpdatePlayer = () => {} }) {
                     Apply
                   </button>
                 </label>
+                <label className="player__control">
+                  <span>Energy</span>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    placeholder="0"
+                    value={energyAmount}
+                    onChange={(event) => setEnergyAmount(event.target.value.replace(/[^0-9]/g, ''))}
+                  />
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    <button
+                      type="button"
+                      className="player__action-button"
+                      onClick={() => {
+                        const parsed = Number.parseInt(energyAmount, 10);
+                        if (!selectedPlayer || !Number.isFinite(parsed) || parsed <= 0) return;
+                        const current = typeof selectedPlayer.energy !== 'undefined' ? selectedPlayer.energy : selectedPlayer.maxEnergy ?? 3;
+                        const next = Math.max(0, current - parsed);
+                        onUpdatePlayer(selectedPlayer.id, { energy: next });
+                        setEnergyAmount('');
+                      }}
+                    >
+                      Consume
+                    </button>
+                    <button
+                      type="button"
+                      className="player__action-button player__action-button--primary"
+                      onClick={() => {
+                        const parsed = Number.parseInt(energyAmount, 10);
+                        if (!selectedPlayer || !Number.isFinite(parsed) || parsed <= 0) return;
+                        const maxE = typeof selectedPlayer.maxEnergy !== 'undefined' ? selectedPlayer.maxEnergy : 3;
+                        const current = typeof selectedPlayer.energy !== 'undefined' ? selectedPlayer.energy : maxE;
+                        const next = Math.min(maxE, current + parsed);
+                        onUpdatePlayer(selectedPlayer.id, { energy: next });
+                        setEnergyAmount('');
+                      }}
+                    >
+                      Restore
+                    </button>
+                  </div>
+                </label>
               </div>
             </div>
           ) : null}
@@ -235,6 +310,20 @@ function RightSidebar({ players = [], onUpdatePlayer = () => {} }) {
                 onChange={(event) => setEditForm((current) => ({ ...current, ac: event.target.value.replace(/[^0-9]/g, '') }))}
               />
             </div>
+
+            <div className="player-edit-modal__field">
+              <label htmlFor="edit-max-energy">Max Energy</label>
+              <input
+                id="edit-max-energy"
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                value={editForm.maxEnergy}
+                onChange={(event) => setEditForm((current) => ({ ...current, maxEnergy: event.target.value.replace(/[^0-9]/g, '') }))}
+              />
+            </div>
+
+            
 
             <div className="player-edit-modal__actions">
               <button type="button" className="player-edit-modal__secondary" onClick={closeEditModal}>

@@ -2,7 +2,7 @@
   position: relative;
   min-height: 250px;
   border: 1px solid rgba(139, 110, 240, 0.13);
-  border-radius: 14.82px 4.94px 4.94px 14.82px;
+  border-radius: 24px 8px 24px 8px;
   background: linear-gradient(145deg, rgba(34, 29, 39, 1) 6.17%, rgba(26, 21, 25, 1) 93.83%);
   box-shadow: 0 3.29px 4.94px rgba(0, 0, 0, 0.3);
   color: rgba(255, 255, 255, 0.28);

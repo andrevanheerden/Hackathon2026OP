@@ -24,10 +24,66 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile }) {
           <p className="board-tiles__detail-label">Selected Tile</p>
           <h3>{selectedTile?.title || '—'}</h3>
         </div>
-        <div className="board-tiles__detail-body">
-          <p>{selectedTile?.type || 'No tile selected'}</p>
-          <span>Inspect the board and track your next move.</span>
-        </div>
+        {selectedTile ? (
+          selectedTile.details ? (
+            <div className="board-tiles__detail-body board-tiles__detail-rich">
+              <div className="tile-detail__header">
+                <div className="tile-detail__pills">
+                  <span className="tile-detail__pill">Tile {selectedTile.number}</span>
+                  <span className="tile-detail__pill">{selectedTile.category || selectedTile.type}</span>
+                </div>
+              </div>
+              <div className="tile-detail__section">
+                <p className="tile-detail__section-title">Event Description</p>
+                <div className="tile-detail__text-row">
+                  <strong>Environment</strong>
+                  <span>{selectedTile.details.environment}</span>
+                </div>
+              </div>
+              <div className="tile-detail__section tile-detail__npc-block">
+                <div className="tile-detail__npc-image">
+                  <div className="tile-detail__portrait-flair">{selectedTile.details.npcLabel || 'NPC'}</div>
+                  <span>{selectedTile.details.npcImage ? 'Image placeholder' : 'NPC'}</span>
+                </div>
+                <div className="tile-detail__npc-copy">
+                  <div className="tile-detail__text-row">
+                    <strong>NPC Appearance</strong>
+                    <span>{selectedTile.details.npcAppearance}</span>
+                  </div>
+                  <div className="tile-detail__text-row">
+                    <strong>Voice Style</strong>
+                    <span>{selectedTile.details.voiceStyle}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="tile-detail__section">
+                <p className="tile-detail__section-title">Event Story</p>
+                <span>{selectedTile.details.eventStory}</span>
+              </div>
+              <div className="tile-detail__section">
+                <p className="tile-detail__section-title">Dialogue</p>
+                <span>{selectedTile.details.dialogue}</span>
+              </div>
+              <div className="tile-detail__section tile-detail__section--reward">
+                <p className="tile-detail__section-title">Reward</p>
+                <div className="tile-detail__reward-panel">
+                  <span className="tile-detail__reward-icon">◈</span>
+                  <span>{selectedTile.details.reward}</span>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="board-tiles__detail-body">
+              <p>{selectedTile.type || 'Unknown tile'}</p>
+              <span>Inspect the board and track your next move.</span>
+            </div>
+          )
+        ) : (
+          <div className="board-tiles__detail-body">
+            <p>No tile selected</p>
+            <span>Inspect the board and track your next move.</span>
+          </div>
+        )}
       </div>
     </section>
   );
