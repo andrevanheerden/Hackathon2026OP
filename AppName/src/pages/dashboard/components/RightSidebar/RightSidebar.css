@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Dune Rise';
+  src: url('../../assets/fonts/Dune_Rise.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .right-sidebar {
   width: 360px;
   min-width: 360px;
@@ -37,11 +44,12 @@
 
 .right-sidebar__header p {
   margin: 0;
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: rgba(255,255,255,0.18);
+  font-family: 'Dune Rise', 'Montserrat Alternates', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #f75a00;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 .right-sidebar__tile-body {
