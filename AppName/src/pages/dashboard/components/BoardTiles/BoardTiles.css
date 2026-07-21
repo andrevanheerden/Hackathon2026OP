@@ -31,6 +31,50 @@
   gap: 10px;
 }
 
+/* Category accent outlines for selected/detail view */
+.board-tiles__detail--cat-start {
+  border-color: rgba(95,179,255,0.45);
+  box-shadow: 0 8px 36px rgba(95,179,255,0.06), inset 0 0 18px rgba(95,179,255,0.03);
+  background: linear-gradient(145deg, rgba(6,12,24,1) 6%, rgba(14,24,36,1) 94%), linear-gradient(90deg, rgba(95,179,255,0.02), rgba(95,179,255,0.01));
+}
+
+.board-tiles__detail--cat-encounter {
+  border-color: rgba(255,110,110,0.45);
+  box-shadow: 0 8px 36px rgba(255,110,110,0.06), inset 0 0 18px rgba(255,110,110,0.03);
+  background: linear-gradient(145deg, rgba(32,8,8,1) 6%, rgba(44,10,10,1) 94%), linear-gradient(90deg, rgba(255,110,110,0.02), rgba(255,110,110,0.01));
+}
+
+/* Color pill/title/label inside detail based on category */
+.board-tiles__detail--cat-start .tile-hero__pill,
+.board-tiles__detail--cat-start .tile-hero__title,
+.board-tiles__detail--cat-start .tile-hero__label {
+  color: rgba(95,179,255,0.95);
+}
+.board-tiles__detail--cat-start .tile-hero__pill {
+  background: rgba(95,179,255,0.08);
+}
+
+/* Ensure Tile 1 (tile-hero--one) respects category colors when a category is applied */
+.board-tiles__detail--cat-start .tile-hero--one .tile-hero__label,
+.board-tiles__detail--cat-start .tile-hero--one .tile-hero__title {
+  color: rgba(95,179,255,0.95);
+}
+
+.board-tiles__detail--cat-encounter .tile-hero__pill,
+.board-tiles__detail--cat-encounter .tile-hero__title,
+.board-tiles__detail--cat-encounter .tile-hero__label {
+  color: rgba(255,110,110,0.95);
+}
+.board-tiles__detail--cat-encounter .tile-hero__pill {
+  background: rgba(255,110,110,0.06);
+}
+
+/* Ensure Tile 1 (tile-hero--one) respects encounter category colors when applied */
+.board-tiles__detail--cat-encounter .tile-hero--one .tile-hero__label,
+.board-tiles__detail--cat-encounter .tile-hero--one .tile-hero__title {
+  color: rgba(255,110,110,0.95);
+}
+
 .board-tiles__detail-label {
   margin: 0;
   color: rgba(255, 255, 255, 0.18);
@@ -247,6 +291,17 @@
   color: rgba(255, 255, 255, 0.72);
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+/* Category-specific section title colors (only for titles/labels, not body text) */
+.board-tiles__detail--cat-start .tile-detail__section-title,
+.board-tiles__detail--cat-start .tile-detail__text-row strong {
+  color: rgba(95,179,255,0.95);
+}
+
+.board-tiles__detail--cat-encounter .tile-detail__section-title,
+.board-tiles__detail--cat-encounter .tile-detail__text-row strong {
+  color: rgba(255,110,110,0.95);
 }
 
 .tile-detail__text-row {
