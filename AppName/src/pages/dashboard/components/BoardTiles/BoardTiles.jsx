@@ -31,6 +31,17 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     return cardImageMap[cardName] || null;
   };
 
+  const renderDialogueLines = (text) => {
+    return String(text)
+      .split(/(?<=[.?!])\s+/)
+      .filter((line) => line.trim().length > 0)
+      .map((line, idx) => (
+        <p key={idx} className="tile-detail__dialogue-line">
+          {line.trim()}
+        </p>
+      ));
+  };
+
   // Load encounter state from session storage or initialize fresh
   useEffect(() => {
     if (selectedTile && selectedTile.details && selectedTile.details.encounter) {
@@ -511,7 +522,9 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                     <p className="tile-detail__section-title">Dialogue</p>
                     <span className="tile-detail__section-pill">Read to player</span>
                   </div>
-                  <span>{selectedTile.details.dialogue}</span>
+                  <div className="tile-detail__dialogue-copy">
+                    {renderDialogueLines(selectedTile.details.dialogue)}
+                  </div>
                 </div>
               )}
               

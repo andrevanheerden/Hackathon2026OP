@@ -13,12 +13,12 @@ export const tiles = [
       npcAppearance:
         'Standing before you is a tall, slender figure wearing a tailored, jet-black business suit, crisp white shirt, and black tie. In place of a head sits a retro CRT television monitor flickering with static, color bars, and a pulsing digital mono-eye.',
       voiceStyle:
-        'Smooth, theatrical, and charismatic—like a classic game show host—backed by a gentle background hum of electronic static and pitch modulation.',
+        'Smooth, theatrical, and charismatic—like a classic game show host',
       npcImage: 'TVhead.png',
       eventStory:
         'As your vision clears, you brush the sand off your clothes. The TV-headed figure applauds with quiet, slow claps, his monitor flickering to a wide smiling icon before returning to color bars.',
       dialogue:
-        '"Welcome, welcome! Ah, don\'t look so disoriented—it spoils the lighting! You and your companions have been granted a supreme honor: you have been selected to entertain the Higher Beings! You are now contestant-citizens of my grand creation: Dune Rise. The rules are wonderfully simple: journey across the desert, survive my challenges, and defeat [FINAL BOSS] at the end of the road. Do not worry, I am a fair host! I won\'t send you into the meat grinder empty-handed. Take these powers, grow stronger, and give us a great show. Oh, and one tiny detail... if you die in this game, you die for real. Good luck, contestants!"',
+        '"Welcome, welcome! Ah, don\'t look so disoriented—it spoils the lighting! You and your companions have been granted a supreme honor: you have been selected to entertain the Higher Beings! You are now contestant-citizens of my grand creation: Dune Rush. The rules are wonderfully simple: journey across the desert, survive my challenges, and defeat [FINAL BOSS] at the end of the road. Do not worry, I am a fair host! I won\'t send you into the meat grinder empty-handed. Take these powers, grow stronger, and give us a great show. Oh, and one tiny detail... if you die in this game, you die for real. Good luck, contestants!"',
       reward:
         'Starting Deck Allocation: Every player immediately draws and adds 3 Action Cards and 2 Trait Cards to their starting hand.',
       npcLabel: 'NPC',
