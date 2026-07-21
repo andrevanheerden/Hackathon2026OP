@@ -6,29 +6,140 @@ import zombie from '../../data/encounerImg/zombie.png';
 
 function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players = [] }) {
   const [encounterState, setEncounterState] = useState(null);
+  const [healAmount, setHealAmount] = useState('');
+  const [damageAmount, setDamageAmount] = useState('');
+  const [energyAmount, setEnergyAmount] = useState('');
+  const [acAmount, setAcAmount] = useState('');
+  const [damageType, setDamageType] = useState('slash');
+  const damageTypes = ['slash', 'fire', 'blunt', 'force', 'water'];
   const playersCount = players ? players.length : 0;
   const categorySlug = selectedTile ? String((selectedTile.category || selectedTile.type || '')).toLowerCase().replace(/[^a-z0-9]+/g, '-') : '';
   const detailClassName = `board-tiles__detail ${categorySlug ? `board-tiles__detail--cat-${categorySlug}` : ''}`;
 
+  // Load encounter state from session storage or initialize fresh
   useEffect(() => {
     if (selectedTile && selectedTile.details && selectedTile.details.encounter) {
       const enc = selectedTile.details.encounter;
       const baseHp = Number(enc.hp) || 0;
       const maxHp = baseHp * Math.max(1, playersCount || 1);
       const maxEnergy = Number(enc.energy) || 0;
-      setEncounterState({
-        baseHp,
-        maxHp,
-        currentHp: Math.max(0, Math.floor(maxHp)),
-        ac: Number(enc.ac) || 0,
-        maxEnergy,
-        currentEnergy: Math.max(0, Number(enc.energy) || 0),
-        actionCards: Array.isArray(enc.actionCards) ? [...enc.actionCards] : [],
-      });
+      
+      // Try to load from session storage first
+      const storageKey = `encounter-${selectedTile.id}`;
+      const stored = sessionStorage.getItem(storageKey);
+      
+      if (stored) {
+        try {
+          const savedState = JSON.parse(stored);
+          setEncounterState(savedState);
+        } catch {
+          // If parse fails, use fresh state
+          setEncounterState({
+            baseHp,
+            maxHp,
+            currentHp: Math.max(0, Math.floor(maxHp)),
+            ac: Number(enc.ac) || 0,
+            maxEnergy,
+            currentEnergy: Math.max(0, Number(enc.energy) || 0),
+            actionCards: Array.isArray(enc.actionCards) ? [...enc.actionCards] : [],
+          });
+        }
+      } else {
+        setEncounterState({
+          baseHp,
+          maxHp,
+          currentHp: Math.max(0, Math.floor(maxHp)),
+          ac: Number(enc.ac) || 0,
+          maxEnergy,
+          currentEnergy: Math.max(0, Number(enc.energy) || 0),
+          actionCards: Array.isArray(enc.actionCards) ? [...enc.actionCards] : [],
+        });
+      }
+      
+      // Reset input fields when tile changes
+      setHealAmount('');
+      setDamageAmount('');
+      setEnergyAmount('');
+      setAcAmount('');
+      setDamageType('slash');
     } else {
       setEncounterState(null);
+      setHealAmount('');
+      setDamageAmount('');
+      setEnergyAmount('');
+      setAcAmount('');
+      setDamageType('slash');
     }
   }, [selectedTile, playersCount]);
+
+  // Save encounter state to session storage whenever it changes
+  useEffect(() => {
+    if (selectedTile && encounterState) {
+      const storageKey = `encounter-${selectedTile.id}`;
+      sessionStorage.setItem(storageKey, JSON.stringify(encounterState));
+    }
+  }, [encounterState, selectedTile]);
+
+  const applyHeal = () => {
+    if (!encounterState) return;
+    const parsed = Number.parseInt(healAmount, 10);
+    if (!Number.isFinite(parsed) || parsed <= 0) return;
+    setEncounterState(s => s ? { ...s, currentHp: Math.min(s.maxHp, s.currentHp + parsed) } : s);
+    setHealAmount('');
+  };
+
+  const applyDamage = () => {
+    if (!encounterState || !selectedTile?.details?.encounter) return;
+    const parsed = Number.parseInt(damageAmount, 10);
+    if (!Number.isFinite(parsed) || parsed <= 0) return;
+    
+    const enc = selectedTile.details.encounter;
+    let finalDamage = parsed;
+    
+    // Check if vulnerability matches damage type - apply 2x
+    if (enc.vulnerabilities && enc.vulnerabilities.includes(damageType)) {
+      finalDamage = parsed * 2;
+    }
+    // Check if resistant matches damage type - apply 0.5x
+    else if (enc.resistances && enc.resistances.includes(damageType)) {
+      finalDamage = Math.ceil(parsed * 0.5);
+    }
+    
+    setEncounterState(s => s ? { ...s, currentHp: Math.max(0, s.currentHp - finalDamage) } : s);
+    setDamageAmount('');
+  };
+
+  const consumeEnergy = () => {
+    if (!encounterState) return;
+    const parsed = Number.parseInt(energyAmount, 10);
+    if (!Number.isFinite(parsed) || parsed <= 0) return;
+    setEncounterState(s => s ? { ...s, currentEnergy: Math.max(0, s.currentEnergy - parsed) } : s);
+    setEnergyAmount('');
+  };
+
+  const restoreEnergy = () => {
+    if (!encounterState) return;
+    const parsed = Number.parseInt(energyAmount, 10);
+    if (!Number.isFinite(parsed) || parsed <= 0) return;
+    setEncounterState(s => s ? { ...s, currentEnergy: Math.min(s.maxEnergy, s.currentEnergy + parsed) } : s);
+    setEnergyAmount('');
+  };
+
+  const addAc = () => {
+    if (!encounterState) return;
+    const parsed = Number.parseInt(acAmount, 10);
+    if (!Number.isFinite(parsed) || parsed <= 0) return;
+    setEncounterState(s => s ? { ...s, ac: s.ac + parsed } : s);
+    setAcAmount('');
+  };
+
+  const removeAc = () => {
+    if (!encounterState) return;
+    const parsed = Number.parseInt(acAmount, 10);
+    if (!Number.isFinite(parsed) || parsed <= 0) return;
+    setEncounterState(s => s ? { ...s, ac: Math.max(0, s.ac - parsed) } : s);
+    setAcAmount('');
+  };
 
   return (
     <section className="board-tiles">
@@ -114,16 +225,16 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
               
               {/* NEW ENCOUNTER SECTION DESIGN */}
               {selectedTile.details.encounter && (
-                <div className="encounter-container">
-                  <div className="mock-encounter-panel">
-                    {/* Encounter Header */}
-                    <div className="mock-encounter-header">
-                      <div className="mock-encounter-titles">
-                        <div className="mock-encounter-subtitle">ENCOUNTER</div>
-                        <div className="mock-encounter-maintitle">{selectedTile.details.encounter.name}</div>
-                      </div>
-                      <div className="mock-encounter-pill">ENCOUNTER</div>
+                <div className="mock-encounter-panel">
+                  
+                  {/* Encounter Header */}
+                  <div className="mock-encounter-header">
+                    <div className="mock-encounter-titles">
+                      <div className="mock-encounter-subtitle">ENCOUNTER</div>
+                      <div className="mock-encounter-maintitle">{selectedTile.details.encounter.name}</div>
                     </div>
+                    <div className="mock-encounter-pill">ENCOUNTER</div>
+                  </div>
 
                   <div className="mock-encounter-body">
                     {/* Left Column: Stats and Controls */}
@@ -131,6 +242,34 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                       <div className="mock-encounter-description">
                         <strong>Description:</strong>
                         <p>{selectedTile.details.encounter.appearance}</p>
+                      </div>
+
+                      {/* Resistances and Vulnerabilities */}
+                      <div className="encounter-traits">
+                        {selectedTile.details.encounter.resistances && selectedTile.details.encounter.resistances.length > 0 && (
+                          <div className="encounter-traits__group">
+                            <span className="encounter-traits__label">Resistances</span>
+                            <div className="encounter-traits__pills">
+                              {selectedTile.details.encounter.resistances.map((res) => (
+                                <span key={res} className="encounter-trait-pill encounter-trait-pill--resistance" title={`Resistance: ${res} - Takes half damage`}>
+                                  {res}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        {selectedTile.details.encounter.vulnerabilities && selectedTile.details.encounter.vulnerabilities.length > 0 && (
+                          <div className="encounter-traits__group">
+                            <span className="encounter-traits__label">Vulnerabilities</span>
+                            <div className="encounter-traits__pills">
+                              {selectedTile.details.encounter.vulnerabilities.map((vuln) => (
+                                <span key={vuln} className="encounter-trait-pill encounter-trait-pill--vulnerability" title={`Vulnerability: ${vuln} - Takes double damage`}>
+                                  {vuln}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
 
                       <div className="mock-encounter-bars">
@@ -165,47 +304,93 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                         </div>
                       </div>
 
-                      {/* Interactive Controls */}
-                      <div className="mock-controls-grid">
-                        {/* Heal Row */}
-                        <div className="mock-ctrl-label">Heal</div>
-                        <input type="number" defaultValue="0" min="0" id={`enc-heal-${selectedTile.id}`} className="mock-ctrl-input" />
-                        <button className="mock-ctrl-btn mock-btn-heal mock-btn-full" onClick={() => {
-                          const val = Number(document.getElementById(`enc-heal-${selectedTile.id}`)?.value || 0);
-                          setEncounterState(s => s ? { ...s, currentHp: Math.min(s.maxHp, s.currentHp + val) } : s);
-                        }}>Heal</button>
+                      {/* Encounter Controls Section */}
+                      <div className="encounter-controls">
+                        <p className="encounter-controls__title">ENCOUNTER CONTROLS</p>
+                        <div className="encounter-controls__grid">
+                          <label className="encounter-control">
+                            <span>Heal</span>
+                            <input
+                              type="text"
+                              inputMode="numeric"
+                              pattern="[0-9]*"
+                              placeholder="0"
+                              value={healAmount}
+                              onChange={(e) => setHealAmount(e.target.value.replace(/[^0-9]/g, ''))}
+                            />
+                            <button type="button" className="encounter-action-btn encounter-action-btn--heal" onClick={applyHeal}>
+                              APPLY
+                            </button>
+                          </label>
 
-                        {/* Damage Row (Visually matches the mock's typo) */}
-                        <div className="mock-ctrl-label">Damage</div>
-                        <input type="number" defaultValue="0" min="0" id={`enc-dmg-${selectedTile.id}`} className="mock-ctrl-input" />
-                        <button className="mock-ctrl-btn mock-btn-damage mock-btn-full" onClick={() => {
-                          const val = Number(document.getElementById(`enc-dmg-${selectedTile.id}`)?.value || 0);
-                          setEncounterState(s => s ? { ...s, currentHp: Math.max(0, s.currentHp - val) } : s);
-                        }}>Damage</button>
+                          <label className="encounter-control">
+                            <span>Damage</span>
+                            <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                              <input
+                                type="text"
+                                inputMode="numeric"
+                                pattern="[0-9]*"
+                                placeholder="0"
+                                value={damageAmount}
+                                onChange={(e) => setDamageAmount(e.target.value.replace(/[^0-9]/g, ''))}
+                              />
+                              <select 
+                                value={damageType} 
+                                onChange={(e) => setDamageType(e.target.value)}
+                                className="encounter-type-select"
+                              >
+                                {damageTypes.map((type) => (
+                                  <option key={type} value={type}>
+                                    {type.charAt(0).toUpperCase() + type.slice(1)}
+                                  </option>
+                                ))}
+                              </select>
+                              <button type="button" className="encounter-action-btn encounter-action-btn--damage" onClick={applyDamage}>
+                                APPLY
+                              </button>
+                            </div>
+                          </label>
 
-                        {/* Energy Row */}
-                        <div className="mock-ctrl-label">energy</div>
-                        <input type="number" defaultValue="0" min="0" id={`enc-energy-${selectedTile.id}`} className="mock-ctrl-input" />
-                        <button className="mock-ctrl-btn mock-btn-consume" onClick={() => {
-                          const val = Number(document.getElementById(`enc-energy-${selectedTile.id}`)?.value || 0);
-                          setEncounterState(s => s ? { ...s, currentEnergy: Math.max(0, s.currentEnergy - val) } : s);
-                        }}>Consume</button>
-                        <button className="mock-ctrl-btn mock-btn-restore" onClick={() => {
-                          const val = Number(document.getElementById(`enc-energy-${selectedTile.id}`)?.value || 0);
-                          setEncounterState(s => s ? { ...s, currentEnergy: Math.min(s.maxEnergy, s.currentEnergy + val) } : s);
-                        }}>Restore</button>
+                          <label className="encounter-control">
+                            <span>Energy</span>
+                            <input
+                              type="text"
+                              inputMode="numeric"
+                              pattern="[0-9]*"
+                              placeholder="0"
+                              value={energyAmount}
+                              onChange={(e) => setEnergyAmount(e.target.value.replace(/[^0-9]/g, ''))}
+                            />
+                            <div style={{ display: 'flex', gap: 8 }}>
+                              <button type="button" className="encounter-action-btn encounter-action-btn--consume" onClick={consumeEnergy}>
+                                CONSUME
+                              </button>
+                              <button type="button" className="encounter-action-btn encounter-action-btn--restore" onClick={restoreEnergy}>
+                                RESTORE
+                              </button>
+                            </div>
+                          </label>
 
-                        {/* AC Row */}
-                        <div className="mock-ctrl-label">AC</div>
-                        <input type="number" defaultValue="0" min="0" id={`enc-ac-${selectedTile.id}`} className="mock-ctrl-input" />
-                        <button className="mock-ctrl-btn mock-btn-ac" onClick={() => {
-                          const val = Number(document.getElementById(`enc-ac-${selectedTile.id}`)?.value || 0);
-                          setEncounterState(s => s ? { ...s, ac: s.ac + val } : s);
-                        }}>Add</button>
-                        <button className="mock-ctrl-btn mock-btn-ac" onClick={() => {
-                          const val = Number(document.getElementById(`enc-ac-${selectedTile.id}`)?.value || 0);
-                          setEncounterState(s => s ? { ...s, ac: Math.max(0, s.ac - val) } : s);
-                        }}>Remove</button>
+                          <label className="encounter-control">
+                            <span>AC</span>
+                            <input
+                              type="text"
+                              inputMode="numeric"
+                              pattern="[0-9]*"
+                              placeholder="0"
+                              value={acAmount}
+                              onChange={(e) => setAcAmount(e.target.value.replace(/[^0-9]/g, ''))}
+                            />
+                            <div style={{ display: 'flex', gap: 8 }}>
+                              <button type="button" className="encounter-action-btn encounter-action-btn--ac" onClick={addAc}>
+                                ADD
+                              </button>
+                              <button type="button" className="encounter-action-btn encounter-action-btn--ac" onClick={removeAc}>
+                                REM
+                              </button>
+                            </div>
+                          </label>
+                        </div>
                       </div>
 
                     </div>

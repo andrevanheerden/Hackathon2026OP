@@ -4,8 +4,8 @@ function Logo() {
   return (
     <div className="logo-container">
       <div className="logo-text">
-        <div className="logo-top">GAME</div>
-        <div className="logo-bottom">NAME</div>
+        <div className="logo-top">DUNE</div>
+        <div className="logo-bottom">RUSH</div>
       </div>
     </div>
   );

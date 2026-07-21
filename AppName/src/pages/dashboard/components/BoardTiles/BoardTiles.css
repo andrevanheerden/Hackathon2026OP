@@ -221,20 +221,9 @@
   min-width: 0;
 }
 
-..tile-detail__section--reward {
+.tile-detail__section--reward {
   background: rgba(22, 49, 26, 0.18);
   border-color: rgba(0, 183, 105, 0.17);
-}
-
-.encounter-container {
-  width: min(100%, 500px);
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-self: flex-start;
-  background: transparent;
-  margin-top: 8px;
 }
 
 /* --- NEW MOCKUP MATCHING CSS --- */
@@ -249,7 +238,6 @@
   font-family: sans-serif;
   position: relative;
   overflow: hidden;
-  width: 100%;
 }
 
 .mock-encounter-header {
@@ -257,13 +245,6 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
-}
-
-.mock-encounter-titles {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 0;
 }
 
 .mock-encounter-subtitle {
@@ -332,6 +313,179 @@
 
 .board-tiles__detail--cat-encounter .mock-encounter-description strong {
   color: rgba(255,110,110,0.95);
+}
+
+/* Encounter Controls Section */
+.encounter-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 16px;
+  background: transparent;
+  width: 500px;
+}
+
+.encounter-controls__title {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+}
+
+.encounter-controls__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.encounter-control {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.82);
+}
+
+.encounter-trait-pill {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+  cursor: help;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.2s ease;
+}
+
+.encounter-trait-pill--resistance {
+  background: rgba(95, 179, 255, 0.12);
+  color: rgba(95, 179, 255, 0.95);
+  border-color: rgba(95, 179, 255, 0.25);
+}
+
+.encounter-trait-pill--resistance:hover {
+  background: rgba(95, 179, 255, 0.25);
+  border-color: rgba(95, 179, 255, 0.5);
+  box-shadow: 0 4px 12px rgba(95, 179, 255, 0.15);
+}
+
+.encounter-trait-pill--vulnerability {
+  background: rgba(255, 110, 110, 0.12);
+  color: rgba(255, 110, 110, 0.95);
+  border-color: rgba(255, 110, 110, 0.25);
+}
+
+.encounter-trait-pill--vulnerability:hover {
+  background: rgba(255, 110, 110, 0.25);
+  border-color: rgba(255, 110, 110, 0.5);
+  box-shadow: 0 4px 12px rgba(255, 110, 110, 0.15);
+}
+
+.encounter-traits {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.encounter-traits__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.encounter-traits__label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+}
+
+.encounter-traits__pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.encounter-control--select {
+  grid-column: span 1;
+}
+
+.encounter-type-select {
+  width: 70px;
+  min-width: 70px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 8px 6px;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.encounter-type-select option {
+  background: rgba(20,20,20,1);
+  color: #fff;
+}
+
+.encounter-control input {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+.encounter-control input::-webkit-outer-spin-button,
+.encounter-control input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.encounter-control input[type='text'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.encounter-action-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.encounter-action-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.encounter-action-btn--heal {
+  background: linear-gradient(135deg, rgba(0, 200, 120, 0.95), rgba(0, 150, 100, 0.95));
+}
+
+.encounter-action-btn--damage {
+  background: linear-gradient(135deg, rgba(255, 95, 95, 0.95), rgba(211, 48, 48, 0.95));
+}
+
+.encounter-action-btn--consume {
+  background: linear-gradient(135deg, rgba(95, 179, 255, 0.95), rgba(43, 140, 204, 0.95));
+}
+
+.encounter-action-btn--restore {
+  background: linear-gradient(135deg, rgba(60, 190, 255, 0.95), rgba(12, 120, 200, 0.95));
+}
+
+.encounter-action-btn--ac {
+  background: linear-gradient(135deg, rgba(255, 110, 110, 0.95), rgba(255, 80, 80, 0.95));
 }
 
 /* Health and Energy Bars */
