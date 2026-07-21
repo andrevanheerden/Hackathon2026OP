@@ -357,19 +357,24 @@ export const tiles = [
     title: "Knight's Challenge",
     category: 'Encounter',
     area: 'Abandoned Village',
-    highlighted: false,
+    highlighted: true,
     details: {
       environment:
         'A wide, circular stone arena surrounded by ruined pillars and sun-scorched banners.',
       eventStory:
-        'A armored knight clad in polished steel plate blocks the archway. He plants his double-edged blade into the ground and points directly at your group, demanding single combat!',
+        'An armored knight clad in polished steel plate blocks the archway. He plants his double-edged blade into the stone floor, his armored visor locking onto your group as he demands single combat!',
       npcAppearance:
         'A fully armored paladin clad in gleaming plate mail with a scorpion insignia crest on his left pauldron. He wears a heavy red cape and holds a steel broadsword at the ready.',
+      voiceStyle:
+        'Deep, booming, and resonant—echoing from beneath a heavy steel helmet with stern, honorable discipline.',
       npcImage: 'DualKight.png',
+      npcLabel: 'NPC',
+      dialogue:
+        '"Halt, wanderers! None shall pass through this sacred arena without proving their martial honor. Only a true warrior may earn passage beyond this point. Step forward, champion! Face me in single combat—let your steel speak for your soul!"',
       encounter: {
         name: 'Scorpion Knight',
         appearance:
-          'A formidable warrior clad in gleaming steel plate armor and a flowing red mantle, proudly bearing a golden scorpion crest upon his chest and pauldron. Visored within a fully enclosed helmet, he grips a sharp sidearm sword in one hand, ready to draw the heavy two-handed blade strapped across his back.',
+          'Fully armored paladin in polished steel plate with a scorpion crest on his shoulder, wielding a broadsword and long cape.',
         image: 'DualKight.png',
         hp: 30,
         ac: 7,

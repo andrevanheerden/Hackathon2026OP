@@ -47,6 +47,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     'TVhead.png': TVheadImg,
     'Merchant.png': MerchantImg,
     'gambler.png': GamblerImg,
+    'DualKight.png': DualKightImg,
   };
 
   const encounterImageMap = {
@@ -332,6 +333,18 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                     <span className="tile-detail__section-pill tile-detail__section-pill--trap">Trap Info</span>
                   </div>
                   <span>{selectedTile.details.trapEffect}</span>
+                </div>
+              )}
+
+              {selectedTile.details.dialogue && (
+                <div className="tile-detail__section">
+                  <div className="tile-detail__section-header">
+                    <p className="tile-detail__section-title">Dialogue</p>
+                    <span className="tile-detail__section-pill">Read to player</span>
+                  </div>
+                  <div className="tile-detail__dialogue-copy">
+                    {renderDialogueLines(selectedTile.details.dialogue)}
+                  </div>
                 </div>
               )}
 
