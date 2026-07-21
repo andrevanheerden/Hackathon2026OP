@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import './BoardTiles.css';
 
 import zombie from '../../data/encounerImg/zombie.png';
+import zombieArmor from '../../data/encounerImg/zombieArmor.png';
 import sandDog from '../../data/encounerImg/sandDog.png';
 import bandit from '../../data/encounerImg/bandit.png';
 import TVheadImg from '../../data/encounerImg/TVhead.png';
@@ -505,6 +506,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                         src={
                           selectedTile.details.encounter.image === 'sandDog.png' ? sandDog :
                           selectedTile.details.encounter.image === 'bandit.png' ? bandit :
+                          selectedTile.details.encounter.image === 'zombieArmor.png' ? zombieArmor :
                           zombie
                         } 
                         alt={selectedTile.details.encounter.name} 
