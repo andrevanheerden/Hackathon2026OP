@@ -1,7 +1,7 @@
 export const tiles = [
   {
-    id: 1,
-    number: 1,
+    id: 0,
+    number: 0,
     type: 'Story',
     title: 'Canyon Awakening',
     category: 'Start',
@@ -22,6 +22,38 @@ export const tiles = [
       reward:
         'Starting Deck Allocation: Every player immediately draws and adds 3 Action Cards and 2 Trait Cards to their starting hand.',
       npcLabel: 'NPC',
+    },
+  },
+  {
+    id: 1,
+    number: 1,
+    type: 'Encounter',
+    title: 'Dune Snarlers',
+    category: 'Encounter',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'A wind-swept clearing surrounded by sharp obsidian rock pillars jutting out of the dunes.',
+      eventStory:
+        'Low growls echo from behind the rocks. A pack of hairless, scaly desert hounds bounds out, snapping their jaws at your group.',
+      encounter: {
+        name: 'Sand Hound Alpha',
+        appearance:
+          'This six-eyed, canine-like creature features mottled sandy-gray fur paired with a heavily scaled, reptilian back and a thick, armored tail. It sports pointed ears, sharp little fangs, a wide playful grin with a panting tongue, and scaly, clawed feet.',
+        image: 'sandDog.png',
+        hp: 15,
+        ac: 5,
+        energy: 4,
+        resistances: ['Blunt'],
+        vulnerabilities: ['Acid'],
+        actionCards: [
+          { name: 'Quick Slash', rarity: 'Common', image: 'QuickSlashCommon.png' },
+          { name: 'Pummel', rarity: 'Common', image: 'PummelCommon.png' },
+          { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlamRare.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player, draw 1 Trait Card.',
     },
   },
   {
@@ -72,40 +104,24 @@ export const tiles = [
       reward: 'Chest Loot: each player draws 1 Action Card.',
     },
   },
-  {
+{
     id: 4,
     number: 4,
-    type: 'Merchant',
-    title: "Nomad's Exchange",
-    category: 'Merchant',
+    type: 'Trap',
+    title: 'The Tectonic Shift',
+    category: 'Trap',
     area: 'Abandoned Village',
-    highlighted: false,
+    highlighted: true,
     details: {
       environment:
-        'A striped silk tent anchored by heavy brass stakes. Inside, aromatic incense burns in a copper brazier, shielding visitors from the desert heat.',
-      npcAppearance:
-        'A mysterious green-skinned traveler completely shrouded in cloth wrappings and dark goggles beneath a hooded cloak. Cross-legged on the ground, it conjures a floating, golden-lit miniature automaton between its bare hands while sitting beside a well-worn leather trail pack bursting with maps and trinkets.',
-      voiceStyle:
-        'Raspy, whispery, and clicking softly between sentences.',
-      npcImage: 'Merchant.png',
-      dialogue:
-        '"Ahhh... new travelers... fresh cards in your hands. Sskesh deals in power, yes! Give me your duplicate treasures, and I shall give you true strength..."',
-      merchantRules: [
-        'The GM draws 5 Action/Trait Cards from the deck and lays them face-up.',
-        'Players may trade their own cards using these fixed ratios:',
-      ],
-      merchantExchangeRates: [
-        'Legendary = 3 Commons',
-        'Legendary = 2 Rares',
-        'Rare = 2 Commons',
-        'Common = Commons',
-      ],
+        'A cracked limestone fissure runs down the center of the path, emitting a low hum.',
       eventStory:
-        'A striped silk tent anchored by heavy brass stakes. Inside, aromatic incense burns in a copper brazier, shielding visitors from the desert heat.',
-      npcLabel: 'NPC',
+        'A sudden subterranean earthquake strikes! The ground beneath your feet groans as violent tremors tear through the earth, physically shifting and re-aligning the terrain beneath the entire village!',
+      trapEffect:
+        'World Shift: The GM physically rotates the Abandoned Village Node on the game board by 90 degrees, shifting path connections!',
     },
   },
-  {
+    {
     id: 5,
     number: 5,
     type: 'Encounter',
@@ -140,20 +156,38 @@ export const tiles = [
   {
     id: 6,
     number: 6,
-    type: 'Trap',
-    title: 'The Tremor Plate',
-    category: 'Trap',
+    type: 'Merchant',
+    title: "Nomad's Exchange",
+    category: 'Merchant',
     area: 'Abandoned Village',
-    highlighted: true,
+    highlighted: false,
     details: {
       environment:
-        'An ancient stone slab embedded in the sand, carved with worn geometric gears.',
+        'A striped silk tent anchored by heavy brass stakes. Inside, aromatic incense burns in a copper brazier, shielding visitors from the desert heat.',
+      npcAppearance:
+        'A mysterious green-skinned traveler completely shrouded in cloth wrappings and dark goggles beneath a hooded cloak. Cross-legged on the ground, it conjures a floating, golden-lit miniature automaton between its bare hands while sitting beside a well-worn leather trail pack bursting with maps and trinkets.',
+      voiceStyle:
+        'Raspy, whispery, and clicking softly between sentences.',
+      npcImage: 'Merchant.png',
+      dialogue:
+        '"Ahhh... new travelers... fresh cards in your hands. Sskesh deals in power, yes! Give me your duplicate treasures, and I shall give you true strength..."',
+      merchantRules: [
+        'The GM draws 5 Action/Trait Cards from the deck and lays them face-up.',
+        'Players may trade their own cards using these fixed ratios:',
+      ],
+      merchantExchangeRates: [
+        'Legendary = 3 Commons',
+        'Legendary = 2 Rares',
+        'Rare = 2 Commons',
+        'Common = Commons',
+      ],
       eventStory:
-        'As your foot presses down, a loud CLICK echoes under the sand. Massive stone gears grind below ground, causing a localized earthquake! In the distance, the buildings of the Abandoned Village physically shift and rotate on their foundations, altering the landscape layout!',
-      trapEffect:
-        'World Shift: The GM physically rotates the Abandoned Village Node on the game board by 90 degrees, shifting path connections!',
+        'A striped silk tent anchored by heavy brass stakes. Inside, aromatic incense burns in a copper brazier, shielding visitors from the desert heat.',
+      npcLabel: 'NPC',
     },
   },
+
+
   {
     id: 7,
     number: 7,
@@ -280,6 +314,194 @@ export const tiles = [
         ],
       },
       reward: 'Victory Drop: On victory each player, draw 1 Trait Card.',
+    },
+  },
+  {
+    id: 12,
+    number: 12,
+    type: 'Trap',
+    title: 'Fruit of Deception',
+    category: 'Trap',
+    area: 'Abandoned Village',
+    highlighted: true,
+    details: {
+      environment:
+        'A single, shockingly vibrant green tree stands amidst barren dunes, its branches heavy with glowing, sweet-smelling purple fruit.',
+      eventStory:
+        'Parched from the desert heat, your group stumbles upon the solitary fruit tree. Its aroma is hypnotic, tempting you to take a bite, but a strange dark sap drips from its bark...',
+      trapEffect:
+        'Forbidden Feast: Each player chooses whether to eat the fruit. Any player who eats it falls into a daze and must permanently lose 1 Action Card of their choice!',
+    },
+  },
+  {
+    id: 13,
+    number: 13,
+    type: 'Discovery',
+    title: 'Sunken Vault',
+    category: 'Discovery',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'Half-buried beneath a collapsed sandstone archway sits a heavy iron-bound trunk adorned with brass sun runes.',
+      eventStory:
+        'You clear away centuries of accumulated sand and pry open the stubborn brass latch of the ancient chest. Inside lies a glowing stash of martial gear and ancient secrets.',
+      reward:
+        'Chest Loot: Each player draws 1 Action Card AND 1 Trait Card.',
+    },
+  },
+  {
+    id: 14,
+    number: 14,
+    type: 'Encounter',
+    title: "Knight's Challenge",
+    category: 'Encounter',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'A wide, circular stone arena surrounded by ruined pillars and sun-scorched banners.',
+      eventStory:
+        'A armored knight clad in polished steel plate blocks the archway. He plants his double-edged blade into the ground and points directly at your group, demanding single combat!',
+      npcAppearance:
+        'A fully armored paladin clad in gleaming plate mail with a scorpion insignia crest on his left pauldron. He wears a heavy red cape and holds a steel broadsword at the ready.',
+      npcImage: 'DualKight.png',
+      encounter: {
+        name: 'Scorpion Knight',
+        appearance:
+          'A formidable warrior clad in gleaming steel plate armor and a flowing red mantle, proudly bearing a golden scorpion crest upon his chest and pauldron. Visored within a fully enclosed helmet, he grips a sharp sidearm sword in one hand, ready to draw the heavy two-handed blade strapped across his back.',
+        image: 'DualKight.png',
+        hp: 30,
+        ac: 7,
+        energy: 4,
+        resistances: ['Slash', 'Blunt'],
+        vulnerabilities: ['Acid', 'Force'],
+        actionCards: [
+          { name: 'Quick Slash', rarity: 'Common', image: 'QuickSlashCommon.png' },
+          { name: 'Blade Dance', rarity: 'Rare', image: 'BladeDanceRare.png' },
+          { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlamRare.png' },
+        ],
+      },
+      rules:
+        'Honor Duel: One player must step forward to fight the Knight 1-on-1.',
+      reward:
+        'Victory Drop: If the player wins the duel, the party receives 3 Card Draws to share! Defeat Penalty: If the player loses, they are spared by the knight and left at 1 HP.',
+    },
+  },
+  {
+    id: 15,
+    number: 15,
+    type: 'Encounter',
+    title: 'Armored Husk',
+    category: 'Encounter',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'A narrow gorge littered with sun-bleached animal bones and rusted iron armor pieces.',
+      eventStory:
+        'The sands churn once more as another heavily armored undead monstrosity rises from the ground, wielding a heavy wooden beam and hungry for flesh!',
+      encounter: {
+        name: 'Desert Husk (Armored)',
+        appearance:
+          'A green-skinned zombie wearing tattered hooded robes with heavy scrap armor plates strapped across its torso and a wooden beam on its back.',
+        image: 'zombieArmor.png',
+        hp: 25,
+        ac: 6,
+        energy: 3,
+        resistances: ['Slash'],
+        vulnerabilities: ['Fire'],
+        actionCards: [
+          { name: 'Quick Slash', rarity: 'Common', image: 'QuickSlashCommon.png' },
+          { name: 'Pummel', rarity: 'Common', image: 'PummelCommon.png' },
+          { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlamRare.png' },
+          { name: 'Blade Dance', rarity: 'Rare', image: 'BladeDanceRare.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory, each player draws 1 Trait Card.',
+    },
+  },
+  {
+    id: 16,
+    number: 16,
+    type: 'Trap',
+    title: 'Faultline Rupture',
+    category: 'Trap',
+    area: 'Abandoned Village',
+    highlighted: true,
+    details: {
+      environment:
+        'The ground beneath this section of path is deeply fractured, venting warm desert steam.',
+      eventStory:
+        'As you step across the faultline, a violent seismic shockwave tears through the canyon floor! The terrain twists and rotates violently as the earth realigns itself!',
+      trapEffect:
+        'World Shift: The GM physically rotates the Abandoned Village Node on the game board by 90 degrees, shifting path connections!',
+    },
+  },
+  {
+    id: 17,
+    number: 17,
+    type: 'Encounter',
+    title: 'Burrowing Threat',
+    category: 'Encounter',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'A sunken dune basin where the sand flows in circular waves like water.',
+      eventStory:
+        'The sand erupts in a massive fountain as a barbed, segmented sand crawler bursts out of the dunes, snapping its ring of razor-sharp teeth at the group!',
+      encounter: {
+        name: 'Small sand crawler',
+        appearance:
+          'This sandy-tan, heavily armored creature features an arrow-shaped head plate with glowing blue eyes and a jagged, tooth-like jaw. It has an arched back covered in thick, overlapping carapace plates, tufts of soft fur along its neck and underbelly, clawed feet, and a heavy, segmented tail that curls upward.',
+        image: 'babySandCrawler.png',
+        hp: 28,
+        ac: 6,
+        energy: 4,
+        resistances: ['Blunt', 'Fire'],
+        vulnerabilities: ['Water', 'Slash'],
+        actionCards: [
+          { name: 'Quick Slash', rarity: 'Common', image: 'QuickSlashCommon.png' },
+          { name: 'Pummel', rarity: 'Common', image: 'PummelCommon.png' },
+          { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlamRare.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory, each player draws 1 Action Card.',
+    },
+  },
+  {
+    id: 18,
+    number: 18,
+    type: 'Discovery',
+    title: 'Forgotten Reliquary',
+    category: 'Discovery',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'A shaded alcove tucked into the canyon cliffside containing an undisturbed stone sarcophagus.',
+      eventStory:
+        'Working together, your group slides off the heavy stone lid of the sarcophagus to reveal pristine relics preserved from the desert weather.',
+      reward:
+        'Chest Loot: Each player draws 1 Action Card AND 1 Trait Card.',
+    },
+  },
+  {
+    id: 19,
+    number: 19,
+    type: 'Trap',
+    title: 'Canyon Rockfall',
+    category: 'Trap',
+    area: 'Abandoned Village',
+    highlighted: true,
+    details: {
+      environment:
+        'A narrow pass flanked by towering, unstable rock cliffs overhead.',
+      eventStory:
+        'A sudden tremor shakes the cliffs above! Loose boulders snap free from the overhangs, sending a dangerous rockslide raining down onto the party!',
+      trapEffect:
+        'Falling Boulders: The GM rolls a D10 three times against each player\'s AC. For every roll that meets or beats a player\'s AC, that player takes 5 Blunt damage!',
     },
   },
 ];
