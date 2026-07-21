@@ -75,7 +75,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     if (selectedTile && selectedTile.details && selectedTile.details.encounter) {
       const enc = selectedTile.details.encounter;
       const baseHp = Number(enc.hp) || 0;
-      const maxHp = baseHp * Math.max(1, playersCount || 1);
+      const maxHp = selectedTile.id === 14 ? baseHp : baseHp * Math.max(1, playersCount || 1);
       const maxEnergy = Number(enc.energy) || 0;
       
       // Try to load from session storage first
