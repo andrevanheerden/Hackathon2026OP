@@ -246,6 +246,7 @@
   width: 100%;
   height: 100%;
   transition: transform 0.1s ease-out;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .action-card-img {
