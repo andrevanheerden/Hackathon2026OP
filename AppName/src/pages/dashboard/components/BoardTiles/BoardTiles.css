@@ -5,6 +5,7 @@
   width: 100%;
 }
 
+
 .board-tiles__heading p {
   margin: 0;
   font-family: 'Montserrat Alternates', sans-serif;
@@ -23,7 +24,7 @@
 .board-tiles__detail {
   border: 1px solid rgba(139, 110, 240, 0.13);
   border-radius: 18px;
-  background: linear-gradient(145deg, rgba(34, 29, 39, 1) 6.17%, rgba(26, 21, 25, 1) 93.83%);
+  background: linear-gradient(90deg, rgba(24,20,28,1) 0%, rgba(32,25,40,1) 100%);
   padding: 20px 24px;
   display: flex;
   flex-direction: column;
@@ -43,6 +44,53 @@
   font-family: 'Montserrat Alternates', sans-serif;
   font-size: 22px;
   color: #ffffff;
+}
+
+
+.tile-hero__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.tile-hero__label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.tile-hero__pill {
+  background: rgba(0,150,120,0.12);
+  color: #7ef2c2;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.tile-hero__title {
+  margin: 8px 0 0 0;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 38px;
+  color: #aee9ff;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.tile-hero__subtitle {
+  margin: 8px 0 0 0;
+  color: rgba(255,255,255,0.75);
+  max-width: 680px;
+  line-height: 1.35;
+  position: relative;
+  z-index: 1;
 }
 
 .board-tiles__detail-body {

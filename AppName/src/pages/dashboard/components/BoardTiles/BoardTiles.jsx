@@ -21,9 +21,22 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile }) {
 
       <div className="board-tiles__detail">
         <div className="board-tiles__detail-top">
-          <p className="board-tiles__detail-label">Selected Tile</p>
-          <h3>{selectedTile?.title || '—'}</h3>
-        </div>
+            {selectedTile ? (
+              <div className="tile-hero">
+                <div className="tile-hero__meta">
+                  <span className="tile-hero__label">TILE {selectedTile.number} · {selectedTile.category || selectedTile.type}</span>
+                  <span className="tile-hero__pill">{(selectedTile.type || 'Unknown').toUpperCase()}</span>
+                </div>
+                <h2 className="tile-hero__title">{selectedTile.title}</h2>
+               
+              </div>
+            ) : (
+              <div className="board-tiles__detail-top">
+                <p className="board-tiles__detail-label">Selected Tile</p>
+                <h3>—</h3>
+              </div>
+            )}
+          </div>
         {selectedTile ? (
           selectedTile.details ? (
             <div className="board-tiles__detail-body board-tiles__detail-rich">
