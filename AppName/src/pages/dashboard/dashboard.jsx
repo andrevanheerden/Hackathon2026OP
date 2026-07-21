@@ -62,6 +62,7 @@ function Dashboard({ players = [] }) {
               selectedTileId={selectedTileId}
               onSelectTile={setSelectedTileId}
               selectedTile={tiles.find((tile) => tile.id === selectedTileId)}
+              players={sessionPlayers}
             />
           </div>
         </div>

@@ -1,10 +1,10 @@
+/* --- EXISTING CSS FROM ABOVE --- */
 .board-tiles {
   display: flex;
   flex-direction: column;
   gap: 16.47px;
   transition: box-shadow 220ms ease, border-color 220ms ease;
 }
-
 
 .board-tiles__heading p {
   margin: 0;
@@ -35,13 +35,11 @@
 .board-tiles__detail--cat-start {
   border-color: rgba(95,179,255,0.45);
   box-shadow: 0 8px 36px rgba(95,179,255,0.06), inset 0 0 18px rgba(95,179,255,0.03);
-  background: linear-gradient(145deg, rgba(6,12,24,1) 6%, rgba(14,24,36,1) 94%), linear-gradient(90deg, rgba(95,179,255,0.02), rgba(95,179,255,0.01));
 }
 
 .board-tiles__detail--cat-encounter {
   border-color: rgba(255,110,110,0.45);
   box-shadow: 0 8px 36px rgba(255,110,110,0.06), inset 0 0 18px rgba(255,110,110,0.03);
-  background: linear-gradient(145deg, rgba(32,8,8,1) 6%, rgba(44,10,10,1) 94%), linear-gradient(90deg, rgba(255,110,110,0.02), rgba(255,110,110,0.01));
 }
 
 /* Color pill/title/label inside detail based on category */
@@ -54,7 +52,6 @@
   background: rgba(95,179,255,0.08);
 }
 
-/* Ensure Tile 1 (tile-hero--one) respects category colors when a category is applied */
 .board-tiles__detail--cat-start .tile-hero--one .tile-hero__label,
 .board-tiles__detail--cat-start .tile-hero--one .tile-hero__title {
   color: rgba(95,179,255,0.95);
@@ -69,7 +66,6 @@
   background: rgba(255,110,110,0.06);
 }
 
-/* Ensure Tile 1 (tile-hero--one) respects encounter category colors when applied */
 .board-tiles__detail--cat-encounter .tile-hero--one .tile-hero__label,
 .board-tiles__detail--cat-encounter .tile-hero--one .tile-hero__title {
   color: rgba(255,110,110,0.95);
@@ -90,7 +86,6 @@
   color: #ffffff;
 }
 
-
 .tile-hero__meta {
   display: flex;
   justify-content: space-between;
@@ -100,7 +95,6 @@
   z-index: 1;
 }
 
-/* ensure hero is positioned for absolute pill */
 .tile-hero {
   position: relative;
 }
@@ -126,15 +120,6 @@
   text-transform: uppercase;
 }
 
-.tile-hero__area {
-  margin-left: 10px;
-  font-size: 12px;
-  color: rgba(255,255,255,0.48);
-  text-transform: none;
-  letter-spacing: 0.02em;
-}
-
-
 .tile-hero__title {
   margin: 8px 0 0 0;
   font-family: 'Dune Rise', 'Montserrat Alternates', sans-serif;
@@ -145,19 +130,9 @@
   z-index: 1;
 }
 
-/* Accent color for Tile 1 */
 .tile-hero--one .tile-hero__label,
 .tile-hero--one .tile-hero__title {
   color: #f75a00;
-}
-
-.tile-hero__subtitle {
-  margin: 8px 0 0 0;
-  color: rgba(255,255,255,0.75);
-  max-width: 680px;
-  line-height: 1.35;
-  position: relative;
-  z-index: 1;
 }
 
 .board-tiles__detail-body {
@@ -193,22 +168,6 @@
   align-items: flex-start;
 }
 
-/* Removed pill styles — pills eliminated from markup */
-
-.tile-detail__portrait {
-  display: grid;
-  place-items: center;
-  min-width: 96px;
-  min-height: 96px;
-  padding: 12px;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.72);
-  text-align: center;
-  font-size: 12px;
-}
-
 .tile-detail__portrait-flair,
 .tile-detail__npc-image .tile-detail__portrait-flair {
   margin-bottom: 8px;
@@ -220,7 +179,6 @@
   text-transform: uppercase;
 }
 
-/* General section styling */
 .tile-detail__section {
   display: flex;
   flex-direction: column;
@@ -231,7 +189,6 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Placed after .tile-detail__section to properly override layout */
 .tile-detail__npc-block {
   display: flex;
   flex-direction: row;
@@ -269,6 +226,259 @@
   border-color: rgba(0, 183, 105, 0.17);
 }
 
+/* --- NEW MOCKUP MATCHING CSS --- */
+.mock-encounter-panel {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.mock-encounter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.mock-encounter-subtitle {
+  color: rgba(255,110,110,0.95);
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.mock-encounter-maintitle {
+  font-family: 'Dune Rise', sans-serif;
+  color: rgba(255,110,110,0.95);
+  font-size: 32px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.mock-encounter-pill {
+  border: 1px solid rgba(255,110,110,0.25);
+  color: rgba(255,110,110,0.95);
+  background: rgba(255,110,110,0.08);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mock-encounter-body {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.mock-encounter-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mock-encounter-description {
+  color: rgba(255,255,255,0.95);
+  font-size: 15px;
+  line-height: 1.6;
+  text-transform: none;
+}
+
+.mock-encounter-description strong {
+  display: block;
+  color: rgba(255,255,255,0.88);
+  font-size: 15px;
+  margin-bottom: 6px;
+  text-transform: none;
+}
+
+.mock-encounter-description p {
+  color: rgba(255,255,255,0.82);
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  text-transform: none;
+  margin: 0;
+}
+
+.board-tiles__detail--cat-encounter .mock-encounter-description strong {
+  color: rgba(255,110,110,0.95);
+}
+
+/* Health and Energy Bars */
+.mock-encounter-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mock-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-family: monospace;
+  margin-bottom: 6px;
+}
+
+.mock-hp-label, .mock-hp-val { color: rgba(255,255,255,0.78); }
+.mock-energy-label, .mock-energy-val { color: rgba(255,255,255,0.78); }
+
+.mock-hp-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mock-hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0,200,120,0.95), rgba(0,150,100,0.95));
+  box-shadow: 0 2px 8px rgba(0,150,100,0.18);
+  transition: width 0.3s ease;
+}
+
+.mock-energy-segments {
+  display: inline-flex;
+  gap: 6px;
+  height: 10px;
+}
+
+.mock-energy-segment {
+  width: 18px;
+  height: 10px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: all 0.2s ease;
+}
+
+.mock-energy-segment.filled {
+  background: linear-gradient(90deg, #5fb3ff, #2b8cff);
+  box-shadow: 0 2px 6px rgba(43,140,204,0.24);
+  border-color: rgba(43,140,204,0.4);
+}
+
+/* Controls Grid Setup */
+.mock-controls-grid {
+  display: grid;
+  grid-template-columns: 80px 140px 1fr 1fr;
+  gap: 12px 12px;
+  align-items: center;
+}
+
+.mock-ctrl-label {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mock-ctrl-input {
+  width: 100%;
+  background-color: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: white;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.mock-ctrl-btn {
+  border: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.mock-ctrl-btn:hover {
+  opacity: 0.96;
+  transform: translateY(-1px);
+}
+
+.mock-btn-heal {
+  background: linear-gradient(135deg, rgba(0,200,120,0.95), rgba(0,150,100,0.95));
+}
+
+.mock-btn-damage {
+  background: linear-gradient(135deg, rgba(255,95,95,0.95), rgba(211,48,48,0.95));
+}
+
+.mock-btn-consume {
+  background: linear-gradient(135deg, rgba(95,179,255,0.95), rgba(43,140,204,0.95));
+}
+
+.mock-btn-restore {
+  background: linear-gradient(135deg, rgba(60,190,255,0.95), rgba(12,120,200,0.95));
+}
+
+.mock-btn-ac {
+  background: linear-gradient(135deg, rgba(255,110,110,0.95), rgba(255,80,80,0.95));
+}
+
+.mock-btn-full {
+  grid-column: 3 / span 2;
+}
+
+/* Right Side Portrait */
+.mock-encounter-right {
+  width: 240px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.mock-portrait-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 2px solid rgba(243, 112, 33, 0.2);
+  box-shadow: 0 0 20px rgba(243, 112, 33, 0.4);
+}
+
+.mock-hex-badge {
+  position: absolute;
+  top: -16px;
+  left: -20px;
+  width: 64px;
+  height: 74px;
+  background: linear-gradient(180deg, rgba(255,110,110,0.95), rgba(255,80,80,0.95));
+  border: 1px solid rgba(255,110,110,0.18);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-shadow: 0 8px 18px rgba(255,110,110,0.2);
+  z-index: 2;
+}
+
+.mock-hex-val {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.mock-hex-lbl {
+  font-size: 14px;
+}
+
+/* Base Restorations for lower elements */
 .tile-detail__reward-panel {
   display: inline-flex;
   align-items: center;
@@ -301,15 +511,22 @@
   text-transform: uppercase;
 }
 
-/* Category-specific section title colors (only for titles/labels, not body text) */
 .board-tiles__detail--cat-start .tile-detail__section-title,
 .board-tiles__detail--cat-start .tile-detail__text-row strong {
   color: rgba(95,179,255,0.95);
 }
 
 .board-tiles__detail--cat-encounter .tile-detail__section-title,
-.board-tiles__detail--cat-encounter .tile-detail__text-row strong {
+.board-tiles__detail--cat-encounter .tile-detail__text-row strong,
+.board-tiles__detail--cat-encounter .mock-encounter-subtitle,
+.board-tiles__detail--cat-encounter .mock-encounter-maintitle,
+.board-tiles__detail--cat-encounter .mock-encounter-pill {
   color: rgba(255,110,110,0.95);
+}
+
+.board-tiles__detail--cat-encounter .mock-encounter-pill {
+  border-color: rgba(255,110,110,0.25);
+  background: rgba(255,110,110,0.08);
 }
 
 .tile-detail__text-row {
@@ -342,22 +559,12 @@
   .board-tiles__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .tile-detail__header {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .tile-detail__portrait {
-    min-width: auto;
-    width: 100%;
-  }
-
-  .tile-detail__npc-block {
-    flex-direction: column;
-  }
-
-  .tile-detail__npc-image {
-    width: 100%;
-  }
+  .tile-detail__header { flex-direction: column; align-items: stretch; }
+  .tile-detail__portrait { min-width: auto; width: 100%; }
+  .tile-detail__npc-block { flex-direction: column; }
+  .tile-detail__npc-image { width: 100%; }
+  
+  .mock-encounter-body { flex-direction: column; }
+  .mock-controls-grid { grid-template-columns: 80px 100px 1fr 1fr; }
+  .mock-encounter-right { width: 100%; max-width: 300px; margin: 0 auto; }
 }
