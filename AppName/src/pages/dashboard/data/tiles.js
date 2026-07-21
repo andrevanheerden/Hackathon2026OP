@@ -14,7 +14,7 @@ export const tiles = [
         'Standing before you is a tall, slender figure wearing a tailored, jet-black business suit, crisp white shirt, and black tie. In place of a head sits a retro CRT television monitor flickering with static, color bars, and a pulsing digital mono-eye.',
       voiceStyle:
         'Smooth, theatrical, and charismatic—like a classic game show host—backed by a gentle background hum of electronic static and pitch modulation.',
-      npcImage: '110056784640263567.jpeg',
+      npcImage: 'TVhead.png',
       eventStory:
         'As your vision clears, you brush the sand off your clothes. The TV-headed figure applauds with quiet, slow claps, his monitor flickering to a wide smiling icon before returning to color bars.',
       dialogue:
@@ -67,7 +67,7 @@ export const tiles = [
     details: {
       environment:
         'An overturned, sun-bleached wooden merchant carriage lies collapsed against a boulder, its wheels broken and splintered.',
-      eventStory - read to players:
+      eventStory:
         'You inspect the abandoned wreckage. Cloth sacks and shattered glass jars lie strewn about, but beneath a fallen wooden axle, a reinforced iron lockbox remains intact.',
       reward: 'Chest Loot: each player draws 1 Action Card.',
     },

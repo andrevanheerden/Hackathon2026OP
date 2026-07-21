@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import './BoardTiles.css';
 
 import zombie from '../../data/encounerImg/zombie.png';
+import TVheadImg from '../../data/encounerImg/TVhead.png';
 import QuickSlashImg from '../../data/actionCards/QuickSlashCommon.png';
 import PummelImg from '../../data/actionCards/PummelCommon.png';
 import HeavySlamImg from '../../data/actionCards/HeavySlamRare.png';
@@ -222,7 +223,10 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
               
               {/* Event Description */}
               <div className="tile-detail__section">
-                <p className="tile-detail__section-title">Event Description</p>
+                <div className="tile-detail__section-header">
+                  <p className="tile-detail__section-title">Event Description</p>
+                  <span className="tile-detail__section-pill">Read to player</span>
+                </div>
                 <div className="tile-detail__text-row">
                   <strong>Environment</strong>
                   <span>{selectedTile.details.environment}</span>
@@ -231,30 +235,47 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
               
               {/* NPC Block */}
               {(selectedTile.details.npcAppearance || selectedTile.details.npcImage || selectedTile.details.voiceStyle || selectedTile.details.npcLabel) && (
-                <div className="tile-detail__section tile-detail__npc-block">
-                  <div className="tile-detail__npc-image">
-                    <div className="tile-detail__portrait-flair">{selectedTile.details.npcLabel || 'NPC'}</div>
-                    <span>{selectedTile.details.npcImage ? 'Image placeholder' : 'NPC'}</span>
+                <div className="tile-detail__section tile-detail__npc-section">
+                    <div className="tile-detail__section-header tile-detail__section-header--npc">
+                    <p className="tile-detail__section-title">NPC</p>
+                    <span className="tile-detail__section-pill tile-detail__section-pill--npc">NPC Info</span>
                   </div>
-                  <div className="tile-detail__npc-copy">
-                    {selectedTile.details.npcAppearance && (
-                      <div className="tile-detail__text-row">
-                        <strong>NPC Appearance</strong>
-                        <span>{selectedTile.details.npcAppearance}</span>
-                      </div>
-                    )}
-                    {selectedTile.details.voiceStyle && (
-                      <div className="tile-detail__text-row">
-                        <strong>Voice Style</strong>
-                        <span>{selectedTile.details.voiceStyle}</span>
-                      </div>
-                    )}
+                  <div className="tile-detail__npc-block">
+                    <div className="tile-detail__npc-image">
+                      {selectedTile.details.npcImage ? (
+                        <img
+                          src={selectedTile.details.npcImage === 'TVhead.png' ? TVheadImg : selectedTile.details.npcImage}
+                          alt={selectedTile.details.npcLabel || 'NPC'}
+                          className="tile-detail__npc-image-img"
+                          onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.style.display = 'none'; }}
+                        />
+                      ) : (
+                        <span>NPC</span>
+                      )}
+                    </div>
+                    <div className="tile-detail__npc-copy">
+                      {selectedTile.details.npcAppearance && (
+                        <div className="tile-detail__text-row">
+                          <strong>NPC Appearance</strong>
+                          <span>{selectedTile.details.npcAppearance}</span>
+                        </div>
+                      )}
+                      {selectedTile.details.voiceStyle && (
+                        <div className="tile-detail__text-row">
+                          <strong>Voice Style</strong>
+                          <span>{selectedTile.details.voiceStyle}</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}
               
               <div className="tile-detail__section">
-                <p className="tile-detail__section-title">Event Story</p>
+                <div className="tile-detail__section-header">
+                  <p className="tile-detail__section-title">Event Story</p>
+                  <span className="tile-detail__section-pill">Read to player</span>
+                </div>
                 <span>{selectedTile.details.eventStory}</span>
               </div>
               
@@ -486,7 +507,10 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
 
               {selectedTile.details.dialogue && (
                 <div className="tile-detail__section">
-                  <p className="tile-detail__section-title">Dialogue</p>
+                  <div className="tile-detail__section-header">
+                    <p className="tile-detail__section-title">Dialogue</p>
+                    <span className="tile-detail__section-pill">Read to player</span>
+                  </div>
                   <span>{selectedTile.details.dialogue}</span>
                 </div>
               )}
