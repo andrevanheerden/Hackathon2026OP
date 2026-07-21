@@ -221,9 +221,20 @@
   min-width: 0;
 }
 
-.tile-detail__section--reward {
+..tile-detail__section--reward {
   background: rgba(22, 49, 26, 0.18);
   border-color: rgba(0, 183, 105, 0.17);
+}
+
+.encounter-container {
+  width: min(100%, 500px);
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: flex-start;
+  background: transparent;
+  margin-top: 8px;
 }
 
 /* --- NEW MOCKUP MATCHING CSS --- */
@@ -238,6 +249,7 @@
   font-family: sans-serif;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .mock-encounter-header {
@@ -245,6 +257,13 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
+}
+
+.mock-encounter-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
 }
 
 .mock-encounter-subtitle {

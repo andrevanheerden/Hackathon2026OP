@@ -114,16 +114,16 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
               
               {/* NEW ENCOUNTER SECTION DESIGN */}
               {selectedTile.details.encounter && (
-                <div className="mock-encounter-panel">
-                  
-                  {/* Encounter Header */}
-                  <div className="mock-encounter-header">
-                    <div className="mock-encounter-titles">
-                      <div className="mock-encounter-subtitle">ENCOUNTER</div>
-                      <div className="mock-encounter-maintitle">{selectedTile.details.encounter.name}</div>
+                <div className="encounter-container">
+                  <div className="mock-encounter-panel">
+                    {/* Encounter Header */}
+                    <div className="mock-encounter-header">
+                      <div className="mock-encounter-titles">
+                        <div className="mock-encounter-subtitle">ENCOUNTER</div>
+                        <div className="mock-encounter-maintitle">{selectedTile.details.encounter.name}</div>
+                      </div>
+                      <div className="mock-encounter-pill">ENCOUNTER</div>
                     </div>
-                    <div className="mock-encounter-pill">ENCOUNTER</div>
-                  </div>
 
                   <div className="mock-encounter-body">
                     {/* Left Column: Stats and Controls */}
