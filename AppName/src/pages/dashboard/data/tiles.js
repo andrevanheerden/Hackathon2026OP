@@ -280,7 +280,7 @@ export const tiles = [
       eventStory:
         'As you step inside the merchant tent, the floor shudders and the tent fabric snaps tight. Hidden needles shoot from the walls as the room collapses into a spring-loaded pit!',
       trapEffect:
-        'Hidden Pitfall: The player is forced to discard 1 card from hand and cannot move for 1 turn while they climb out.',
+        'Hidden Pitfall: The player is forced to discard 1 card from hand',
     },
   },
   {
