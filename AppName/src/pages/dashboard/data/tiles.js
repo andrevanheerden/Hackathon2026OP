@@ -206,7 +206,7 @@ export const tiles = [
         appearance:
           'This shadowy, dark-skinned figure features spiky black hair, pointed ears, glowing yellow eyes, and a face mask covering its lower features. It wears a tattered olive cloak over worn robes with cloth wrappings bound around its forearms, legs, and feet. In one hand it holds a heavy, notched blade, while conjuring a blazing fireball in the other.',
         image: 'bandit.png',
-        hp: 20,
+        hp: 22,
         ac: 5,
         energy: 4,
         resistances: ['Water'],
@@ -301,7 +301,7 @@ export const tiles = [
         appearance:
           'This green-skinned zombie wears tattered, hooded robes with cloth wrappings bound around its head and limbs. It features glowing white eyes, sharp teeth, and a large wooden beam strapped to its back alongside a scorpion-marked shoulder piece.',
         image: 'zombieArmor.png',
-        hp: 25,
+        hp: 20,
         ac: 6,
         energy: 3,
         resistances: ['Slash'],
@@ -376,7 +376,7 @@ export const tiles = [
         appearance:
           'Fully armored paladin in polished steel plate with a scorpion crest on his shoulder, wielding a broadsword and long cape.',
         image: 'DualKight.png',
-        hp: 30,
+        hp: 35,
         ac: 7,
         energy: 4,
         resistances: ['Slash', 'Blunt'],
