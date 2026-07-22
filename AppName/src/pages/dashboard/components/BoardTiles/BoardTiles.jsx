@@ -24,7 +24,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
   const [energyAmount, setEnergyAmount] = useState('');
   const [acAmount, setAcAmount] = useState('');
   const [damageType, setDamageType] = useState('slash');
-  const damageTypes = ['slash', 'fire', 'blunt', 'force', 'water'];
+  const damageTypes = ['slash', 'blunt', 'fire', 'water', 'acid', 'force'];
   const activePlayers = Array.isArray(players) ? players.filter((player) => player.isActive) : [];
   const playersCount = activePlayers.length > 0 ? activePlayers.length : 1;
   const categorySlug = selectedTile ? String((selectedTile.category || selectedTile.type || '')).toLowerCase().replace(/[^a-z0-9]+/g, '-') : '';
