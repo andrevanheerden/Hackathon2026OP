@@ -507,13 +507,12 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                               onChange={(e) => setAcAmount(e.target.value.replace(/[^0-9]/g, ''))}
                             />
                             <div style={{ display: 'flex', gap: 8 }}>
-                              <button type="button" className="encounter-action-btn encounter-action-btn--ac" onClick={removeAc}>
+                              <button type="button" className="encounter-action-btn encounter-action-btn--damage" onClick={removeAc}>
                                 REMOVE
                               </button>
-                              <button type="button" className="encounter-action-btn encounter-action-btn--ac" onClick={addAc}>
+                              <button type="button" className="encounter-action-btn encounter-action-btn--add" onClick={addAc}>
                                 ADD
                               </button>
-                              
                             </div>
                           </label>
                         </div>

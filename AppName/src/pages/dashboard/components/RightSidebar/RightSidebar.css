@@ -366,8 +366,9 @@
   letter-spacing: 0.12em;
 }
 
-.player__action-button--primary {
-  background: linear-gradient(135deg, rgba(0, 200, 120, 0.95), rgba(0, 150, 100, 0.95));
+.player__action-button--primary,
+.player__action-button--restore {
+  background: linear-gradient(135deg, rgba(60, 190, 255, 0.95), rgba(12, 120, 200, 0.95));
 }
 
 .player__action-button--danger {

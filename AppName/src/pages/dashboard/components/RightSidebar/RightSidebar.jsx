@@ -304,7 +304,7 @@ function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () =
                   <div style={{ display: 'flex', gap: 8 }}>
                     <button
                       type="button"
-                      className="player__action-button"
+                      className="player__action-button player__action-button--danger"
                       onClick={() => {
                         const parsed = Number.parseInt(energyAmount, 10);
                         if (!selectedPlayer || !Number.isFinite(parsed) || parsed <= 0) return;
@@ -318,7 +318,7 @@ function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () =
                     </button>
                     <button
                       type="button"
-                      className="player__action-button player__action-button--primary"
+                      className="player__action-button player__action-button--restore"
                       onClick={() => {
                         const parsed = Number.parseInt(energyAmount, 10);
                         if (!selectedPlayer || !Number.isFinite(parsed) || parsed <= 0) return;

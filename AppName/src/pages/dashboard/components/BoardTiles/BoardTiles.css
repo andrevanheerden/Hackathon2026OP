@@ -527,10 +527,11 @@
 }
 
 .encounter-action-btn--consume {
-  background: linear-gradient(135deg, rgba(95, 179, 255, 0.95), rgba(43, 140, 204, 0.95));
+  background: linear-gradient(135deg, rgba(255, 95, 95, 0.95), rgba(211, 48, 48, 0.95));
 }
 
-.encounter-action-btn--restore {
+.encounter-action-btn--restore,
+.encounter-action-btn--add {
   background: linear-gradient(135deg, rgba(60, 190, 255, 0.95), rgba(12, 120, 200, 0.95));
 }
 

@@ -6,53 +6,36 @@ import BoardTiles from './components/BoardTiles/BoardTiles';
 import RightSidebar from './components/RightSidebar/RightSidebar';
 import { tilesPageOne, tilesPageTwo } from './data/tiles';
 
-function Dashboard({ players = [] }) {
-  const [activePage, setActivePage] = useState('I-X');
-  const [selectedTileId, setSelectedTileId] = useState(11);
-  const [sessionPlayers, setSessionPlayers] = useState(players);
-
-  useEffect(() => {
-    setSessionPlayers(players);
-  }, [players]);
-
-
-  const updatePlayer = (playerId, changes) => {
-    setSessionPlayers((currentPlayers) =>
-      currentPlayers.map((player) => {
-        if (player.id !== playerId) {
-          return player;
-        }
-
-        if (typeof changes === 'function') {
-          return { ...player, ...changes(player) };
-        }
-
-        return { ...player, ...changes };
-      })
-    );
-  };
-
+function Dashboard({
+  players = [],
+  onNavigate = () => {},
+  onUpdatePlayer = () => {},
+  activePage = 'I-X',
+  onChangePage = () => {},
+  selectedTileId = 11,
+  onSelectTile = () => {},
+}) {
   const tiles = useMemo(() => (activePage === 'I-X' ? tilesPageOne : tilesPageTwo), [activePage]);
   const selectedTile = tiles.find((tile) => tile.id === selectedTileId);
 
   return (
     <div className="dashboard-shell">
-      <Sidebar />
+      <Sidebar onNavigate={onNavigate} activeView="dashboard" />
       <div className="dashboard-main">
-        <TopBar activePage={activePage} onChangePage={setActivePage} />
+        <TopBar activePage={activePage} onChangePage={onChangePage} />
         <div className="dashboard-content">
           <div className="dashboard-content__left">
             <BoardTiles
               tiles={tiles}
               selectedTileId={selectedTileId}
-              onSelectTile={setSelectedTileId}
+              onSelectTile={onSelectTile}
               selectedTile={selectedTile}
-              players={sessionPlayers}
+              players={players}
             />
           </div>
         </div>
       </div>
-      <RightSidebar selectedTile={selectedTile} players={sessionPlayers} onUpdatePlayer={updatePlayer} />
+      <RightSidebar selectedTile={selectedTile} players={players} onUpdatePlayer={onUpdatePlayer} />
     </div>
   );
 }
