@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Splash from './pages/splash/Splash';
 import Dashboard from './pages/dashboard/dashboard';
 import Rules from './pages/rules/Rules';
+import CardLibraryPage from './pages/cardLibary/CardLibraryPage';
 import './App.css';
 
 function App() {
@@ -47,6 +48,10 @@ function App() {
 
   if (currentView === 'rules') {
     return <Rules onNavigate={setCurrentView} />;
+  }
+
+  if (currentView === 'card-library') {
+    return <CardLibraryPage onNavigate={setCurrentView} />;
   }
 
   return (

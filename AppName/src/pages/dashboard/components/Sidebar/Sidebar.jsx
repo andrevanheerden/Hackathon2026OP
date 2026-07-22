@@ -3,6 +3,7 @@ import './Sidebar.css';
 function Sidebar({ onNavigate = () => {}, activeView = 'dashboard' }) {
   const isDashboard = activeView === 'dashboard';
   const isRules = activeView === 'rules';
+  const isCardLibrary = activeView === 'card-library';
 
   return (
     <aside className="sidebar">
@@ -41,6 +42,22 @@ function Sidebar({ onNavigate = () => {}, activeView = 'dashboard' }) {
           </svg>
         </span>
         <span>How to Play</span>
+      </button>
+
+      <button
+        type="button"
+        className={`sidebar__nav ${isCardLibrary ? 'sidebar__nav--active' : ''}`}
+        onClick={() => onNavigate('card-library')}
+      >
+        <span className="sidebar__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="4" width="16" height="16" rx="2" />
+            <path d="M8 8H16" strokeLinecap="round" />
+            <path d="M8 12H16" strokeLinecap="round" />
+            <path d="M8 16H12" strokeLinecap="round" />
+          </svg>
+        </span>
+        <span>Card Library</span>
       </button>
 
       <div className="sidebar__spacer" />
