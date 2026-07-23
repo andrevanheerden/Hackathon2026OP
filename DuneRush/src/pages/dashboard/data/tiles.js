@@ -1252,7 +1252,7 @@ export const tiles = [
         name: 'Sand Spider',
         appearance:
           'This tan, chitinous spider features a cluster of glowing cyan eyes, sharp fangs, and a large, cratered moon-like orb in place of an abdomen. Wreathed in swirling wisps of pale mist and glowing embers rising from the cracked ground, it stands poised on long, jointed legs.',
-        image: 'sandBug.png',
+        image: 'spider.png',
         hp: 22,
         ac: 6,
         energy: 4,
@@ -1342,6 +1342,138 @@ export const tiles = [
     },
   },
 
+
+  {
+    id: 50,
+    number: 50,
+    type: 'Encounter',
+    title: 'Flames of the Hound',
+    category: 'Encounter',
+    area: 'Scorched Peak',
+    highlighted: false,
+    details: {
+      npcName: 'Ignis Hound',
+      npcLabel: 'Enemy',
+      environment:
+        'A jagged, soot-stained basalt ridge overlooking rivers of bubbling liquid magma.',
+      eventStory:
+        'A massive, six-eyed hellhound forged from living embers bounds down from the fiery peak. Its skin crackles with raw heat as it snarls, eager to incinerate anyone who stands in its way!',
+      encounter: {
+        name: 'Fire Hound',
+        appearance:
+          'A giant canine predator covered in charcoal scales and glowing molten fur, dripping flame from its jaws with every growl.',
+        image: 'fireHound.png',
+        hp: 45,
+        ac: 6,
+        energy: 7,
+        resistances: ['Fire', 'Slash'],
+        vulnerabilities: ['Water'],
+        actionCards: [
+          { name: 'Firebolt', rarity: 'Common', image: 'Firebolt-Common-Fire.png' },
+          { name: 'SigeingSparks', rarity: 'Common', image: 'SigeingSparks-Common-Fire.png' },
+          { name: 'Guard', rarity: 'Common', image: 'Guard-Common-Support.png' },
+          { name: 'Quickster', rarity: 'Common', image: 'Quickster-Common-Support.png' },
+          { name: 'Fireball', rarity: 'Rare', image: 'Fireball-Rare-Fire.png' },
+          { name: 'Immolate', rarity: 'Rare', image: 'Immolate-Rare-Fire.png' },
+          { name: 'Haste Aura', rarity: 'Rare', image: 'HasteAura-Rare-Support.png' },
+          { name: 'Dragon Breath', rarity: 'Legendary', image: 'DragonBreath-Legendary-Fire.png' },
+          { name: 'Inferno', rarity: 'Legendary', image: 'Inferno-Legendary-Fire.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 2 Trait Cards.',
+    },
+  },
+  {
+    id: 51,
+    number: 51,
+    type: 'Encounter',
+    title: 'Apex Dragoon',
+    category: 'Encounter',
+    area: 'Scorched Peak',
+    highlighted: false,
+    details: {
+      npcName: 'Ashscale Wyvern',
+      npcLabel: 'Enemy',
+      environment:
+        'A high mountain perch suspended over a crater of swirling heat waves.',
+      eventStory:
+        'A massive, serpent-like draconic beast unleashes a deafening roar as it dives from the dark skies above, beating its wings to unleash shockwaves of telekinetic force and incinerating flames!',
+      encounter: {
+        name: 'Fire Wyvern',
+        appearance:
+          'A towering two-legged dragon covered in obsidian scales with glowing orange wing-membranes, venting pure magma from its chest.',
+        image: 'fireWyvern.png',
+        hp: 48,
+        ac: 7,
+        energy: 7,
+        resistances: ['Fire', 'Force'],
+        vulnerabilities: ['Water', 'Acid'],
+        actionCards: [
+          { name: 'Force Push', rarity: 'Common', image: 'ForcePush-Common-Force.png' },
+          { name: 'Fireball', rarity: 'Rare', image: 'Fireball-Rare-Fire.png' },
+          { name: 'Immolate', rarity: 'Rare', image: 'Immolate-Rare-Fire.png' },
+          { name: 'Telekinetic Slam', rarity: 'Rare', image: 'TelekineticSlam-Rare-Force.png' },
+          { name: 'Cure Wounds', rarity: 'Rare', image: 'CureWounds-Rare-Healing.png' },
+          { name: 'Dragon Breath', rarity: 'Legendary', image: 'DragonBreath-Legendary-Fire.png' },
+          { name: 'Inferno', rarity: 'Legendary', image: 'Inferno-Legendary-Fire.png' },
+          { name: 'Gravity Singularity', rarity: 'Legendary', image: 'GravitySingularity-Legendary-Force.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 2 Action Cards.',
+    },
+  },
+  {
+    id: 52,
+    number: 52,
+    type: 'Boss',
+    title: 'The Grand Finale',
+    category: 'Boss',
+    area: 'The Crucible',
+    highlighted: true,
+    details: {
+      npcName: 'Taurus Demon',
+      npcLabel: 'Final Boss',
+      environment:
+        'A colossal, sun-drenched gladiatorial arena surrounded by floating obsidian monoliths under the fiery glare of stadium spotlights.',
+      eventStory:
+        'The arena doors crash shut behind you. With a ground-shattering roar, a monstrous fiery demon bull clad in burning iron armor steps into the center ring, wielding a flaming greataxe that splits the floor!',
+      encounter: {
+        name: 'Taurus Demon',
+        appearance:
+          'A massive, broad-shouldered minotaur demon with fiery red skin, giant curved horns, glowing magma fissures running through its torso, and wielding an oversized obsidian blade dripping flame.',
+        image: 'taurusDemon.png',
+        hp: 55,
+        ac: 8,
+        energy: 10,
+        resistances: ['Fire', 'Slash', 'Blunt'],
+        vulnerabilities: ['Water'],
+        actionCards: [
+          { name: 'Blood Pact', rarity: 'Common', image: 'BloodPact-Common-Support.png' },
+          { name: 'Energize', rarity: 'Common', image: 'Energize-Common-Support.png' },
+          { name: 'Guard', rarity: 'Common', image: 'Guard-Common-Support.png' },
+          { name: 'Blade Dance', rarity: 'Rare', image: 'BladeDance-Rare-Slash.png' },
+          { name: 'Immolate', rarity: 'Rare', image: 'Immolate-Rare-Slash.png' },
+          { name: 'Bastion Projection', rarity: 'Rare', image: 'BastionProjection-Rare-Support.png' },
+          { name: 'Siphon Power', rarity: 'Rare', image: 'SiphonPower-Rare-Support.png' },
+          { name: 'Earthbreaker', rarity: 'Legendary', image: 'Earthbreaker-Legendary-Blunt.png' },
+          { name: 'Dragon Breath', rarity: 'Legendary', image: 'DragonBreath-Legendary-Fire.png' },
+          { name: 'Inferno', rarity: 'Legendary', image: 'Inferno-Legendary-Fire.png' },
+        ],
+      },
+      victoryOutro: {
+        hostName: 'Host Vox',
+        hostImage: 'TVhead.png',
+        narrative:
+          'The Taurus Demon collapses into a pile of cooling ash, its blazing axe shattering into thousands of harmless embers. As the dust settles, applause roars out from invisible speakers all around the arena. Vox, your TV-headed host, suddenly materializes directly in front of you with a grand flourish, his screen displaying a massive, glittering gold trophy emoji!',
+        dialogue:
+          '"STUNNING! SPECTACULAR! BRAVO! Oh, what a show, contestants! What raw, unfiltered entertainment! You surpassed every expectation, survived every trap, and utterly crushed my grand champion! The Higher Beings are beyond impressed—and frankly, so am I. A promise is a promise, my magnificent champions. I am sending you back home to your realm. Keep your heads high... until our next season! Farewell!"',
+        endingEffect:
+          'Vox snaps his fingers. A brilliant beam of white light consumes the arena as your vision blurs, pulling you out of Dune Rush and back to safety. YOU WIN!',
+      },
+      reward: 'GAME COMPLETED - VICTORY!',
+    },
+  },
+
 ];
 
 // Show up to 10 tiles per page (5 columns × 2 rows)
@@ -1350,3 +1482,4 @@ export const tilesPageTwo = tiles.slice(10, 20);
 export const tilesPageThree = tiles.slice(20, 30);
 export const tilesPageFour = tiles.slice(30, 40);
 export const tilesPageFive = tiles.slice(40, 50);
+export const tilesPageSix = tiles.slice(50, 60);

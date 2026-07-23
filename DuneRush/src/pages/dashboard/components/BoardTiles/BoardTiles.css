@@ -33,6 +33,17 @@
   gap: 10px;
 }
 
+.board-tiles__detail--cat-boss {
+  border-color: rgba(139, 0, 0, 0.55);
+  background: linear-gradient(90deg, rgba(33, 7, 8, 0.95) 0%, rgba(58, 8, 8, 0.95) 100%);
+}
+
+.board-tiles__detail--cat-boss .board-tiles__detail-label,
+.board-tiles__detail--cat-boss .tile-hero__pill,
+.board-tiles__detail--cat-boss .board-tiles__detail-top h3 {
+  color: #b21b1b;
+}
+
 /* Category accent outlines for selected/detail view */
 
 .board-tiles__detail-label {

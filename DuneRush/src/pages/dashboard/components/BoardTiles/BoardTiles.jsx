@@ -9,6 +9,7 @@ import sandDog from '../../data/encounerImg/sandDog.png';
 import bandit from '../../data/encounerImg/bandit.png';
 import sandSharkImg from '../../data/encounerImg/sandShark.png';
 import fireFoxImg from '../../data/encounerImg/fireFox.png';
+import fireElementalImg from '../../data/encounerImg/fireElemental.png';
 import fishmanImg from '../../data/encounerImg/fishman.png';
 import waterElementalImg from '../../data/encounerImg/waterElemental.png';
 import TVheadImg from '../../data/encounerImg/TVhead.png';
@@ -17,6 +18,7 @@ import GamblerImg from '../../data/encounerImg/gambler.png';
 import DualKightImg from '../../data/encounerImg/DualKight.png';
 import sandGolemImg from '../../data/encounerImg/sandGolem.png';
 import mudGolemImg from '../../data/encounerImg/mudGolem.png';
+import spiderImg from '../../data/encounerImg/spider.png';
 import babySandWormImg from '../../data/encounerImg/babySandWorm.png';
 import babySandCrallerImg from '../../data/encounerImg/babySandCraller.png';
 
@@ -64,11 +66,13 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     'bandit.png': bandit,
     'sandShark.png': sandSharkImg,
     'fireFox.png': fireFoxImg,
+    'fireElemental.png': fireElementalImg,
     'fishman.png': fishmanImg,
     'waterElemental.png': waterElementalImg,
     'zombieArmor.png': zombieArmor,
     'sandGolem.png': sandGolemImg,
     'mudGolem.png': mudGolemImg,
+    'spider.png': spiderImg,
     'DualKight.png': DualKightImg,
     'babySandWorm.png': babySandWormImg,
     'babySandworm.png': babySandWormImg,
