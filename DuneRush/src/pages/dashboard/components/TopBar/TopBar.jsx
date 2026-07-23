@@ -30,6 +30,20 @@ function TopBar({ activePage, onChangePage }) {
         >
           Tiles XXI–XXX
         </button>
+        <button
+          type="button"
+          className={`topbar__button ${activePage === 'XXXI-XXXIX' ? 'topbar__button--active' : ''}`}
+          onClick={() => onChangePage('XXXI-XXXIX')}
+        >
+          Tiles XXXI–XXXIX
+        </button>
+        <button
+          type="button"
+          className={`topbar__button ${activePage === 'XL-XLIX' ? 'topbar__button--active' : ''}`}
+          onClick={() => onChangePage('XL-XLIX')}
+        >
+          Tiles XL–XLIX
+        </button>
       </div>
     </header>
   );

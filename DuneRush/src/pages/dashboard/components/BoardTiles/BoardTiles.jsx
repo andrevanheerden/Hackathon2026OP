@@ -7,6 +7,9 @@ import zombie from '../../data/encounerImg/zombie.png';
 import zombieArmor from '../../data/encounerImg/zombieArmor.png';
 import sandDog from '../../data/encounerImg/sandDog.png';
 import bandit from '../../data/encounerImg/bandit.png';
+import sandSharkImg from '../../data/encounerImg/sandShark.png';
+import fishmanImg from '../../data/encounerImg/fishman.png';
+import waterElementalImg from '../../data/encounerImg/waterElemental.png';
 import TVheadImg from '../../data/encounerImg/TVhead.png';
 import MerchantImg from '../../data/encounerImg/Merchant.png';
 import GamblerImg from '../../data/encounerImg/gambler.png';
@@ -51,6 +54,9 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
   const encounterImageMap = {
     'sandDog.png': sandDog,
     'bandit.png': bandit,
+    'sandShark.png': sandSharkImg,
+    'fishman.png': fishmanImg,
+    'waterElemental.png': waterElementalImg,
     'zombieArmor.png': zombieArmor,
     'sandGolem.png': sandGolemImg,
     'mudGolem.png': mudGolemImg,

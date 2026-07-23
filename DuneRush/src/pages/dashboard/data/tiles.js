@@ -473,7 +473,7 @@ export const tiles = [
     type: 'Encounter',
     title: 'Burrowing Threat',
     category: 'Encounter',
-    area: 'Abandoned Village',
+    area: 'Deep Desert',
     highlighted: false,
     details: {
       npcName: 'Chitina the Sand Crawler',
@@ -507,7 +507,7 @@ export const tiles = [
     type: 'Discovery',
     title: 'Forgotten Reliquary',
     category: 'Discovery',
-    area: 'Abandoned Village',
+    area: 'Deep Desert',
     highlighted: false,
     details: {
       environment:
@@ -524,7 +524,7 @@ export const tiles = [
     type: 'Trap',
     title: 'Canyon Rockfall',
     category: 'Trap',
-    area: 'Abandoned Village',
+    area: 'Deep Desert',
     highlighted: true,
     details: {
       environment:
@@ -541,7 +541,7 @@ export const tiles = [
     type: 'Encounter',
     title: 'Wormling Emergence',
     category: 'Encounter',
-    area: 'Abandoned Village',
+    area: 'Deep Desert',
     highlighted: false,
     details: {
       npcName: 'Graveljaw the Wurmling',
@@ -576,7 +576,7 @@ export const tiles = [
     type: 'Discovery',
     title: 'Abandoned Merchant Cart',
     category: 'Discovery',
-    area: 'Abandoned Village',
+    area: 'Deep Desert',
     highlighted: false,
     details: {
       environment:
@@ -592,7 +592,7 @@ export const tiles = [
     type: 'Trap',
     title: 'Rockslide Blockade',
     category: 'Trap',
-    area: 'Abandoned Village',
+    area: 'Deep Desert',
     highlighted: true,
     details: {
       environment:
@@ -609,7 +609,7 @@ export const tiles = [
     type: 'Merchant',
     title: "Nomad's Exchange",
     category: 'Merchant',
-    area: 'Abandoned Village',
+    area: 'Deep Desert',
     highlighted: false,
     details: {
       npcName: 'Sskesh the Nomad',
@@ -643,7 +643,7 @@ export const tiles = [
     type: 'Encounter',
     title: 'Guardians of the Sand',
     category: 'Encounter',
-    area: 'Abandoned Village',
+    area: 'Deep Desert',
     highlighted: false,
     details: {
       npcName: 'Sand Golem',
@@ -678,7 +678,7 @@ export const tiles = [
     type: 'Merchant',
     title: 'The Snake-Eyes Den',
     category: 'Merchant',
-    area: 'Abandoned Village',
+    area: 'Deep Desert',
     highlighted: false,
     details: {
       npcName: 'Zaros the Gambler',
@@ -803,12 +803,547 @@ export const tiles = [
       eventStory:
         'As you step over the fissure, a subterranean earthquake strikes! The ground beneath your feet groans as violent tremors tear through the earth, physically shifting and re-aligning the terrain beneath the entire Oasis!',
       trapEffect:
+        'World Shift: The GM physically rotates the Oasis Node on the game board, shifting path connections!',
+    },
+  },
+  {
+    id: 30,
+    number: 30,
+    type: 'Encounter',
+    title: 'Depth Stalker',
+    category: 'Encounter',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      npcName: 'Siltfin the Fishman',
+      npcLabel: 'Enemy',
+      environment:
+        'A murky lagoon bank surrounded by dense reeds and slippery, moss-covered rocks.',
+      eventStory:
+        'A scaly humanoid with webbing between its claws and rows of needle-sharp teeth erupts from the lagoon, whipping water around itself as it prepares to strike!',
+      encounter: {
+        name: 'Siltfin (Fishman Marauder)',
+        appearance:
+          'A hunched, amphibious warrior covered in wet blue scales, featuring bulging yellow eyes, flared gills, and sharp fin spines running along its back.',
+        image: 'fishman.png',
+        hp: 28,
+        ac: 5,
+        energy: 6,
+        resistances: ['Water'],
+        vulnerabilities: ['Fire', 'Acid'],
+        actionCards: [
+          { name: 'Water Splash', rarity: 'Common', image: 'WaterSplash-Common-Water.png' },
+          { name: 'Soaking Mist', rarity: 'Common', image: 'SoakingMist-Common-Water.png' },
+          { name: 'Aqua Torrent', rarity: 'Rare', image: 'AquaTorrent-Rare-Water.png' },
+          { name: 'Choking Bubble', rarity: 'Rare', image: 'ChokingBubble-Rare-Water.png' },
+          { name: 'Crushing Abyssal Grip', rarity: 'Legendary', image: 'CrushingAbyssalGrip-Legendary-Water.png' },
+          { name: 'Tidal Wave', rarity: 'Legendary', image: 'TidalWave-Legendary-Water.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Action Card.',
+    },
+  },
+  {
+    id: 31,
+    number: 31,
+    type: 'Trap',
+    title: 'Fruit of Delusion',
+    category: 'Trap',
+    area: 'Oasis',
+    highlighted: true,
+    details: {
+      environment:
+        'A strange, glowing palm tree overhanging the oasis pool, bearing sweet-smelling violet dates.',
+      eventStory:
+        'Enticed by the sweet fragrance, your group approaches the tree. The fruit looks intoxicatingly delicious, but a haze of spores lingers around the low-hanging branches...',
+      trapEffect:
+        'Cursed Indulgence: Each player chooses whether to eat the fruit. Any player who eats it falls into a daze and loses 1 Trait Card from their hand!',
+    },
+  },
+  {
+    id: 32,
+    number: 32,
+    type: 'Encounter',
+    title: 'Aquatic Manifestation',
+    category: 'Encounter',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      npcName: 'Water Elemental',
+      npcLabel: 'Enemy',
+      environment:
+        'A swirling whirlpool at the heart of a deep oasis basin.',
+      eventStory:
+        'The tranquil oasis water surges upward into a roaring, fluid humanoid entity. It bends the surrounding currents to its will, rising up to wash away intruders!',
+      encounter: {
+        name: 'Water Elemental',
+        appearance:
+          'A massive, translucent creature composed entirely of churning water, with glowing blue eyes floating inside a vortex body.',
+        image: 'waterElemental.png',
+        hp: 32,
+        ac: 6,
+        energy: 6,
+        resistances: ['Water', 'Blunt'],
+        vulnerabilities: ['Acid'],
+        actionCards: [
+          { name: 'Water Splash', rarity: 'Common', image: 'WaterSplash-Common-Water.png' },
+          { name: 'Soaking Mist', rarity: 'Common', image: 'SoakingMist-Common-Water.png' },
+          { name: 'Snare', rarity: 'Common', image: 'Snare-Common-Support.png' },
+          { name: 'Aqua Torrent', rarity: 'Rare', image: 'AquaTorrent-Rare-Water.png' },
+          { name: 'Choking Bubble', rarity: 'Rare', image: 'ChokingBubble-Rare-Water.png' },
+          { name: 'Crushing Abyssal Grip', rarity: 'Legendary', image: 'CrushingAbyssalGrip-Legendary-Water.png' },
+          { name: 'Tidal Wave', rarity: 'Legendary', image: 'TidalWave-Legendary-Water.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Trait Card.',
+    },
+  },
+  {
+    id: 33,
+    number: 33,
+    type: 'Discovery',
+    title: 'Bountiful Oasis Flora',
+    category: 'Discovery',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      environment:
+        'A pristine grove of tropical trees sheltered beneath high rock walls.',
+      eventStory:
+        'You discover a healthy fruit tree nourished by clean spring water. Its golden fruits glow with clear, revitalizing magic.',
+      reward:
+        'Nourishing Harvest: Players can choose to eat the fruit. Each player who eats it draws 1 Action Card.',
+    },
+  },
+  {
+    id: 34,
+    number: 34,
+    type: 'Trap',
+    title: 'The Tectonic Shift',
+    category: 'Trap',
+    area: 'Oasis',
+    highlighted: true,
+    details: {
+      environment:
+        'A wet faultline running through the oasis soil, emitting a sudden violent shudder.',
+      eventStory:
+        'As you step across the marshy ground, an earthquake strikes! The mud and stone shift violently as the entire terrain realigns itself!',
+      trapEffect:
         'World Shift: The GM physically rotates the Oasis Node on the game board by 90 degrees, shifting path connections!',
     },
   },
+  {
+    id: 35,
+    number: 35,
+    type: 'Encounter',
+    title: 'Wormling Ambush',
+    category: 'Encounter',
+    area: 'Deep Desert',
+    highlighted: false,
+    details: {
+      npcName: 'Graveljaw the Wurmling',
+      npcLabel: 'Enemy',
+      environment:
+        'A muddy dune clearing where saturated soil meets sand.',
+      eventStory:
+        'The muddy sand erupts as a juvenile sand worm bursts into the air, its acidic maw dripping violently as it lurches toward the group!',
+      encounter: {
+        name: 'Graveljaw (Baby Sand Worm)',
+        appearance:
+          'A long, segmented subterranean worm with dripping mandibles, pale scales, and glowing acid-secreting glands along its underbelly.',
+        image: 'babySandWorm.png',
+        hp: 26,
+        ac: 5,
+        energy: 4,
+        resistances: ['Force'],
+        vulnerabilities: ['Slash', 'Fire'],
+        actionCards: [
+          { name: 'Force Push', rarity: 'Common', image: 'ForcePush-Common-Force.png' },
+          { name: 'Pummel', rarity: 'Common', image: 'Pummel-Common-Blunt.png' },
+          { name: 'Pummel', rarity: 'Common', image: 'Pummel-Common-Blunt.png' },
+          { name: 'Caustic Cloud', rarity: 'Legendary', image: 'CausticCloud-Legendary-Acid.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Action Card.',
+    },
+  },
+  {
+    id: 36,
+    number: 36,
+    type: 'Encounter',
+    title: 'Flame-Wielder Ambush',
+    category: 'Encounter',
+    area: 'Deep Desert',
+    highlighted: false,
+    details: {
+      npcName: 'Ignis the Marauder Captain',
+      npcLabel: 'Enemy',
+      environment:
+        'A narrow rocky pass overlooking the oasis trail.',
+      eventStory:
+        'A seasoned bandit leader drops from a high stone ledge! Flashing a notched blade and channeling an intense fiery aura, he demands your surrender.',
+      dialogue:
+        '"You thought you were safe in the water? Ashes are all that will remain of you!"',
+      encounter: {
+        name: 'Ignis (Marauder Captain)',
+        appearance:
+          'A battle-hardened bandit wrapped in charred leather armor and a hooded cloak, holding a notched sword while breathing smoke.',
+        image: 'bandit.png',
+        hp: 35,
+        ac: 6,
+        energy: 5,
+        resistances: ['Water'],
+        vulnerabilities: ['Slash'],
+        actionCards: [
+          { name: 'Firebolt', rarity: 'Common', image: 'Firebolt-Common-Fire.png' },
+          { name: 'Quick Slash', rarity: 'Common', image: 'QuickSlash-Common-Slash.png' },
+          { name: 'Fireball', rarity: 'Rare', image: 'Fireball-Rare-Fire.png' },
+          { name: 'Dragon Breath', rarity: 'Legendary', image: 'DragonBreath-Legendary-Fire.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Action Card.',
+    },
+  },
+  {
+    id: 37,
+    number: 37,
+    type: 'Trap',
+    title: 'Tremor Rockfall',
+    category: 'Trap',
+    area: 'Deep Desert',
+    highlighted: true,
+    details: {
+      environment:
+        'A gorge flanked by tall, cracked cliff faces.',
+      eventStory:
+        'A sudden tremor shakes the cliffs above! Fractured rock ledges collapse, sending heavy boulders tumbling down toward the party.',
+      trapEffect:
+        'Falling Boulders: The GM rolls a D10 three times against each player\'s AC. For every roll that meets or beats a player\'s AC, that player takes 5 Blunt damage!',
+    },
+  },
+  {
+    id: 38,
+    number: 38,
+    type: 'Discovery',
+    title: 'Sunken Coffer',
+    category: 'Discovery',
+    area: 'Deep Desert',
+    highlighted: false,
+    details: {
+      environment:
+        'A patch of muddy sand roots under a fallen palm tree.',
+      eventStory:
+        'While navigating around tangled palm roots, a party member trips over a reinforced wooden box buried in the damp soil. You dig it up and pry open the rusted lock.',
+      reward:
+        'Buried Knowledge: Each player draws 1 Trait Card.',
+    },
+  },
+  {
+    id: 39,
+    number: 39,
+    type: 'Encounter',
+    title: 'Sand Sentinel',
+    category: 'Encounter',
+    area: 'Deep Desert',
+    highlighted: false,
+    details: {
+      npcName: 'Sand Golem',
+      npcLabel: 'Enemy',
+      environment:
+        'An ancient ruined archway bordering the edge of the oasis sand dunes.',
+      eventStory:
+        'The desert dunes swirl into a towering automaton of solid sandstone. It raises its massive stone fists and steps forward to crush you!',
+      encounter: {
+        name: 'Sand Golem',
+        appearance:
+          'A massive elemental construct forged from packed desert sand and heavy granite runes, radiating miniature sandstorms around its body.',
+        image: 'sandGolem.png',
+        hp: 32,
+        ac: 6,
+        energy: 4,
+        resistances: ['Blunt', 'Fire'],
+        vulnerabilities: ['Water', 'Acid'],
+        actionCards: [
+          { name: 'Pummel', rarity: 'Common', image: 'Pummel-Common-Blunt.png' },
+          { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlam-Rare-Blunt.png' },
+          { name: 'Quicksand Prison', rarity: 'Rare', image: 'QuicksandPrison-Rare-Support.png' },
+          { name: 'Earthbreaker', rarity: 'Legendary', image: 'Earthbreaker-Legendary-Blunt.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Trait Card.',
+    },
+  },
+
+  {
+    id: 40,
+    number: 40,
+    type: 'Encounter',
+    title: 'Dune Predator',
+    category: 'Encounter',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      npcName: 'Gravel-Fin the Sand Shark',
+      npcLabel: 'Enemy',
+      environment:
+        'A sea of shifting golden dunes bordering the oasis, where the sand ripples like deep ocean currents.',
+      eventStory:
+        'A dorsal fin carved from solid obsidian cuts through the surface of the sand! The dune explodes outward as a ravenous Sand Shark lunges from below with jaws wide!',
+      encounter: {
+        name: 'Gravel-Fin (Sand Shark)',
+        appearance:
+          'A streamlined subterranean predator with rough, sand-abrasive skin, glowing yellow eyes, and rows of razor-sharp serrated teeth.',
+        image: 'sandShark.png',
+        hp: 30,
+        ac: 6,
+        energy: 5,
+        resistances: ['Force'],
+        vulnerabilities: ['Water', 'Slash'],
+        actionCards: [
+          { name: 'Quick Slash', rarity: 'Common', image: 'QuickSlash-Common-Slash.png' },
+          { name: 'Force Push', rarity: 'Common', image: 'ForcePush-Common-Force.png' },
+          { name: 'Energize', rarity: 'Common', image: 'Energize-Common-Support.png' },
+          { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlam-Rare-Blunt.png' },
+          { name: 'Cure Wounds', rarity: 'Rare', image: 'CureWounds-Rare-Healing.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Action Card.',
+    },
+  },
+  {
+    id: 41,
+    number: 41,
+    type: 'Trap',
+    title: 'Tremor Rockfall',
+    category: 'Trap',
+    area: 'Oasis',
+    highlighted: true,
+    details: {
+      environment:
+        'A narrow canyon pass flanked by tall, cracked cliff faces.',
+      eventStory:
+        'A sudden tremor shakes the cliffs above! Fractured rock ledges collapse, sending heavy boulders tumbling down toward the party.',
+      trapEffect:
+        'Falling Boulders: The GM rolls a D10 three times against each player\'s AC. For every roll that meets or beats a player\'s AC, that player takes 5 Blunt damage!',
+    },
+  },
+  {
+    id: 42,
+    number: 42,
+    type: 'Discovery',
+    title: 'Abandoned Supply Wagon',
+    category: 'Discovery',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      environment:
+        'A ruined merchant cart partially swallowed by shifting sand along the trail.',
+      eventStory:
+        'You come across a half-buried supply cart left behind by fleeing traders. Searching through the remaining crates yields valuable tactical manuals and combat scrolls.',
+      reward: 'Scavenged Tactical Stash: Each player draws 1 Action Card.',
+    },
+  },
+  {
+    id: 43,
+    number: 43,
+    type: 'Encounter',
+    title: 'Burrowing Threat',
+    category: 'Encounter',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      npcName: 'Chitina the Sand Crawler',
+      npcLabel: 'Enemy',
+      environment:
+        'A sunken dune basin where the sand flows in circular waves like water.',
+      eventStory:
+        'The ground sags beneath your feet as sand erupts in a massive geyser! Out bursts Chitina, a barbed, armored sand crawler snapping its ring of razor-sharp teeth at your party!',
+      encounter: {
+        name: 'Chitina (Small Sand Crawler)',
+        appearance:
+          'This sandy-tan, heavily armored creature features an arrow-shaped head plate with glowing blue eyes and a jagged, tooth-like jaw. It has an arched back covered in thick, overlapping carapace plates, tufts of soft fur along its neck and underbelly, clawed feet, and a heavy, segmented tail that curls upward.',
+        image: 'babySandCrawler.png',
+        hp: 28,
+        ac: 6,
+        energy: 4,
+        resistances: ['Blunt', 'Fire'],
+        vulnerabilities: ['Water', 'Slash'],
+        actionCards: [
+          { name: 'Acid Splash', rarity: 'Common', image: 'AcidSplash-Common-Acid.png' },
+          { name: 'Snare', rarity: 'Common', image: 'Snare-Common-Support.png' },
+          { name: 'Corrosive Spit', rarity: 'Rare', image: 'CorrosiveSpit-Rare-Acid.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory, each player draws 1 Action Card.',
+    },
+  },
+  {
+    id: 44,
+    number: 44,
+    type: 'Discovery',
+    title: 'Derelict Merchant Cart',
+    category: 'Discovery',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      environment:
+        'An overturned merchant cart lodged against ancient stone ruins.',
+      eventStory:
+        'Inspecting the sun-bleached wreck of a merchant cart, you pry open a concealed floorboard compartment filled with ancient talismans and personal essences.',
+      reward: 'Scavenged Secrets: Each player draws 1 Trait Card.',
+    },
+  },
+  {
+    id: 45,
+    number: 45,
+    type: 'Encounter',
+    title: 'Cunning Flame-Fox',
+    category: 'Encounter',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      npcName: 'Vixen the Sand Fox',
+      npcLabel: 'Enemy',
+      environment:
+        'A rocky ridge bathed in intense heat shimmers overlooking the oasis dunes.',
+      eventStory:
+        'A nimble fox with blazing orange fur and ember-tipped tails leaps onto a sunlit boulder. It blinks its golden eyes before darting forward in a blur of fire and speed!',
+      encounter: {
+        name: 'Vixen (Sand Fox)',
+        appearance:
+          'A slick, slender desert fox with glowing fiery markings running along its pelt and trails of embers following its swift movements.',
+        image: 'sandFox.png',
+        hp: 24,
+        ac: 6,
+        energy: 5,
+        resistances: ['Fire'],
+        vulnerabilities: ['Water'],
+        actionCards: [
+          { name: 'Quick Slash', rarity: 'Common', image: 'QuickSlash-Common-Slash.png' },
+          { name: 'Quickster', rarity: 'Common', image: 'Quickster-Common-Support.png' },
+          { name: 'Force Push', rarity: 'Common', image: 'ForcePush-Common-Force.png' },
+          { name: 'Immolate', rarity: 'Rare', image: 'Immolate-Rare-Slash.png' },
+          { name: 'Haste Aura', rarity: 'Rare', image: 'HasteAura-Rare-Support.png' },
+          { name: 'Inferno', rarity: 'Legendary', image: 'Inferno-Legendary-Fire.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Action Card.',
+    },
+  },
+  {
+    id: 46,
+    number: 46,
+    type: 'Encounter',
+    title: 'Chitin Skitterer',
+    category: 'Encounter',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      npcName: 'Acidic Sand Bug',
+      npcLabel: 'Enemy',
+      environment:
+        'A damp rock fissure dripping with corrosive slime near the oasis border.',
+      eventStory:
+        'A giant barbed beetle with glowing green glands emerges from a damp fissure, clicking its mandibles and secreting burning acid onto the sand!',
+      encounter: {
+        name: 'Sand Bug',
+        appearance:
+          'A thick-shelled desert insect with multiple spiny legs, dripping mandibles, and acid-filled blisters along its carapace.',
+        image: 'sandBug.png',
+        hp: 26,
+        ac: 6,
+        energy: 4,
+        resistances: ['Acid', 'Blunt'],
+        vulnerabilities: ['Fire'],
+        actionCards: [
+          { name: 'Acid Drio', rarity: 'Common', image: 'AcidDrio-Common-Acid.png' },
+          { name: 'Acid Splash', rarity: 'Common', image: 'AcidSplash-Common-Acid.png' },
+          { name: 'Snare', rarity: 'Common', image: 'Snare-Common-Support.png' },
+          { name: 'Stone Shell', rarity: 'Common', image: 'StoneShell-Common-Support.png' },
+          { name: 'Quicksand Prison', rarity: 'Rare', image: 'QuicksandPrison-Rare-Support.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Trait Card.',
+    },
+  },
+  {
+    id: 47,
+    number: 47,
+    type: 'Discovery',
+    title: 'Sunken Coffer',
+    category: 'Discovery',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      environment:
+        'A patch of muddy sand roots under a fallen palm tree.',
+      eventStory:
+        'While navigating around tangled palm roots, a party member trips over a reinforced wooden box buried in the damp soil. You dig it up and pry open the rusted lock.',
+      reward: 'Buried Knowledge: Each player draws 1 Trait Card.',
+    },
+  },
+  {
+    id: 48,
+    number: 48,
+    type: 'Encounter',
+    title: 'Blazing Incarnate',
+    category: 'Encounter',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      npcName: 'Fire Elemental',
+      npcLabel: 'Enemy',
+      environment:
+        'A scorched stone circle where the sand has turned to smooth obsidian glass.',
+      eventStory:
+        'The air grows suffocatingly hot as a column of roaring flame erupts from the obsidian floor, shaping into a fiery humanoid elemental roaring with flame!',
+      encounter: {
+        name: 'Fire Elemental',
+        appearance:
+          'A towering being composed entirely of white-hot fire and swirling magma, radiating intense heat that melts the sand around it.',
+        image: 'fireElemental.png',
+        hp: 34,
+        ac: 5,
+        energy: 6,
+        resistances: ['Fire', 'Slash'],
+        vulnerabilities: ['Water'],
+        actionCards: [
+          { name: 'Firebolt', rarity: 'Common', image: 'Firebolt-Common-Fire.png' },
+          { name: 'SigeingSparks', rarity: 'Common', image: 'SigeingSparks-Common-Fire.png' },
+          { name: 'Guard', rarity: 'Common', image: 'Guard-Common-Support.png' },
+          { name: 'Fireball', rarity: 'Rare', image: 'Fireball-Rare-Fire.png' },
+          { name: 'Immolate', rarity: 'Rare', image: 'Immolate-Rare-Fire.png' },
+          { name: 'Haste Aura', rarity: 'Rare', image: 'HasteAura-Rare-Support.png' },
+          { name: 'Dragon Breath', rarity: 'Legendary', image: 'DragonBreath-Legendary-Fire.png' },
+          { name: 'Inferno', rarity: 'Legendary', image: 'Inferno-Legendary-Fire.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Action Card.',
+    },
+  },
+  {
+    id: 49,
+    number: 49,
+    type: 'Trap',
+    title: 'The Tectonic Shift',
+    category: 'Trap',
+    area: 'Oasis',
+    highlighted: true,
+    details: {
+      environment:
+        'A wet faultline running through the oasis soil, emitting a sudden violent shudder.',
+      eventStory:
+        'As you step across the marshy ground, an earthquake strikes! The mud and stone shift violently as the entire terrain realigns itself!',
+      trapEffect:
+        'World Shift: The GM physically rotates the Oasis Node on the game board by 90 degrees, shifting path connections!',
+    },
+  },
+
 ];
 
 // Show up to 10 tiles per page (5 columns × 2 rows)
 export const tilesPageOne = tiles.slice(0, 10);
 export const tilesPageTwo = tiles.slice(10, 20);
 export const tilesPageThree = tiles.slice(20, 30);
+export const tilesPageFour = tiles.slice(30, 40);
+export const tilesPageFive = tiles.slice(40, 50);
