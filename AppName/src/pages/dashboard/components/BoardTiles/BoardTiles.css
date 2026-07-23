@@ -237,11 +237,19 @@
   text-transform: uppercase;
 }
 
-.tile-detail__npc-copy {
+..tile-detail__npc-copy {
   display: grid;
   gap: 12px;
   flex: 1;
   min-width: 0;
+}
+
+.tile-detail__npc-copy span {
+  font-size: 18px !important;
+}
+
+.tile-detail__reward-panel span {
+  font-size: 15px;
 }
 
 .tile-detail__section--reward {
@@ -822,6 +830,10 @@
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
   line-height: 1.6;
+}
+
+.tile-detail__unified-copy .tile-detail__text-row span {
+  font-size: 18px;
 }
 
 /* Responsive Queries */

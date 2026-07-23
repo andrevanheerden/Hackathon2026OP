@@ -60,15 +60,23 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     'babySandCrawler.png': babySandCrallerImg,
   };
 
-  const renderDialogueLines = (text) => {
+  const renderDialogueLines = (text, npcName) => {
     return String(text)
       .split(/(?<=[.?!])\s+/)
       .filter((line) => line.trim().length > 0)
-      .map((line, idx) => (
-        <p key={idx} className="tile-detail__dialogue-line">
-          {line.trim()}
-        </p>
-      ));
+      .map((line, idx) => {
+        const trimmed = line.trim();
+        const hasSpeakerPrefix = /^['"“”]?\s*[A-Za-z0-9_ ]+:/.test(trimmed);
+        const isActionLine = /^\*.*\*$/.test(trimmed);
+        const prefix = idx === 0 && npcName && !hasSpeakerPrefix && !isActionLine ? `${npcName}: ` : '';
+
+        return (
+          <p key={idx} className="tile-detail__dialogue-line">
+            {prefix}
+            {trimmed}
+          </p>
+        );
+      });
   };
 
   // Load encounter state from session storage or initialize fresh
@@ -268,23 +276,33 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
             <div className="board-tiles__detail-body board-tiles__detail-rich">
               <div className="tile-detail__header"></div>
               
-              {/* Event Description */}
+{/* Unified Event Block */}
               <div className="tile-detail__section">
                 <div className="tile-detail__section-header">
                   <p className="tile-detail__section-title">Event Description</p>
                   <span className="tile-detail__section-pill">Read to player</span>
                 </div>
-                <div className="tile-detail__text-row">
-                  <strong>Environment</strong>
-                  <span>{selectedTile.details.environment}</span>
+                <div className="tile-detail__unified-copy">
+                  {selectedTile.details.environment && (
+                    <div className="tile-detail__text-row">
+                      <strong>Environment</strong>
+                      <span>{selectedTile.details.environment}</span>
+                    </div>
+                  )}
+                  {selectedTile.details.eventStory && (
+                    <div className="tile-detail__text-row">
+                      <strong>Story</strong>
+                      <span>{selectedTile.details.eventStory}</span>
+                    </div>
+                  )}
                 </div>
               </div>
-              
+
               {/* NPC Block */}
-              {(selectedTile.details.npcAppearance || selectedTile.details.npcImage || selectedTile.details.voiceStyle || selectedTile.details.npcLabel) && (
+              {selectedTile.category !== 'Encounter' && (selectedTile.details.npcAppearance || selectedTile.details.npcImage || selectedTile.details.voiceStyle || selectedTile.details.npcLabel) && (
                 <div className="tile-detail__section tile-detail__npc-section">
                     <div className="tile-detail__section-header tile-detail__section-header--npc">
-                    <p className="tile-detail__section-title">NPC</p>
+                    <p className="tile-detail__section-title">{selectedTile.details.npcName || 'NPC'}</p>
                     <span className="tile-detail__section-pill tile-detail__section-pill--npc">NPC Info</span>
                   </div>
                   <div className="tile-detail__npc-block">
@@ -292,12 +310,12 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                       {selectedTile.details.npcImage ? (
                         <img
                           src={npcImageMap[selectedTile.details.npcImage] || selectedTile.details.npcImage}
-                          alt={selectedTile.details.npcLabel || 'NPC'}
+                          alt={selectedTile.details.npcLabel || selectedTile.details.npcName || 'NPC'}
                           className="tile-detail__npc-image-img"
                           onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.style.display = 'none'; }}
                         />
                       ) : (
-                        <span>NPC</span>
+                        <span>{selectedTile.details.npcName || 'NPC'}</span>
                       )}
                     </div>
                     <div className="tile-detail__npc-copy">
@@ -317,14 +335,6 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                   </div>
                 </div>
               )}
-              
-              <div className="tile-detail__section">
-                <div className="tile-detail__section-header">
-                  <p className="tile-detail__section-title">Event Story</p>
-                  <span className="tile-detail__section-pill">Read to player</span>
-                </div>
-                <span>{selectedTile.details.eventStory}</span>
-              </div>
 
               {selectedTile.details.trapEffect && (
                 <div className="tile-detail__section">
@@ -336,14 +346,14 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                 </div>
               )}
 
-              {selectedTile.details.dialogue && (
+              {selectedTile.details.dialogue && selectedTile.category === 'Encounter' && (
                 <div className="tile-detail__section">
                   <div className="tile-detail__section-header">
                     <p className="tile-detail__section-title">Dialogue</p>
                     <span className="tile-detail__section-pill">Read to player</span>
                   </div>
                   <div className="tile-detail__dialogue-copy">
-                    {renderDialogueLines(selectedTile.details.dialogue)}
+                    {renderDialogueLines(selectedTile.details.dialogue, selectedTile.details.npcName)}
                   </div>
                 </div>
               )}
