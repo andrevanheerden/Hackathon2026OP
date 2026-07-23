@@ -11,6 +11,9 @@ import TVheadImg from '../../data/encounerImg/TVhead.png';
 import MerchantImg from '../../data/encounerImg/Merchant.png';
 import GamblerImg from '../../data/encounerImg/gambler.png';
 import DualKightImg from '../../data/encounerImg/DualKight.png';
+import sandGolemImg from '../../data/encounerImg/sandGolem.png';
+import mudGolemImg from '../../data/encounerImg/mudGolem.png';
+import babySandWormImg from '../../data/encounerImg/babySandWorm.png';
 import babySandCrallerImg from '../../data/encounerImg/babySandCraller.png';
 
 function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players = [] }) {
@@ -49,7 +52,11 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     'sandDog.png': sandDog,
     'bandit.png': bandit,
     'zombieArmor.png': zombieArmor,
+    'sandGolem.png': sandGolemImg,
+    'mudGolem.png': mudGolemImg,
     'DualKight.png': DualKightImg,
+    'babySandWorm.png': babySandWormImg,
+    'babySandworm.png': babySandWormImg,
     // accept both spellings (data file may reference either)
     'babySandCraller.png': babySandCrallerImg,
     'babySandCrawler.png': babySandCrallerImg,

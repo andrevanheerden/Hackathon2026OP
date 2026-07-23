@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import TopBar from './components/TopBar/TopBar';
 import BoardTiles from './components/BoardTiles/BoardTiles';
 import RightSidebar from './components/RightSidebar/RightSidebar';
-import { tilesPageOne, tilesPageTwo } from './data/tiles';
+import { tilesPageOne, tilesPageTwo, tilesPageThree } from './data/tiles';
 
 function Dashboard({
   players = [],
@@ -15,7 +15,11 @@ function Dashboard({
   selectedTileId = 11,
   onSelectTile = () => {},
 }) {
-  const tiles = useMemo(() => (activePage === 'I-X' ? tilesPageOne : tilesPageTwo), [activePage]);
+  const tiles = useMemo(() => {
+    if (activePage === 'XXI-XXX') return tilesPageThree;
+    if (activePage === 'XI-XX') return tilesPageTwo;
+    return tilesPageOne;
+  }, [activePage]);
   const selectedTile = tiles.find((tile) => tile.id === selectedTileId);
 
   return (

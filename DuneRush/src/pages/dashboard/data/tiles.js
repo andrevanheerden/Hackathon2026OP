@@ -447,7 +447,7 @@ export const tiles = [
           { name: 'Quicksand Prison', rarity: 'Rare', image: 'QuicksandPrison-Rare-Support.png' },
         ],
       },
-      reward: 'Victory Drop: On victory, each player draws 1 Trait Card.',
+      reward: 'Victory Drop: On victory, each player draws 1 Action Card.',
     },
   },
   {
@@ -535,8 +535,280 @@ export const tiles = [
         'Falling Boulders: The GM rolls a D10 three times against each player\'s AC. For every roll that meets or beats a player\'s AC, that player takes 5 Blunt damage!',
     },
   },
+  {
+    id: 20,
+    number: 20,
+    type: 'Encounter',
+    title: 'Wormling Emergence',
+    category: 'Encounter',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      npcName: 'Graveljaw the Wurmling',
+      npcLabel: 'Enemy',
+      environment:
+        'A ring of disturbed sand dune mounds violently pulsing and churning.',
+      eventStory:
+        'The ground caves in beneath you as a giant segmented infant worm bursts from beneath the dunes, spraying corrosive acid into the air as it lunges at your party!',
+      encounter: {
+        name: 'Graveljaw (Baby Sand Worm)',
+        appearance:
+          'This pale, beige-skinned segmented worm features a large, gaping mouth lined with multiple rows of sharp, inward-facing teeth. From its dark red throat extends a fleshy, reddish worm-like tongue with a hollow tip, supported by a thick, ridged body that coils up from cracked desert soil.',
+        image: 'babySandworm.png',
+        hp: 26,
+        ac: 5,
+        energy: 4,
+        resistances: ['Force'],
+        vulnerabilities: ['Slash', 'Fire'],
+        actionCards: [
+          { name: 'Force Push', rarity: 'Common', image: 'ForcePush-Common-Force.png' },
+          { name: 'Pummel', rarity: 'Common', image: 'Pummel-Common-Blunt.png' },
+          { name: 'Acid Drip', rarity: 'Common', image: 'AcidDrip-Common-Acid.png' },
+          { name: 'Caustic Cloud', rarity: 'Legendary', image: 'CausticCloud-Legendary-Acid.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Action Card.',
+    },
+  },
+  {
+    id: 21,
+    number: 21,
+    type: 'Discovery',
+    title: 'Abandoned Merchant Cart',
+    category: 'Discovery',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      environment:
+        'A half-buried merchant wagon lying shattered beside a dried-up well.',
+      eventStory:
+        'You stumble upon an abandoned trader wagon buried in sand drifts. Upon inspecting the cargo bed, you find intact supply crates filled with tactical maneuvers and spells preserved from the elements.',
+      reward: 'Merchant\'s Stash: Each player receives 1 Action Card.',
+    },
+  },
+  {
+    id: 22,
+    number: 22,
+    type: 'Trap',
+    title: 'Rockslide Blockade',
+    category: 'Trap',
+    area: 'Abandoned Village',
+    highlighted: true,
+    details: {
+      environment:
+        'A high sandstone canyon pass with loose, jagged boulder overhangs.',
+      eventStory:
+        'A violent earthquake violently shakes the canyon floor! Massive sandstone monoliths collapse overhead, shattering onto the trail ahead and completely sealing off the passage!',
+      trapEffect:
+        'Blocked Route: The direct path ahead is destroyed. The party is forced to double back and take an alternate route around!',
+    },
+  },
+  {
+    id: 23,
+    number: 23,
+    type: 'Merchant',
+    title: "Nomad's Exchange",
+    category: 'Merchant',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      npcName: 'Sskesh the Nomad',
+      npcLabel: 'NPC',
+      environment:
+        'A striped silk tent anchored by heavy brass stakes. Inside, aromatic incense burns in a copper brazier, shielding visitors from the desert heat.',
+      eventStory:
+        'You step into the cool, shaded tent. Sitting cross-legged on a carpet is Sskesh, a mysterious green-skinned traveler shrouded in cloth wrappings, who hovers a glowing golden automaton between his hands as he greets you.',
+      voiceStyle:
+        'Raspy, whispery, and clicking softly between sentences.',
+      npcAppearance:
+        'A mysterious green-skinned traveler completely shrouded in cloth wrappings and dark goggles beneath a hooded cloak. Cross-legged on the ground, it conjures a floating, golden-lit miniature automaton between its bare hands while sitting beside a well-worn leather trail pack bursting with maps and trinkets.',
+      npcImage: 'Merchant.png',
+      dialogue:
+        '"Ahhh... new travelers... fresh cards in your hands. Sskesh deals in power, yes! Give me your duplicate treasures, and I shall give you true strength..."',
+      merchantRules: [
+        'The GM draws 5 Action/Trait Cards from the deck and lays them face-up.',
+        'Players may trade their own cards using these fixed ratios:',
+      ],
+      merchantExchangeRates: [
+        'Legendary = 3 Commons',
+        'Legendary = 2 Rares',
+        'Rare = 2 Commons',
+        'Common = Commons',
+      ],
+    },
+  },
+  {
+    id: 24,
+    number: 24,
+    type: 'Encounter',
+    title: 'Guardians of the Sand',
+    category: 'Encounter',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      npcName: 'Sand Golem',
+      npcLabel: 'Enemy',
+      environment:
+        'An ancient ruined plaza featuring swirling sand vortexes.',
+      eventStory:
+        'As you cross the plaza, the loose dunes swirl into a towering automaton of compressed stone and compressed sand. It raises its massive sandstone fists and stomps down to attack!',
+      encounter: {
+        name: 'Sand Golem',
+        appearance:
+          'A massive elemental construct forged from packed desert sand and heavy granite runes, radiating miniature sandstorms around its body.',
+        image: 'sandGolem.png',
+        hp: 32,
+        ac: 6,
+        energy: 4,
+        resistances: ['Blunt', 'Fire'],
+        vulnerabilities: ['Water', 'Acid'],
+        actionCards: [
+          { name: 'Pummel', rarity: 'Common', image: 'Pummel-Common-Blunt.png' },
+          { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlam-Rare-Blunt.png' },
+          { name: 'Quicksand Prison', rarity: 'Rare', image: 'QuicksandPrison-Rare-Support.png' },
+          { name: 'Earthbreaker', rarity: 'Legendary', image: 'Earthbreaker-Legendary-Blunt.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Trait Card.',
+    },
+  },
+  {
+    id: 25,
+    number: 25,
+    type: 'Merchant',
+    title: 'The Snake-Eyes Den',
+    category: 'Merchant',
+    area: 'Abandoned Village',
+    highlighted: false,
+    details: {
+      npcName: 'Zaros the Gambler',
+      npcLabel: 'NPC',
+      environment:
+        'A small shade canopy covering a low wooden table with carved stone dice cups, sitting directly along the trail.',
+      eventStory:
+        'The aroma of spiced nuts and burning paper hangs in the air as Zaros, a floating magician in a sharp top hat, flicks a pair of ivory dice across the table while levitating playing cards with a sly grin.',
+      voiceStyle:
+        'Smooth, confident, with a casual chuckle between rolls.',
+      npcAppearance:
+        'A stylish magician hovering mid-air with a sharp smile and golden, glowing eyes. Dressed in a fancy top hat, high-collared vest, and a ragged trench coat featuring a white rose boutonnière, he manipulates a storm of levitating playing cards with a flick of his gloved fingers.',
+      npcImage: 'gambler.png',
+      dialogue:
+        '"Care to test your fate, friend? Put a card on the table, and I\'ll match it. Highest D10 roll takes both. Simple, clean, honest... mostly."',
+      merchantRules: [
+        'A player wagers 1 Action or Trait Card from their hand.',
+        'The GM draws 1 matching type card (Action or Trait) from the deck to match the bet.',
+        'Both player and GM roll a D10: Player Roll higher than GM Roll: Player wins and takes both cards! Player Roll lower than GM Roll: Player loses their wagered card to the GM.',
+        'This can be repeated as long as the player has cards to bet.',
+      ],
+    },
+  },
+  {
+    id: 26,
+    number: 26,
+    type: 'Encounter',
+    title: "Mud Golem's Domain",
+    category: 'Encounter',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      npcName: 'Sludge Titan',
+      npcLabel: 'Enemy',
+      environment:
+        'The entrance to the lush Oasis, where cool spring waters meet thick mud beds.',
+      eventStory:
+        'Stepping into the lush moisture of the Oasis, a thick mound of wet clay and saturated earth rises up from the marshy pool, shaping into a hulking Mud Golem that blocks your path!',
+      encounter: {
+        name: 'Mud Golem',
+        appearance:
+          'A towering, dripping elemental monster made of dense brown mud, tangled roots, and water lilies.',
+        image: 'mudGolem.png',
+        hp: 30,
+        ac: 5,
+        energy: 4,
+        resistances: ['Water', 'Blunt'],
+        vulnerabilities: ['Acid'],
+        actionCards: [
+          { name: 'Water Splash', rarity: 'Common', image: 'WaterSplash-Common-Water.png' },
+          { name: 'Soaking Mist', rarity: 'Common', image: 'SoakingMist-Common-Water.png' },
+          { name: 'Aqua Torrent', rarity: 'Rare', image: 'AquaTorrent-Rare-Water.png' },
+          { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlam-Rare-Blunt.png' },
+          { name: 'Siphon Power', rarity: 'Rare', image: 'SiphonPower-Rare-Support.png' },
+        ],
+      },
+      reward: 'Victory Drop: On victory each player draws 1 Action Card.',
+    },
+  },
+  {
+    id: 27,
+    number: 27,
+    type: 'Discovery',
+    title: 'Oasis Fruit Tree',
+    category: 'Discovery',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      environment:
+        'A beautiful, leafy fruit tree leaning over a crystal-clear natural pond in the heart of the Oasis.',
+      eventStory:
+        'You discover a lush tree hanging heavy with vibrant, sweet-smelling tropical fruit. Unlike the cursed trees of the village, this tree blooms with pure Oasis water and offers rejuvenating essence.',
+      reward:
+        'Nourishing Harvest: Each player can choose to eat the fruit. Players who eat it gain 1 Trait Card.',
+    },
+  },
+  {
+    id: 28,
+    number: 28,
+    type: 'Merchant',
+    title: "Nomad's Exchange",
+    category: 'Merchant',
+    area: 'Oasis',
+    highlighted: false,
+    details: {
+      npcName: 'Sskesh the Nomad',
+      npcLabel: 'NPC',
+      environment:
+        'A striped silk tent anchored by heavy brass stakes beneath large palms in the Oasis.',
+      eventStory:
+        'You step into the cool, shaded tent. Sitting cross-legged on a carpet is Sskesh, a mysterious green-skinned traveler shrouded in cloth wrappings, who hovers a glowing golden automaton between his hands as he greets you.',
+      voiceStyle:
+        'Raspy, whispery, and clicking softly between sentences.',
+      npcAppearance:
+        'A mysterious green-skinned traveler completely shrouded in cloth wrappings and dark goggles beneath a hooded cloak. Cross-legged on the ground, it conjures a floating, golden-lit miniature automaton between its bare hands while sitting beside a well-worn leather trail pack bursting with maps and trinkets.',
+      npcImage: 'Merchant.png',
+      dialogue:
+        '"Ahhh... new travelers... fresh cards in your hands. Sskesh deals in power, yes! Give me your duplicate treasures, and I shall give you true strength..."',
+      merchantRules: [
+        'The GM draws 5 Action/Trait Cards from the deck and lays them face-up.',
+        'Players may trade their own cards using these fixed ratios:',
+      ],
+      merchantExchangeRates: [
+        'Legendary = 3 Commons',
+        'Legendary = 2 Rares',
+        'Rare = 2 Commons',
+        'Common = Commons',
+      ],
+    },
+  },
+  {
+    id: 29,
+    number: 29,
+    type: 'Trap',
+    title: 'The Tectonic Shift',
+    category: 'Trap',
+    area: 'Oasis',
+    highlighted: true,
+    details: {
+      environment:
+        'A cracked limestone fissure running through the wet oasis soil, emitting a low, ominous hum.',
+      eventStory:
+        'As you step over the fissure, a subterranean earthquake strikes! The ground beneath your feet groans as violent tremors tear through the earth, physically shifting and re-aligning the terrain beneath the entire Oasis!',
+      trapEffect:
+        'World Shift: The GM physically rotates the Oasis Node on the game board by 90 degrees, shifting path connections!',
+    },
+  },
 ];
 
 // Show up to 10 tiles per page (5 columns × 2 rows)
 export const tilesPageOne = tiles.slice(0, 10);
 export const tilesPageTwo = tiles.slice(10, 20);
+export const tilesPageThree = tiles.slice(20, 30);
