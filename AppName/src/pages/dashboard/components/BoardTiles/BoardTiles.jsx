@@ -1,6 +1,7 @@
 import TileCard from '../TileCard/TileCard';
 import { useEffect, useMemo, useState } from 'react';
 import './BoardTiles.css';
+import { cardLibraryData } from '../../../cardLibary/cardLibraryData';
 
 import zombie from '../../data/encounerImg/zombie.png';
 import zombieArmor from '../../data/encounerImg/zombieArmor.png';
@@ -11,11 +12,6 @@ import MerchantImg from '../../data/encounerImg/Merchant.png';
 import GamblerImg from '../../data/encounerImg/gambler.png';
 import DualKightImg from '../../data/encounerImg/DualKight.png';
 import babySandCrallerImg from '../../data/encounerImg/babySandCraller.png';
-import QuickSlashImg from '../../data/actionCards/QuickSlashCommon.png';
-import PummelImg from '../../data/actionCards/PummelCommon.png';
-import HeavySlamImg from '../../data/actionCards/HeavySlamRare.png';
-import BladeDanceImg from '../../data/actionCards/BladeDanceRare.png';
-import FireboltImg from '../../data/actionCards/FireboltCommon.png';
 
 function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players = [] }) {
   const [encounterState, setEncounterState] = useState(null);
@@ -30,14 +26,12 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
   const categorySlug = selectedTile ? String((selectedTile.category || selectedTile.type || '')).toLowerCase().replace(/[^a-z0-9]+/g, '-') : '';
   const detailClassName = `board-tiles__detail ${categorySlug ? `board-tiles__detail--cat-${categorySlug}` : ''}`;
 
-  // Map card names to imported images
-  const cardImageMap = {
-    'Quick Slash': QuickSlashImg,
-    'Pummel': PummelImg,
-    'Heavy Slam': HeavySlamImg,
-    'Blade Dance': BladeDanceImg,
-    'Firebolt': FireboltImg,
-  };
+  const cardImageMap = useMemo(() => {
+    return cardLibraryData.reduce((map, card) => {
+      map[card.name] = card.image;
+      return map;
+    }, {});
+  }, []);
 
   const getCardImage = (cardName) => {
     return cardImageMap[cardName] || null;
