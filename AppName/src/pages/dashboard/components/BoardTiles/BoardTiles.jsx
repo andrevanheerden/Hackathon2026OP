@@ -15,6 +15,7 @@ import babySandCrallerImg from '../../data/encounerImg/babySandCraller.png';
 
 function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players = [] }) {
   const [encounterState, setEncounterState] = useState(null);
+  const [encounterDamaged, setEncounterDamaged] = useState(false);
   const [healAmount, setHealAmount] = useState('');
   const [damageAmount, setDamageAmount] = useState('');
   const [energyAmount, setEnergyAmount] = useState('');
@@ -192,6 +193,10 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     
     setEncounterState(s => s ? { ...s, currentHp: Math.max(0, s.currentHp - finalDamage) } : s);
     setDamageAmount('');
+    setEncounterDamaged(true);
+    window.setTimeout(() => {
+      setEncounterDamaged(false);
+    }, 300);
   };
 
   const consumeEnergy = () => {
@@ -526,7 +531,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                       <img
                         src={encounterImageMap[selectedTile.details.encounter.image] || zombie}
                         alt={selectedTile.details.encounter.name}
-                        className="mock-portrait-img"
+                        className={`mock-portrait-img${encounterDamaged ? ' mock-portrait-img--damaged' : ''}`}
                         onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/assets/desrt-zomby.svg'; }}
                       />
                     </div>

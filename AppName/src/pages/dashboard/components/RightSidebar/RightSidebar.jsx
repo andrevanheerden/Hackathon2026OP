@@ -5,6 +5,7 @@ function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () =
   const [selectedPlayerId, setSelectedPlayerId] = useState(null);
   const [healAmount, setHealAmount] = useState('');
   const [damageAmount, setDamageAmount] = useState('');
+  const [damagedPlayerId, setDamagedPlayerId] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingPlayerId, setEditingPlayerId] = useState(null);
   const [editForm, setEditForm] = useState({ maxHp: '', ac: '', maxEnergy: '' });
@@ -101,6 +102,11 @@ function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () =
 
     onUpdatePlayer(selectedPlayer.id, { hp: nextHp });
     setDamageAmount('');
+    setDamagedPlayerId(selectedPlayer.id);
+
+    window.setTimeout(() => {
+      setDamagedPlayerId((current) => (current === selectedPlayer.id ? null : current));
+    }, 300);
   };
 
   const saveEdit = () => {
@@ -190,7 +196,7 @@ function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () =
                 return (
                   <div
                     key={player.id}
-                    className={`player ${isSelected ? 'player--selected' : ''}`}
+                    className={`player ${isSelected ? 'player--selected' : ''} ${damagedPlayerId === player.id ? 'player--damaged' : ''}`}
                     style={{ '--accent': player.color || '#8b6ef0' }}
                     onClick={() => setSelectedPlayerId(player.id)}
                     role="button"
