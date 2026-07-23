@@ -655,7 +655,7 @@ export const tiles = [
       encounter: {
         name: 'Sand Golem',
         appearance:
-          'A massive elemental construct forged from packed desert sand and heavy granite runes, radiating miniature sandstorms around its body.',
+          'This massive stone golem is constructed from heavy gray boulders, with a crusted layer of bright golden sandstone coating its shoulders, chest, and back. It features glowing orange eyes set into a blocky, carved rock face, oversized fist-like hands, and a thick, hunched body built for brute force.',
         image: 'sandGolem.png',
         hp: 32,
         ac: 6,
@@ -720,7 +720,7 @@ export const tiles = [
       encounter: {
         name: 'Mud Golem',
         appearance:
-          'A towering, dripping elemental monster made of dense brown mud, tangled roots, and water lilies.',
+          'This hulking mud golem features a slimy, brown clay body studded with smooth river stones along its shoulders and back. It sports glowing yellow eyes, a gaping mouth filled with sharp teeth, and heavy, dripping arms built for crushing strikes.',
         image: 'mudGolem.png',
         hp: 30,
         ac: 5,

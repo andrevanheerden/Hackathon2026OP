@@ -385,7 +385,11 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                             <span className="encounter-traits__label">Resistances</span>
                             <div className="encounter-traits__pills">
                               {selectedTile.details.encounter.resistances.map((res) => (
-                                <span key={res} className="encounter-trait-pill encounter-trait-pill--resistance" title={`Resistance: ${res} - Takes half damage`}>
+                                <span
+                                  key={res}
+                                  className="encounter-trait-pill encounter-trait-pill--resistance"
+                                  data-tooltip={`Take 1/2 of ${res} damage`}
+                                >
                                   {res}
                                 </span>
                               ))}
@@ -397,7 +401,11 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                             <span className="encounter-traits__label">Vulnerabilities</span>
                             <div className="encounter-traits__pills">
                               {selectedTile.details.encounter.vulnerabilities.map((vuln) => (
-                                <span key={vuln} className="encounter-trait-pill encounter-trait-pill--vulnerability" title={`Vulnerability: ${vuln} - Takes double damage`}>
+                                <span
+                                  key={vuln}
+                                  className="encounter-trait-pill encounter-trait-pill--vulnerability"
+                                  data-tooltip={`Take 2x ${vuln} damage`}
+                                >
                                   {vuln}
                                 </span>
                               ))}
