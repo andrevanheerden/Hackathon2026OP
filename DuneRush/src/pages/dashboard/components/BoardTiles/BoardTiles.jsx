@@ -8,6 +8,7 @@ import zombieArmor from '../../data/encounerImg/zombieArmor.png';
 import sandDog from '../../data/encounerImg/sandDog.png';
 import bandit from '../../data/encounerImg/bandit.png';
 import sandSharkImg from '../../data/encounerImg/sandShark.png';
+import fireFoxImg from '../../data/encounerImg/fireFox.png';
 import fishmanImg from '../../data/encounerImg/fishman.png';
 import waterElementalImg from '../../data/encounerImg/waterElemental.png';
 import TVheadImg from '../../data/encounerImg/TVhead.png';
@@ -35,13 +36,20 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
 
   const cardImageMap = useMemo(() => {
     return cardLibraryData.reduce((map, card) => {
-      map[card.name] = card.image;
+      const key = String(card.name || '').trim().toLowerCase();
+      map[key] = card.image;
       return map;
     }, {});
   }, []);
 
+  const normalizeCardName = (name) =>
+    String(name || '')
+      .trim()
+      .replace(/\s+/g, ' ')
+      .toLowerCase();
+
   const getCardImage = (cardName) => {
-    return cardImageMap[cardName] || null;
+    return cardImageMap[normalizeCardName(cardName)] || null;
   };
 
   const npcImageMap = {
@@ -55,6 +63,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     'sandDog.png': sandDog,
     'bandit.png': bandit,
     'sandShark.png': sandSharkImg,
+    'fireFox.png': fireFoxImg,
     'fishman.png': fishmanImg,
     'waterElemental.png': waterElementalImg,
     'zombieArmor.png': zombieArmor,

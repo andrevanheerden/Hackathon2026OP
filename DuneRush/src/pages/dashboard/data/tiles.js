@@ -664,6 +664,7 @@ export const tiles = [
         vulnerabilities: ['Water', 'Acid'],
         actionCards: [
           { name: 'Pummel', rarity: 'Common', image: 'Pummel-Common-Blunt.png' },
+          { name: 'Guard', rarity: 'Common', image: 'Guard-Common-Support.png' },
           { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlam-Rare-Blunt.png' },
           { name: 'Quicksand Prison', rarity: 'Rare', image: 'QuicksandPrison-Rare-Support.png' },
           { name: 'Earthbreaker', rarity: 'Legendary', image: 'Earthbreaker-Legendary-Blunt.png' },
@@ -824,7 +825,7 @@ export const tiles = [
       encounter: {
         name: 'Siltfin (Fishman Marauder)',
         appearance:
-          'A hunched, amphibious warrior covered in wet blue scales, featuring bulging yellow eyes, flared gills, and sharp fin spines running along its back.',
+          'This muscular, blue-skinned aquatic monster features glowing white eyes, a wide mouth packed with sharp teeth, and a pale aqua, plate-like underbelly. It sports vibrant purple fins running along its head, back, forearms, and calves, complete with webbed feet and heavy, scaled arms.',
         image: 'fishman.png',
         hp: 28,
         ac: 5,
@@ -878,7 +879,7 @@ export const tiles = [
       encounter: {
         name: 'Water Elemental',
         appearance:
-          'A massive, translucent creature composed entirely of churning water, with glowing blue eyes floating inside a vortex body.',
+          'This cyan water elemental features a swirling, legless lower body rising from a shallow pool of coral-lined water. It sports a sleek, faceless head with glowing cyan eyes, a sculpted liquid torso, and sharp claw-like hands surrounded by splashing water droplets.',
         image: 'waterElemental.png',
         hp: 32,
         ac: 6,
@@ -950,7 +951,7 @@ export const tiles = [
       encounter: {
         name: 'Graveljaw (Baby Sand Worm)',
         appearance:
-          'A long, segmented subterranean worm with dripping mandibles, pale scales, and glowing acid-secreting glands along its underbelly.',
+          'This pale, beige-skinned segmented worm features a large, gaping mouth lined with multiple rows of sharp, inward-facing teeth. From its dark red throat extends a fleshy, reddish worm-like tongue with a hollow tip, supported by a thick, ridged body that coils up from cracked desert soil.',
         image: 'babySandWorm.png',
         hp: 26,
         ac: 5,
@@ -987,7 +988,7 @@ export const tiles = [
       encounter: {
         name: 'Ignis (Marauder Captain)',
         appearance:
-          'A battle-hardened bandit wrapped in charred leather armor and a hooded cloak, holding a notched sword while breathing smoke.',
+          'This shadowy, dark-skinned figure features spiky black hair, pointed ears, glowing yellow eyes, and a face mask covering its lower features. It wears a tattered olive cloak over worn robes with cloth wrappings bound around its forearms, legs, and feet. In one hand it holds a heavy, notched blade, while conjuring a blazing fireball in the other.',
         image: 'bandit.png',
         hp: 35,
         ac: 6,
@@ -998,6 +999,7 @@ export const tiles = [
           { name: 'Firebolt', rarity: 'Common', image: 'Firebolt-Common-Fire.png' },
           { name: 'Quick Slash', rarity: 'Common', image: 'QuickSlash-Common-Slash.png' },
           { name: 'Fireball', rarity: 'Rare', image: 'Fireball-Rare-Fire.png' },
+          { name: 'Vial of Toxins', rarity: 'Rare', image: 'VialOfToxins-rare-Acid.png' },
           { name: 'Dragon Breath', rarity: 'Legendary', image: 'DragonBreath-Legendary-Fire.png' },
         ],
       },
@@ -1056,7 +1058,7 @@ export const tiles = [
       encounter: {
         name: 'Sand Golem',
         appearance:
-          'A massive elemental construct forged from packed desert sand and heavy granite runes, radiating miniature sandstorms around its body.',
+          'This massive stone golem is constructed from heavy gray boulders, with a crusted layer of bright golden sandstone coating its shoulders, chest, and back. It features glowing orange eyes set into a blocky, carved rock face, oversized fist-like hands, and a thick, hunched body built for brute force.',
         image: 'sandGolem.png',
         hp: 32,
         ac: 6,
@@ -1065,6 +1067,7 @@ export const tiles = [
         vulnerabilities: ['Water', 'Acid'],
         actionCards: [
           { name: 'Pummel', rarity: 'Common', image: 'Pummel-Common-Blunt.png' },
+          { name: 'Guard', rarity: 'Common', image: 'Guard-Common-Support.png' },
           { name: 'Heavy Slam', rarity: 'Rare', image: 'HeavySlam-Rare-Blunt.png' },
           { name: 'Quicksand Prison', rarity: 'Rare', image: 'QuicksandPrison-Rare-Support.png' },
           { name: 'Earthbreaker', rarity: 'Legendary', image: 'Earthbreaker-Legendary-Blunt.png' },
@@ -1092,7 +1095,7 @@ export const tiles = [
       encounter: {
         name: 'Gravel-Fin (Sand Shark)',
         appearance:
-          'A streamlined subterranean predator with rough, sand-abrasive skin, glowing yellow eyes, and rows of razor-sharp serrated teeth.',
+          'This striped, quadrupedal shark monster features sandy-tan skin with dark brown tiger markings and glowing green gills. Standing on four clawed legs, it boasts a sharp-toothed snarl, glowing green eyes, jagged dorsal fins, and a long, arched tail lined with glowing green bioluminescent veins.',
         image: 'sandShark.png',
         hp: 30,
         ac: 6,
@@ -1209,11 +1212,11 @@ export const tiles = [
       eventStory:
         'A nimble fox with blazing orange fur and ember-tipped tails leaps onto a sunlit boulder. It blinks its golden eyes before darting forward in a blur of fire and speed!',
       encounter: {
-        name: 'Vixen (Sand Fox)',
+        name: 'Vixen (Fire Fox)',
         appearance:
-          'A slick, slender desert fox with glowing fiery markings running along its pelt and trails of embers following its swift movements.',
-        image: 'sandFox.png',
-        hp: 24,
+          'This golden-furred fennec fox features oversized ears, glowing cyan eyes, and a majestic tail formed from swirling, blazing flames. Enveloped in flickering orange fire that leaps from its chest, limbs, and the cracked ground beneath its paws, it stands poised and watchful.',
+        image: 'fireFox.png',
+        hp: 22,
         ac: 6,
         energy: 5,
         resistances: ['Fire'],
@@ -1246,11 +1249,11 @@ export const tiles = [
       eventStory:
         'A giant barbed beetle with glowing green glands emerges from a damp fissure, clicking its mandibles and secreting burning acid onto the sand!',
       encounter: {
-        name: 'Sand Bug',
+        name: 'Sand Spider',
         appearance:
-          'A thick-shelled desert insect with multiple spiny legs, dripping mandibles, and acid-filled blisters along its carapace.',
+          'This tan, chitinous spider features a cluster of glowing cyan eyes, sharp fangs, and a large, cratered moon-like orb in place of an abdomen. Wreathed in swirling wisps of pale mist and glowing embers rising from the cracked ground, it stands poised on long, jointed legs.',
         image: 'sandBug.png',
-        hp: 26,
+        hp: 22,
         ac: 6,
         energy: 4,
         resistances: ['Acid', 'Blunt'],
