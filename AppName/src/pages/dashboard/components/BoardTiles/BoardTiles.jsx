@@ -277,18 +277,11 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                   <span className="tile-detail__section-pill">Read to player</span>
                 </div>
                 <div className="tile-detail__unified-copy">
-                  {selectedTile.details.environment && (
+                  {selectedTile.details.environment || selectedTile.details.eventStory ? (
                     <div className="tile-detail__text-row">
-                      <strong>Environment</strong>
-                      <span>{selectedTile.details.environment}</span>
+                      <span>{`${selectedTile.details.environment || ''}${selectedTile.details.environment && selectedTile.details.eventStory ? ' ' : ''}${selectedTile.details.eventStory || ''}`}</span>
                     </div>
-                  )}
-                  {selectedTile.details.eventStory && (
-                    <div className="tile-detail__text-row">
-                      <strong>Story</strong>
-                      <span>{selectedTile.details.eventStory}</span>
-                    </div>
-                  )}
+                  ) : null}
                 </div>
               </div>
 

@@ -260,7 +260,7 @@ function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () =
 
           {selectedPlayer ? (
             <div className="player__actions">
-              <p className="player__actions-title">Selected: {selectedPlayer.name}</p>
+              <p className="player__actions-title" style={{ color: selectedPlayer.color }}>{`Selected: ${selectedPlayer.name}`}</p>
               <div className="player__controls">
                 <label className="player__control">
                   <span>Heal</span>
