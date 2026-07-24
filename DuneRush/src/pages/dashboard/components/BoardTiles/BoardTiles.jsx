@@ -21,6 +21,9 @@ import mudGolemImg from '../../data/encounerImg/mudGolem.png';
 import spiderImg from '../../data/encounerImg/spider.png';
 import babySandWormImg from '../../data/encounerImg/babySandWorm.png';
 import babySandCrallerImg from '../../data/encounerImg/babySandCraller.png';
+import fireWyvernImg from '../../data/encounerImg/fireWyvern.png';
+import fireHoundImg from '../../data/encounerImg/fireHound.png';
+import TaurusDemonImg from '../../data/encounerImg/TaurusDemon.png';
 
 function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players = [] }) {
   const [encounterState, setEncounterState] = useState(null);
@@ -79,6 +82,10 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     // accept both spellings (data file may reference either)
     'babySandCraller.png': babySandCrallerImg,
     'babySandCrawler.png': babySandCrallerImg,
+    'fireWyvern.png': fireWyvernImg,
+    'fireHound.png': fireHoundImg,
+    'taurusDemon.png': TaurusDemonImg,
+    'TaurusDemon.png': TaurusDemonImg,
   };
 
   const renderDialogueLines = (text, npcName) => {

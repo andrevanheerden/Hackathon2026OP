@@ -1387,7 +1387,7 @@ export const tiles = [
     id: 51,
     number: 51,
     type: 'Encounter',
-    title: 'Apex Dragoon',
+    title: 'Apex Wyvern',
     category: 'Encounter',
     area: 'Scorched Peak',
     highlighted: false,
@@ -1401,7 +1401,7 @@ export const tiles = [
       encounter: {
         name: 'Fire Wyvern',
         appearance:
-          'A towering two-legged dragon covered in obsidian scales with glowing orange wing-membranes, venting pure magma from its chest.',
+          'This dark, volcanic-scaled wyvern features a single glowing magma horn on its snout, a roaring jaw, and a neck pulsing with molten red heat. Perched atop a jagged rock, it rests on massive wing-arms with lava-veined membranes, heavy clawed hands, and a thick, spiked tail edged in glowing magma.',
         image: 'fireWyvern.png',
         hp: 48,
         ac: 7,
@@ -1440,7 +1440,7 @@ export const tiles = [
       encounter: {
         name: 'Taurus Demon',
         appearance:
-          'A massive, broad-shouldered minotaur demon with fiery red skin, giant curved horns, glowing magma fissures running through its torso, and wielding an oversized obsidian blade dripping flame.',
+          'This muscular, horned demon features charred black skin laced with glowing orange lava veins, heavy dark armor, and a horned helm with glowing red eyes. Posing atop a rocky pedestal, it fires a blast of flame and crackling energy from a massive heavy cannon while channeling fire in its hand alongside a floating, burning skull.',
         image: 'taurusDemon.png',
         hp: 55,
         ac: 8,
