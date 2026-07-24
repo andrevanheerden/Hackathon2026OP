@@ -1429,7 +1429,7 @@ export const tiles = [
     title: 'The Grand Finale',
     category: 'Boss',
     area: 'The Crucible',
-    highlighted: true,
+    highlighted: false,
     details: {
       npcName: 'Taurus Demon',
       npcLabel: 'Final Boss',
