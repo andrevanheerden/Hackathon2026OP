@@ -11,11 +11,30 @@
   font-weight: 300;
 }
 
+.numeral,
+.dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  min-height: 42px;
+  padding: 0 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .numeral {
-  color: #7777bb;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .dot {
-  color: #5555aa;
-  font-size: 14px;
+  color: #FF6600;
+  font-size: 16px;
+  width: 24px;
+  min-width: 24px;
+  background: transparent;
+  border: none;
 }

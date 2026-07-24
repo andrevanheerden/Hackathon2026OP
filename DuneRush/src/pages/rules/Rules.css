@@ -99,7 +99,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 .rule-bullet {
@@ -133,12 +133,84 @@
 /* Card Body Text */
 .rule-text {
   font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   color: #B8B8C8;
-  line-height: 1.7;
-  letter-spacing: 0.5px;
+  line-height: 1.9;
+  letter-spacing: 0.6px;
+  margin: 0 0 18px;
+}
+
+.rule-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rule-list,
+.rule-ordered-list {
   margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.rule-list li,
+.rule-ordered-list li {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 18px;
+  line-height: 1.9;
+  color: #D8D8DF;
+  margin: 0;
+  padding-left: 18px;
+  position: relative;
+}
+
+.rule-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #FF6600;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.rule-ordered-list {
+  counter-reset: rule-counter;
+}
+
+.rule-ordered-list li {
+  counter-increment: rule-counter;
+}
+
+.rule-ordered-list li::before {
+  content: counter(rule-counter) '.';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #FF6600;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.rule-subheading {
+  margin: 0 0 12px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.rule-block-box {
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 /* Responsive */
