@@ -2,6 +2,10 @@ import Sidebar from '../dashboard/components/Sidebar/Sidebar';
 import '../dashboard/dashboard.css';
 import './Rules.css';
 
+const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
+
+const toRoman = (index) => romanNumerals[index] || `${index + 1}`;
+
 const rulesData = [
   {
     title: '1. Board Movement',
@@ -226,7 +230,7 @@ function Rules({ onNavigate = () => {} }) {
                 {rulesData.map((rule, index) => (
                   <div className="rule-card" key={index}>
                     <div className="rule-card-header">
-                      <span className="rule-bullet">{index + 1}</span>
+                      <span className="rule-bullet">{toRoman(index)}</span>
                       <h2 className="rule-heading">{rule.title}</h2>
                     </div>
                     <div className="rule-card-body">
