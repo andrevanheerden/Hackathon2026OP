@@ -64,6 +64,11 @@
   color: rgba(255, 110, 110, 0.95);
 }
 
+.tile-card--cat-boss .tile-card__type,
+.tile-card--cat-boss h3 {
+  color: rgba(168, 23, 31, 0.98);
+}
+
 .tile-card--cat-discovery .tile-card__type,
 .tile-card--cat-discovery h3 {
   color: rgba(90, 205, 115, 0.95);

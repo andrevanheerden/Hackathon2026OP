@@ -658,6 +658,45 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                   </div>
                 </div>
               )}
+
+              {selectedTile.category === 'Boss' && selectedTile.details.victoryOutro && (
+                <div className="tile-detail__section">
+                  <div className="tile-detail__section-header">
+                    <p className="tile-detail__section-title">Narrative</p>
+                    <span className="tile-detail__section-pill">Read to player</span>
+                  </div>
+
+                  {selectedTile.details.victoryOutro.narrative && (
+                    <div className="tile-detail__text-row">
+                      <span>{selectedTile.details.victoryOutro.narrative}</span>
+                    </div>
+                  )}
+
+                  <div className="tile-detail__section-header">
+                    <p className="tile-detail__section-title">
+                      {`${selectedTile.details.victoryOutro.hostName || selectedTile.details.npcName || 'Host'}:`}
+                    </p>
+                    <span className="tile-detail__section-pill">Read to player</span>
+                  </div>
+                  <div className="tile-detail__dialogue-copy">
+                    {renderDialogueLines(selectedTile.details.victoryOutro.dialogue)}
+                  </div>
+
+                  {selectedTile.details.victoryOutro.endingEffect && (
+                    <>
+                      <div className="tile-detail__section-header">
+                        <p className="tile-detail__section-title">Ending</p>
+                        <span className="tile-detail__section-pill">Read to player</span>
+                      </div>
+                      <div className="tile-detail__dialogue-copy">
+                        <p className="tile-detail__dialogue-line">
+                          {selectedTile.details.victoryOutro.endingEffect}
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
             </div>
           ) : (
             <div className="board-tiles__detail-body">

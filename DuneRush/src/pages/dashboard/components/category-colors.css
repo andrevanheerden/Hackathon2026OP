@@ -8,6 +8,11 @@
   box-shadow: 0 8px 36px rgba(255,110,110,0.06), inset 0 0 18px rgba(255,110,110,0.03);
 }
 
+.board-tiles__detail--cat-boss {
+  border-color: rgba(132, 16, 22, 0.68);
+  box-shadow: 0 8px 36px rgba(132, 16, 22, 0.08), inset 0 0 18px rgba(132, 16, 22, 0.04);
+}
+
 .board-tiles__detail--cat-discovery {
   border-color: rgba(90, 205, 115, 0.45);
   box-shadow: 0 8px 36px rgba(90, 205, 115, 0.06), inset 0 0 18px rgba(90, 205, 115, 0.03);
@@ -39,6 +44,20 @@
 .board-tiles__detail--cat-discovery .tile-hero--one .tile-hero__label,
 .board-tiles__detail--cat-discovery .tile-hero--one .tile-hero__title {
   color: rgba(90, 205, 115, 0.95);
+}
+
+.board-tiles__detail--cat-boss .tile-hero__pill,
+.board-tiles__detail--cat-boss .tile-hero__title,
+.board-tiles__detail--cat-boss .tile-hero__label {
+  color: rgba(168, 23, 31, 0.98);
+}
+.board-tiles__detail--cat-boss .tile-hero__pill {
+  background: rgba(168, 23, 31, 0.1);
+}
+
+.board-tiles__detail--cat-boss .tile-hero--one .tile-hero__label,
+.board-tiles__detail--cat-boss .tile-hero--one .tile-hero__title {
+  color: rgba(168, 23, 31, 0.98);
 }
 
 .board-tiles__detail--cat-encounter .tile-hero__pill,
@@ -76,6 +95,19 @@
 .board-tiles__detail--cat-encounter .mock-encounter-pill {
   border-color: rgba(255,110,110,0.25);
   background: rgba(255,110,110,0.08);
+}
+
+.board-tiles__detail--cat-boss .tile-detail__section-title,
+.board-tiles__detail--cat-boss .tile-detail__text-row strong,
+.board-tiles__detail--cat-boss .mock-encounter-subtitle,
+.board-tiles__detail--cat-boss .mock-encounter-maintitle,
+.board-tiles__detail--cat-boss .mock-encounter-pill {
+  color: rgba(168, 23, 31, 0.98);
+}
+
+.board-tiles__detail--cat-boss .mock-encounter-pill {
+  border-color: rgba(168, 23, 31, 0.3);
+  background: rgba(168, 23, 31, 0.09);
 }
 
 .board-tiles__detail--cat-merchant {
@@ -162,6 +194,15 @@
   background: linear-gradient(180deg, rgba(32,12,14,1), rgba(48,10,12,1));
 }
 
+.tile-card--selected.tile-card--cat-boss {
+  border-color: rgba(132, 16, 22, 0.78);
+  box-shadow: 0 8px 28px rgba(132, 16, 22, 0.1), inset 0 0 12px rgba(132, 16, 22, 0.05);
+}
+
+.tile-card--selected.tile-card--cat-boss {
+  background: linear-gradient(180deg, rgba(28, 6, 8, 1), rgba(43, 10, 12, 1));
+}
+
 .tile-card--selected.tile-card--cat-discovery {
   border-color: rgba(90, 205, 115, 0.7);
   box-shadow: 0 8px 28px rgba(90,205,115,0.08), inset 0 0 12px rgba(90,205,115,0.04);
@@ -179,6 +220,11 @@
 .tile-card--selected.tile-card--cat-encounter .tile-card__type,
 .tile-card--selected.tile-card--cat-encounter h3 {
   color: rgba(255,110,110,0.95);
+}
+
+.tile-card--selected.tile-card--cat-boss .tile-card__type,
+.tile-card--selected.tile-card--cat-boss h3 {
+  color: rgba(168, 23, 31, 0.98);
 }
 
 .tile-card--selected.tile-card--cat-discovery .tile-card__type,

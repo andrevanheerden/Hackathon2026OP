@@ -1303,7 +1303,7 @@ export const tiles = [
       encounter: {
         name: 'Fire Elemental',
         appearance:
-          'A towering being composed entirely of white-hot fire and swirling magma, radiating intense heat that melts the sand around it.',
+          'This flaming skeletal elemental features a grinning skull with glowing orange eyes and an exposed ribcage revealing a bright, radiant core at its center. Its legless lower body twists into a swirling vortex of roaring fire, while long, clawed fiery arms reach down toward the scorched, cracked ground.',
         image: 'fireElemental.png',
         hp: 34,
         ac: 5,
@@ -1361,7 +1361,7 @@ export const tiles = [
       encounter: {
         name: 'Fire Hound',
         appearance:
-          'A giant canine predator covered in charcoal scales and glowing molten fur, dripping flame from its jaws with every growl.',
+          'This dark, volcanic-skinned hound features glowing red eyes, a snarling fanged maw, and glowing orange runes etched across its cracked hide. A mane of fire bursts from its head, streaming into a massive, sweeping tail of roaring flames while fire leaps around its red-clawed paws.',
         image: 'fireHound.png',
         hp: 45,
         ac: 6,
