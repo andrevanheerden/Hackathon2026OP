@@ -2,6 +2,31 @@ import TileCard from '../TileCard/TileCard';
 import { useEffect, useMemo, useState } from 'react';
 import './BoardTiles.css';
 import { cardLibraryData } from '../../../cardLibary/cardLibraryData';
+import damageSound from '../../sound/Damage.mp3';
+import healSound from '../../sound/healing.mp3';
+import impactSound from '../../sound/impact.mp3';
+
+const playAudio = (src) => {
+  try {
+    const audio = new Audio(src);
+    audio.volume = 1.0;
+    audio.currentTime = 0;
+    audio.play().catch((err) => {
+      console.error('Error playing audio:', err);
+    });
+  } catch (e) {
+    console.error('Error creating audio element:', e);
+  }
+};
+
+const playDamageSound = () => {
+  playAudio(impactSound);
+  playAudio(damageSound);
+};
+
+const playHealSound = () => {
+  playAudio(healSound);
+};
 
 import zombie from '../../data/encounerImg/zombie.png';
 import zombieArmor from '../../data/encounerImg/zombieArmor.png';
@@ -200,6 +225,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     setEncounterState(s => s ? { ...s, currentHp: Math.min(s.maxHp, s.currentHp + parsed) } : s);
     setHealAmount('');
     setEncounterHealed(true);
+    playHealSound();
     window.setTimeout(() => {
       setEncounterHealed(false);
     }, 600);
@@ -232,6 +258,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     setEncounterState(s => s ? { ...s, currentHp: Math.max(0, s.currentHp - finalDamage) } : s);
     setDamageAmount('');
     setEncounterDamaged(true);
+    playDamageSound();
     window.setTimeout(() => {
       setEncounterDamaged(false);
     }, 300);
@@ -243,6 +270,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     if (!Number.isFinite(parsed) || parsed <= 0) return;
     setEncounterState(s => s ? { ...s, currentEnergy: Math.max(0, s.currentEnergy - parsed) } : s);
     setEnergyAmount('');
+    playHealSound();
   };
 
   const restoreEnergy = () => {
@@ -251,6 +279,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     if (!Number.isFinite(parsed) || parsed <= 0) return;
     setEncounterState(s => s ? { ...s, currentEnergy: Math.min(s.maxEnergy, s.currentEnergy + parsed) } : s);
     setEnergyAmount('');
+    playHealSound();
   };
 
   const addAc = () => {
@@ -259,6 +288,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     if (!Number.isFinite(parsed) || parsed <= 0) return;
     setEncounterState(s => s ? { ...s, ac: s.ac + parsed } : s);
     setAcAmount('');
+    playHealSound();
   };
 
   const removeAc = () => {
@@ -267,6 +297,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     if (!Number.isFinite(parsed) || parsed <= 0) return;
     setEncounterState(s => s ? { ...s, ac: Math.max(0, s.ac - parsed) } : s);
     setAcAmount('');
+    playHealSound();
   };
 
   return (
@@ -577,7 +608,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
                       <img
                         src={encounterImageMap[selectedTile.details.encounter.image] || zombie}
                         alt={selectedTile.details.encounter.name}
-                        className={`mock-portrait-img${encounterDamaged ? ' mock-portrait-img--damaged' : ''}`}
+                        className={`mock-portrait-img${encounterDamaged ? ' mock-portrait-img--damaged' : ''}${encounterHealed ? ' mock-portrait-img--healed' : ''}`}
                         onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/assets/desrt-zomby.svg'; }}
                       />
                     </div>

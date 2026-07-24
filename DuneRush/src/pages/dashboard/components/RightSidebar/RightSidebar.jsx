@@ -1,5 +1,30 @@
 import { useEffect, useState } from 'react';
 import './RightSidebar.css';
+import damageSound from '../../sound/Damage.mp3';
+import healSound from '../../sound/healing.mp3';
+import impactSound from '../../sound/impact.mp3';
+
+const playAudio = (src) => {
+  try {
+    const audio = new Audio(src);
+    audio.volume = 1.0;
+    audio.currentTime = 0;
+    audio.play().catch((err) => {
+      console.error('Error playing audio:', err);
+    });
+  } catch (e) {
+    console.error('Error creating audio element:', e);
+  }
+};
+
+const playDamageSound = () => {
+  playAudio(impactSound);
+  playAudio(damageSound);
+};
+
+const playHealSound = () => {
+  playAudio(healSound);
+};
 
 function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () => {} }) {
   const [selectedPlayerId, setSelectedPlayerId] = useState(null);
@@ -87,6 +112,7 @@ function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () =
     onUpdatePlayer(selectedPlayer.id, { hp: nextHp });
     setHealAmount('');
     setHealedPlayerId(selectedPlayer.id);
+    playHealSound();
 
     window.setTimeout(() => {
       setHealedPlayerId(null);
@@ -109,6 +135,7 @@ function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () =
     onUpdatePlayer(selectedPlayer.id, { hp: nextHp });
     setDamageAmount('');
     setDamagedPlayerId(selectedPlayer.id);
+    playDamageSound();
 
     window.setTimeout(() => {
       setDamagedPlayerId((current) => (current === selectedPlayer.id ? null : current));
@@ -324,6 +351,7 @@ function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () =
                         const next = Math.max(0, current - parsed);
                         onUpdatePlayer(selectedPlayer.id, { energy: next });
                         setEnergyAmount('');
+                        playHealSound();
                       }}
                     >
                       Consume
@@ -339,6 +367,7 @@ function RightSidebar({ selectedTile = null, players = [], onUpdatePlayer = () =
                         const next = Math.min(maxE, current + parsed);
                         onUpdatePlayer(selectedPlayer.id, { energy: next });
                         setEnergyAmount('');
+                        playHealSound();
                       }}
                     >
                       Restore
