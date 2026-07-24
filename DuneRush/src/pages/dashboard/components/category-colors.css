@@ -11,6 +11,7 @@
 .board-tiles__detail--cat-boss {
   border-color: rgba(132, 16, 22, 0.68);
   box-shadow: 0 8px 36px rgba(132, 16, 22, 0.08), inset 0 0 18px rgba(132, 16, 22, 0.04);
+  background: linear-gradient(180deg, rgba(28, 6, 8, 1), rgba(43, 10, 12, 1)) !important;
 }
 
 .board-tiles__detail--cat-discovery {
