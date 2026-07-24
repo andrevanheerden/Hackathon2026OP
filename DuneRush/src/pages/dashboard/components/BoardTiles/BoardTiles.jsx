@@ -28,6 +28,7 @@ import TaurusDemonImg from '../../data/encounerImg/TaurusDemon.png';
 function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players = [] }) {
   const [encounterState, setEncounterState] = useState(null);
   const [encounterDamaged, setEncounterDamaged] = useState(false);
+  const [encounterHealed, setEncounterHealed] = useState(false);
   const [healAmount, setHealAmount] = useState('');
   const [damageAmount, setDamageAmount] = useState('');
   const [energyAmount, setEnergyAmount] = useState('');
@@ -198,6 +199,10 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
     if (!Number.isFinite(parsed) || parsed <= 0) return;
     setEncounterState(s => s ? { ...s, currentHp: Math.min(s.maxHp, s.currentHp + parsed) } : s);
     setHealAmount('');
+    setEncounterHealed(true);
+    window.setTimeout(() => {
+      setEncounterHealed(false);
+    }, 600);
   };
 
   const applyDamage = () => {
@@ -385,7 +390,7 @@ function BoardTiles({ tiles, selectedTileId, onSelectTile, selectedTile, players
 
               {/* NEW ENCOUNTER SECTION DESIGN */}
               {selectedTile.details.encounter && (
-                <div className="mock-encounter-panel">
+                <div className={`mock-encounter-panel${encounterHealed ? ' mock-encounter-panel--healed' : ''}`}>
                   
                   {/* Encounter Header */}
                   <div className="mock-encounter-header">
